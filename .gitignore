@@ -51,3 +51,4 @@ coverage/
 
 # XAMPP / system-specific
 htdocs/error_log
+config/db_connect.php
