@@ -1,21 +1,53 @@
-# OS/editor
+# ======================================
+# CHRONONAV_WEB_DOSS .gitignore
+# ======================================
+
+# OS / Editor junk
 .DS_Store
 Thumbs.db
-.vscode/
-.idea/
+*.log
+*.tmp
+*.swp
+*.bak
+*.lock
 
-# PHP/XAMPP
+# Composer dependencies
 /vendor/
-/uploads/
-/storage/
-/cache/
-/logs/
-/tmp/
 
-# Env & credentials
+# User uploads (images, docs, etc.)
+/uploads/
+
+# Environment & config files
 .env
 *.env
-config/db_connect.php
+.env.local
+.env.*.local
 
-# Node (if any)
-node_modules/
+# PHPStorm / VSCode / IDE settings
+.idea/
+.vscode/
+
+# Node.js (if you later use npm for frontend)
+/node_modules/
+npm-debug.log
+yarn-error.log
+
+# Cache & sessions
+/cache/
+*.cache
+*.session
+*.sess
+
+# PHPUnit / coverage reports
+.phpunit.result.cache
+coverage/
+
+# Backup / build / dist
+/build/
+/dist/
+*.tar
+*.zip
+*.gz
+
+# XAMPP / system-specific
+htdocs/error_log
