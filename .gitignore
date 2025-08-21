@@ -1,0 +1,21 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# PHP/XAMPP
+/vendor/
+/uploads/
+/storage/
+/cache/
+/logs/
+/tmp/
+
+# Env & credentials
+.env
+*.env
+config/db_connect.php
+
+# Node (if any)
+node_modules/
