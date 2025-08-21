@@ -1,0 +1,287 @@
+           /* General page container styles, similar to .support-center-page */
+.system-logs-page {
+    padding: 20px;
+    background-color: rgb(255, 255, 255); /* Light background for the page content area */
+}
+
+/* Header section, similar to .support-center-header */
+.system-logs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6; /* A subtle separator */
+}
+
+.system-logs-header h1 {
+    font-size: 2rem;
+    color: #343a40; /* Darker text for main heading */
+}
+
+/* Back button style, consistent with your example */
+.btn-back {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px; /* Slightly more rounded corners for consistency */
+    text-decoration: none;
+    font-size: 0.95rem; /* Slightly larger font for readability */
+    transition: background-color 0.2s;
+    display: inline-flex; /* To align icon and text */
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+.btn-back:hover {
+    background-color: #5a6268;
+    color: white; /* Keep text white on hover */
+}
+
+/* Wrapper for main content sections, similar to .support-content-wrapper but for vertical stacking */
+/* For System Logs, we're assuming sections stack vertically rather than side-by-side like FAQs/Tickets */
+.main-dashboard-content.system-logs-page > div { /* Target direct children divs within system-logs-page for consistent max-width and centering */
+    /* INCREASED MAX-WIDTH HERE TO OCCUPY MORE SPACE */
+    margin-left: auto; /* Center the content blocks */
+    margin-right: auto;
+}
+
+/* Section styling, similar to .support-section */
+.logs-filter-section,
+.logs-display-section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Soft shadow for card effect */
+    margin-bottom: 25px; /* Space between filter and display sections */
+    width: 100%; /* Ensure it fills available width within its parent */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.logs-filter-section h2,
+.logs-display-section h2 {
+    font-size: 1.5rem;
+    color: #007bff; /* Blue heading for sections, similar to support center */
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px; /* Add padding below heading */
+    border-bottom: 1px solid #eee; /* Light line below heading */
+}
+
+.logs-filter-section h2 i,
+.logs-display-section h2 i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Filter form specific styles */
+.filter-form .form-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow form groups to wrap */
+    gap: 15px; /* Space between form groups */
+    margin-bottom: 15px; /* Space before buttons */
+}
+
+.filter-form .form-group {
+    flex: 1 1 calc(33.333% - 15px); /* Default to 3 columns, adjusting for gap */
+    min-width: 200px; /* Prevent shrinking too much */
+}
+
+.filter-form label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+    display: block; /* Ensure label is block for proper spacing */
+}
+
+.filter-form .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+}
+
+.filter-form .btn {
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px; /* For stacking on smaller screens */
+}
+
+.filter-form .float-right {
+    float: right; /* Keep export button right-aligned on larger screens */
+}
+
+/* Logs Table Styling, adapted from common table styles */
+.logs-display-section .table-responsive {
+    margin-top: 20px;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse; /* For clean lines */
+    margin-bottom: 0; /* Remove default table margin-bottom */
+}
+
+.logs-table th,
+.logs-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0; /* Lighter border for rows */
+    vertical-align: top; /* Align content to top */
+}
+
+.logs-table th {
+    background-color: #e9ecef; /* Light grey header background */
+    color: #495057;
+    font-weight: 600;
+    white-space: nowrap; /* Prevent headers from wrapping too aggressively */
+}
+
+.logs-table tbody tr:hover {
+    background-color: #f5f5f5; /* Subtle hover effect */
+}
+
+/* Status Badges */
+.logs-table .badge {
+    font-size: 0.85em; /* Smaller, more compact badge */
+    padding: 0.4em 0.8em;
+    border-radius: 0.25rem; /* Standard Bootstrap small radius */
+    font-weight: 600;
+    display: inline-block; /* Ensure it respects padding/margin */
+}
+
+.logs-table .badge-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.logs-table .badge-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* No records message */
+.logs-display-section p {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) { /* Added this breakpoint for finer control */
+    .main-dashboard-content.system-logs-page > div {
+        max-width: 1200px; /* Slightly reduce for large monitors if 1400px is too wide */
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-dashboard-content.system-logs-page > div {
+        max-width: 960px; /* Standard large desktop max-width */
+    }
+}
+
+@media (max-width: 991px) {
+    .main-dashboard-content.system-logs-page > div {
+        max-width: 100%; /* Allow full width within parent for smaller screens */
+    }
+    .filter-form .form-group {
+        flex: 1 1 calc(50% - 15px); /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 767px) {
+    .system-logs-header {
+        flex-direction: column; /* Stack title and button */
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .system-logs-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn-back {
+        width: auto; /* Adjust width for smaller screens */
+    }
+
+    .logs-filter-section,
+    .logs-display-section {
+        padding: 20px; /* Slightly reduce padding */
+    }
+
+    .filter-form .form-group {
+        flex: 1 1 100%; /* Single column on small screens */
+        min-width: unset; /* Remove min-width constraint */
+    }
+
+    .filter-form .btn {
+        width: 100%; /* Make buttons full width */
+        margin-right: 0;
+        text-align: center;
+        justify-content: center; /* Center content of flex buttons */
+    }
+
+    .filter-form .float-right {
+        float: none; /* Remove float for stacking */
+    }
+
+    .logs-table {
+        font-size: 0.9rem; /* Shrink table font size */
+    }
+
+    .logs-table th, .logs-table td {
+        padding: 8px 10px; /* Reduce table cell padding */
+    }
+
+    /* Hide less critical columns on small screens to prevent horizontal scroll */
+    .logs-table th:nth-child(1), .logs-table td:nth-child(1), /* ID */
+    .logs-table th:nth-child(4), .logs-table td:nth-child(4), /* IP Address */
+    .logs-table th:nth-child(7), .logs-table td:nth-child(7) { /* User Agent */
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .system-logs-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .logs-filter-section h2,
+    .logs-display-section h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Styles for the main content wrapper to ensure it expands next to the sidebar */
+/* These are crucial and should likely be in your main style.css or a dashboard-layout.css */
+/* but are included here for completeness based on previous context. */
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content-wrapper { /* This wrapper typically holds all content next to the sidebar */
+    flex-grow: 1; /* Allows it to take up remaining space */
+    margin-left: 250px; /* Based on your .app-sidebar width in image_36d83e.png */
+    padding: 0; /* Let .system-logs-page handle internal padding */
+    background-color: #f8f9fa; /* Consistent background */
+    box-sizing: border-box;
+}
+
+/* Media query for when the sidebar collapses or is hidden */
+@media (max-width: 992px) { /* Adjust based on your sidebar's responsive breakpoint */
+    .main-content-wrapper {
+        margin-left: 70px; /* If sidebar collapses to a smaller width */
+    }
+}
+
+@media (max-width: 768px) { /* Adjust based on when your sidebar might hide or become a toggle */
+    .main-content-wrapper {
+        margin-left: 0; /* No margin when sidebar is hidden/toggled */
+    }
+}

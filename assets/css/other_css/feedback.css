@@ -1,0 +1,154 @@
+/* CHRONONAV_WEB_DOSS/assets/css/feedback.css */
+
+/* Ensure the main content wrapper has correct padding/margins from header/sidenav */
+/* This ensures consistency with other pages like calendar.php */
+.main-dashboard-content {
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background for the main content area */
+    min-height: calc(100vh - 80px); /* Adjust based on your header height */
+    margin-top: 80px; /* To push content down below the fixed header */
+    margin-left: 250px; /* To push content right from the fixed sidebar */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: margin-left 0.3s ease; /* Smooth transition if sidebar collapses */
+}
+
+/* Page Header (if not handled by dashboard-header class from general_calendar.css) */
+/* If you want a specific title for this page that's styled like other page titles */
+.feedback-page-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.feedback-page-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #343a40;
+    margin: 0;
+}
+
+
+/* Feedback Form Card */
+.feedback-form-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Consistent shadow with calendar cards */
+    padding: 30px;
+    max-width: 700px; /* Limit form width for better readability */
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+/* Form Elements */
+.feedback-form .form-group {
+    margin-bottom: 20px; /* Space between form groups */
+}
+
+.feedback-form .form-label {
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 8px; /* Space between label and input */
+    display: block; /* Ensure label takes full width */
+}
+
+.feedback-form .form-control,
+.feedback-form .form-select {
+    border-radius: 8px; /* Slightly rounded input fields */
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #495057;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-form .form-control:focus,
+.feedback-form .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.feedback-form textarea.form-control {
+    min-height: 120px; /* Give more space for the message */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Rating Select Specific Styling */
+.feedback-form .rating-select {
+    width: auto; /* Allow select to take natural width */
+    display: inline-block; /* Keep it inline with label if needed, or adjust to block */
+    max-width: 250px; /* Limit width of rating select */
+}
+
+.form-rating-row {
+    display: flex;
+    flex-direction: column; /* Stack label and select */
+    align-items: flex-start;
+}
+
+/* Submit Button */
+.submit-feedback-btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.25);
+    width: 100%; /* Make button full width within its container */
+    margin-top: 10px; /* Space above button */
+}
+
+.submit-feedback-btn:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.35);
+}
+
+.submit-feedback-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Alert Messages (Bootstrap default look, but ensure they are styled consistently) */
+.alert {
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .main-dashboard-content {
+        margin-left: 0; /* Remove left margin on smaller screens if sidebar collapses */
+        padding-left: 20px; /* Normal padding when sidebar is not fixed */
+        padding-right: 20px;
+    }
+    .feedback-form-card {
+        padding: 25px;
+        margin: 0 15px; /* Add some side margin on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .feedback-form-card {
+        padding: 20px;
+    }
+    .feedback-form .form-label {
+        font-size: 0.95rem;
+    }
+    .feedback-form .form-control,
+    .feedback-form .form-select {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    .submit-feedback-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,202 @@
+/*
+* Custom CSS for a modern, clean, and professional look.
+* File: CHRONONAV_WEB_DOSS/public/css/class_assignments.css
+*/
+
+:root {
+    --primary-color: #4a69bd;
+    --secondary-color: #60a3bc;
+    --background-light: #f5f5f5ff;
+    --card-background: #ffffff;
+    --text-dark: #333;
+    --text-muted: #6c757d;
+    --border-color: #e0e0e0;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+}
+
+/* --- Main Content Layout --- */
+.main-content-wrapper {
+    margin-left: 250px; /* Aligns with the sidenav width */
+    padding: 2.5rem;
+    transition: margin-left 0.3s ease;
+}
+
+/* --- Typography --- */
+h2, h3 {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+h3.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+/* --- Cards and Containers --- */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* --- Forms --- */
+.form-label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(74, 105, 189, 0.25);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3b5998;
+    border-color: #3b5998;
+    transform: translateY(-2px);
+}
+
+/* --- Tables --- */
+.table {
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Adds space between rows */
+}
+
+.table thead th {
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 600;
+    color: var(--text-dark);
+    padding: 1.25rem 1rem;
+}
+
+.table tbody tr {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.table tbody td {
+    border-top: none;
+    padding: 1.25rem 1rem;
+    vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f9fbfd; /* Lighter alternate row background */
+}
+
+.table .btn {
+    border-radius: 6px;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    margin-right: 5px;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: scale(1.05);
+}
+
+/* --- Alerts and Messages --- */
+.alert {
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+}
+
+.alert-info {
+    background-color: #e8f3ff;
+    color: #004085;
+}
+
+.alert-dismissible .btn-close {
+    color: #000;
+    opacity: 0.5;
+}
+
+/* --- Modal Styling --- */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: var(--text-dark);
+}

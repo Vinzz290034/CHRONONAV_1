@@ -1,0 +1,147 @@
+/* CHRONONAV_WEB_DOSS/assets/css/general_add_reminder.css */
+
+/* --- General Layout & Page Content Wrapper (Consistent with dashboard, view_profile, settings) --- */
+#wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#page-content-wrapper {
+    flex-grow: 1;
+    width: 100%;
+    min-width: 0; /* Ensures content doesn't overflow */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background for the main content area */
+}
+
+.main-dashboard-content {
+    
+    margin: 0 auto; /* Center the content within its wrapper */
+    padding: 20px;
+    background-color: #fff; /* White background for the main content card */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+}
+
+@media (max-width: 768px) {
+    #page-content-wrapper {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+    .main-dashboard-content {
+        padding: 15px;
+    }
+}
+
+/* --- Reminder Form Card Specific Styles --- */
+.reminder-form-card {
+    margin-left: 250px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* More pronounced shadow for the main card */
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px; /* Generous padding inside the card */
+}
+
+.form-title {
+    font-size: 2em;
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 15px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 0.95em;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Bootstrap's focus ring */
+    outline: none;
+}
+
+textarea.form-control {
+    min-height: 100px; /* Give textarea a good initial height */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 25px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    padding: 10px 25px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Alert messages (consistent with Bootstrap) */
+.alert {
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+/* --- App Version Footer (Consistent with other pages) --- */
+.app-version {
+    font-size: 0.8em;
+    color: #a0a0a0;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 576px) {
+    .reminder-form-card {
+        padding: 20px;
+    }
+    .form-title {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+    .btn {
+        width: 100%;
+        margin-bottom: 10px; /* Add space between stacked buttons */
+    }
+    .d-flex.justify-content-end.mt-4 {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+    }
+    .btn-secondary.me-3 {
+        margin-right: 0 !important; /* Remove right margin when stacked */
+    }
+}

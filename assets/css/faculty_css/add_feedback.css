@@ -1,0 +1,72 @@
+/* --- General Page Styling --- */
+body {
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.main-content-wrapper {
+    padding: 20px;
+}
+
+/* --- Card Container --- */
+.feedback-form-card {
+    background-color: #f0ecec;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.04);
+    
+    margin: auto;
+}
+
+.feedback-form-card .card-title {
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+/* --- Form Styling --- */
+.feedback-form label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.feedback-form .form-control,
+.feedback-form .form-select {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    font-size: 0.95em;
+    padding: 10px 12px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.feedback-form .form-control:focus,
+.feedback-form .form-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.15);
+}
+
+/* --- Rating Select --- */
+.rating-select {
+    width: 160px;
+}
+
+/* --- Submit Button --- */
+.submit-feedback-btn {
+    padding: 8px 18px;
+    font-size: 0.95em;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.submit-feedback-btn:hover {
+    background-color: #0056b3;
+}
+
+/* --- Alerts --- */
+.alert {
+    border-radius: 6px;
+    font-size: 0.9em;
+    padding: 10px 14px;
+}

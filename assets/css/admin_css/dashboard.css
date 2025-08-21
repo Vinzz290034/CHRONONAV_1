@@ -1,0 +1,302 @@
+/* Adjust overall body padding to account for fixed header */
+body {
+    padding-top: 56px; /* Adjust based on your navbar height */
+    background-color: #ffffffff; /* Light grey background for the whole page */
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* A nice, modern font stack */
+    margin: 0;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    display: flex;
+    flex-direction: column; /* For sticky footer if applicable */
+}
+
+.blue-header {
+  background-color: #c6c7c7; /* A nice, vibrant blue */
+  color: #060606; /* White text for contrast */
+  padding: 1rem 1.5rem; /* Add some padding */
+  border-radius: 0.5rem; /* Optional: adds rounded corners */
+  margin-bottom: 2rem; /* Adds space below the header */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow */
+}
+
+/* Basic styling for the main content area to make space for the sidebar */
+.wrapper {
+    display: flex; /* Enables flexbox for sidebar and main content */
+    flex-grow: 1; /* Allows wrapper to expand and push footer down */
+}
+
+.main-content-wrapper {
+    margin-left: 250px; /* Same width as the sidebar */
+    transition: margin-left 0.3s ease;
+    flex-grow: 1; /* Allows main content to take remaining space */
+    padding-top: 20px; /* Add some padding at the top of the content */
+}
+
+/* Responsive adjustments for main content wrapper */
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        margin-left: 70px; /* Adjusted for collapsed sidebar */
+    }
+}
+
+/* General card shadow for consistency */
+.card {
+    border: none; /* Remove default card border */
+    border-radius: 8px; /* Rounded corners for cards */
+}
+
+.card.shadow-sm {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08) !important; /* Slightly more pronounced shadow */
+}
+
+/* General link styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Added style for clickable cards to ensure the whole card acts as a link */
+.card-link {
+    display: block; /* Make the anchor tag a block element */
+    height: 100%; /* Ensure it fills the card */
+    color: inherit; /* Inherit text color from parent */
+}
+.card-link:hover {
+    text-decoration: none; /* Remove underline on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12) !important; /* Enhanced shadow on hover */
+}
+.card-link .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Apply transition to the card itself */
+}
+
+.card-blue {
+    background-color: #007bff;
+    color: #ffffff; /* White text for contrast */
+}
+.card-green {
+    background-color: #28a745;
+    color: #ffffff;
+}
+.card-orange {
+    background-color: #fd7e14;
+    color: #ffffff;
+}
+.card-purple {
+    background-color: #6f42c1;
+    color: #ffffff;
+}
+.card-teal {
+    background-color: #20c997;
+    color: #ffffff;
+}
+
+
+/* CHRONONAV_WEB_DOSS/assets/css/top_navbar.css */
+
+/* Top Navigation Bar Styles */
+.navbar {
+    background-color: #ffffffff; /* A darker, more "admin-like" blue-grey */
+    position: fixed; /* Keep the navbar at the top */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1030; /* Ensure it stays on top of other content */
+    padding-top: 0.5rem;
+    padding-bottom: 1.0rem;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    color: #030303ff !important; /* Darker text for brand */
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem; /* Standard Bootstrap brand size */
+}
+
+.navbar-brand img {
+    margin-right: 8px; /* Space between logo and text */
+}
+
+/* Nav links styles */
+.navbar-nav .nav-link {
+    color: #495057 !important; /* Dark grey for nav links */
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #007bff !important; /* Blue on hover/active */
+    background-color: #e9ecef; /* Light grey background on hover */
+    border-radius: 4px;
+}
+
+/* Profile dropdown specific styles */
+.navbar-profile-dropdown .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding-right: 1.5rem; /* Space for the caret */
+    text-decoration: none; /* Ensure no underline */
+}
+
+.navbar-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0; /* Light border around profile pic */
+    transition: border-color 0.3s ease;
+}
+
+.navbar-profile-dropdown .dropdown-toggle:hover .navbar-profile-img {
+    border-color: #007bff; /* Blue border on hover */
+}
+
+.navbar-profile-dropdown .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: none;
+    margin-top: 0.75rem; /* Space below the toggle */
+}
+
+.navbar-profile-dropdown .dropdown-header {
+    font-weight: 600;
+    color: #343a40;
+    padding: 0.75rem 1.25rem 0.5rem; /* Adjust padding for header */
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.5rem;
+}
+
+.navbar-profile-dropdown .dropdown-item {
+    font-weight: 500;
+    color: #495057;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: 0.5rem 1.25rem; /* Adjust padding for items */
+}
+
+.navbar-profile-dropdown .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.navbar-profile-dropdown .dropdown-item .fas {
+    width: 20px; /* Align icons */
+    text-align: center;
+    margin-right: 0.5rem; /* Space between icon and text */
+}
+
+/* NEW: Styles for the circular icon container (like settings, notifications, etc.) */
+.navbar-icon-circle {
+    width: 40px;           /* Same width as profile image */
+    height: 40px;          /* Same height as profile image */
+    border-radius: 50%;    /* Make it a circle */
+    background-color: #f0f2f5; /* A light background color */
+    display: flex;         /* Use flexbox to center the icon */
+    justify-content: center; /* Center horizontally */
+    align-items: center;   /* Center vertically */
+    border: 2px solid transparent; /* Transparent border for consistency */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-icon-circle .fas {
+    font-size: 1.2rem; /* Adjust icon size to fit well within the circle */
+    color: #6c757d; /* Muted color for the icon */
+    margin-right: 0; /* Remove default margin */
+}
+
+.navbar-nav .nav-item .nav-link:hover .navbar-icon-circle {
+    background-color: #e9ecef; /* Lighter background on hover */
+    border-color: #007bff; /* Blue border on hover */
+}
+
+.navbar-nav .nav-item .nav-link:hover .navbar-icon-circle .fas {
+    color: #007bff; /* Blue icon on hover */
+}
+
+
+/* Style for the search bar container */
+.search-bar {
+    display: flex; /* Aligns the icon and input horizontally */
+    align-items: center; /* Vertically centers items */
+    background-color: #f6f6f6ff; /* Light grey background */
+    border-radius: 25px; /* Pill shape for the search bar */
+    padding: 10px 15px; /* Padding inside the search bar */
+    width: 100%; /* Occupy full width of its parent */
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for focus effects */
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+/* Style for the search icon */
+.search-bar .fas.fa-search {
+    color: #888; /* Darker grey color for the icon */
+    margin-right: 10px; /* Space between icon and input field */
+    font-size: 1.1rem; /* Slightly larger icon */
+}
+
+/* Style for the input field */
+.search-bar input[type="text"] {
+    border: none; /* Remove default input border */
+    background: transparent; /* Transparent background to blend with container */
+    outline: none; /* Remove outline on focus */
+    flex-grow: 1; /* Allow input to take up remaining space */
+    font-size: 1rem; /* Standard font size */
+    color: #333; /* Darker text color */
+    padding: 0; /* Remove default input padding */
+}
+
+/* Placeholder text style */
+.search-bar input[type="text"]::placeholder {
+    color: #aaa; /* Lighter grey for placeholder text */
+}
+
+/* Focus effect for the search bar (when input is active) */
+.search-bar:focus-within {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* More pronounced shadow on focus */
+    border: 1px solid #007bff; /* Highlight border with a primary color */
+    background-color: #fff; /* White background on focus */
+}
+
+/* Adjustments for smaller screens (optional, but good practice) */
+@media (max-width: 768px) {
+    .search-bar {
+        max-width: 100%; /* Allow it to take full width on smaller screens */
+        border-radius: 8px; /* Slightly less rounded on small screens */
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding-top: 1rem;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 0.5rem;
+    }
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.25rem;
+    }
+    .navbar-profile-dropdown {
+        margin-top: 1rem;
+        padding-bottom: 1rem; /* Add padding at bottom for mobile menu */
+    }
+    .navbar-toggler {
+        border-color: rgba(0,0,0,.1); /* Standard Bootstrap toggler border */
+    }
+    /* Hide the circular icon container on small screens if text is shown */
+    .navbar-nav .nav-item .nav-link .navbar-icon-circle {
+        display: none; /* Hide circle, show text from .d-lg-none */
+    }
+    /* Adjust padding for the icon-only links on small screens */
+    .navbar-nav .nav-item .nav-link {
+        justify-content: flex-start; /* Align text to start */
+    }
+}

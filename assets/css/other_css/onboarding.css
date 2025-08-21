@@ -1,0 +1,27 @@
+/* CHRONONAV_WEB_UNO/assets/css/onboarding.css */
+
+#onboardingModal .modal-body {
+    min-height: 200px;
+}
+
+#tour-content h3 {
+    color: #007bff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#tour-content p, #tips-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+#tips-content h3 {
+    color: #28a745;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}

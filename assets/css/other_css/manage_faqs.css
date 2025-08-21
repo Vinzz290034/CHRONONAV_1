@@ -1,0 +1,76 @@
+   .manage-faqs-page {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .manage-faqs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .manage-faqs-header h1 {
+            font-size: 2rem;
+            color: #343a40;
+        }
+        .faq-form-section, .faq-list-section {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .faq-form-section h2, .faq-list-section h2 {
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .faq-form-section h2 i, .faq-list-section h2 i {
+            margin-right: 10px;
+        }
+        .faq-item {
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fdfdfd;
+        }
+        .faq-item h5 {
+            color: #343a40;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .faq-item p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .faq-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn-edit, .btn-delete {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+        .btn-edit {
+            background-color: #ffc107;
+            color: #343a40;
+            border-color: #ffc107;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+        /* Modal styles for editing */
+        .modal-body .form-group label {
+            font-weight: bold;
+        }
+        .modal-body .form-control {
+            margin-bottom: 15px;
+        }

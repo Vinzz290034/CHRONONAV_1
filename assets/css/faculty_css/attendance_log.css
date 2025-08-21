@@ -1,0 +1,54 @@
+  /* Specific CSS for attendance logs - keeping it here for easy replication */
+    .attendance-log-container {
+        margin-top: 20px;
+    }
+    .class-card .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .class-session-item {
+        border-bottom: 1px dashed #e9ecef;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    .class-session-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .attendance-list {
+        margin-top: 10px;
+    }
+    .attendance-record {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        border-bottom: 1px dotted #dee2e6;
+    }
+    .attendance-record:last-child {
+        border-bottom: none;
+    }
+    .attendance-status-badge {
+        min-width: 80px;
+        text-align: center;
+        padding: .3em .6em;
+        border-radius: .25rem;
+        font-size: 0.8em;
+    }
+    .status-Present { background-color: #28a745; color: white; } /* Green */
+    .status-Absent { background-color: #dc3545; color: white; }  /* Red */
+    .status-Late { background-color: #ffc107; color: #343a40; }    /* Yellow */
+    .status-Excused { background-color: #17a2b8; color: white; } /* Cyan */
+    .status-Tardy { background-color: #fd7e14; color: white; }    /* Orange */
+
+    /* Styles for action buttons */
+    .attendance-actions {
+        display: flex;
+        gap: 5px; /* Space between buttons */
+        align-items: center;
+    }
+    .attendance-actions .btn {
+        padding: .25rem .5rem; /* Smaller padding for compact buttons */
+        font-size: .75rem; /* Smaller font size */
+    }

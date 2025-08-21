@@ -1,0 +1,96 @@
+/* Specific styles for the deactivate account page, complementing faculty_style.css */
+    
+    /* Main Content Wrapper - Essential for Sidebar Integration */
+    .main-content-wrapper {
+        flex-grow: 1; /* Allows this div to take up remaining horizontal space */
+        padding: 30px; /* Padding around the main content area */
+        background-color: #ffffff;
+        box-sizing: border-box; /* Includes padding in element's total width/height */
+        overflow-y: auto; /* Enables vertical scrolling if content exceeds height */
+        transition: margin-left 0.3s ease; /* Smooth transition for sidebar changes */
+        margin-left: 250px; /* Assumes sidebar is 250px wide and fixed */
+    }
+
+    /* Responsive adjustments for main content wrapper */
+    @media (max-width: 768px) {
+        .main-content-wrapper {
+            margin-left: 70px; /* Adjusted for collapsed sidebar */
+            padding: 15px; /* Reduce padding on small screens */
+        }
+    }
+
+    .deactivate-account-card  {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 550px; /* Adjust max width for better readability */
+        margin: 30px auto; /* Center the card */
+        border: none;
+    }
+
+    .deactivate-account-card h4 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .deactivate-account-card .text-muted,
+    .deactivate-account-card .text-danger.fw-bold {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .deactivate-account-card .form-label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .deactivate-account-card .form-control {
+        border-radius: 8px;
+        padding: 10px 15px;
+        font-size: 1.1rem; /* Slightly larger text in input */
+        text-transform: lowercase; /* Visual hint for 'deactivate' */
+    }
+
+    .deactivate-account-card .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-weight: 600;
+        width: 100%; /* Full width button */
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .deactivate-account-card .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    .deactivate-account-card .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-weight: 600;
+        width: 100%;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .deactivate-account-card .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .main-dashboard-content {
+        padding-top: 20px; /* Add some top padding below the header */
+    }
+
+    /* General alert styling (can be in faculty_style.css too) */
+    .alert {
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 15px;
+        font-size: 0.95rem;
+    }

@@ -1,0 +1,129 @@
+/* File: CHRONONAV_WEB_DOSS/assets/css/faculty_css/settings.css */
+
+:root {
+    --primary-color: #4a69bd;
+    --secondary-color: #f0f4f7;
+    --background-color: #eef3f6;
+    --text-dark: #000000ff;
+    --text-muted: #7f8c8d;
+    --card-bg: #ffffff;
+    --border-color: #dce4e8;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+}
+
+.main-content-wrapper {
+    margin-left: 250px; /* Adjust based on your sidenav */
+    padding: 2.5rem;
+    transition: margin-left 0.3s ease;
+}
+
+.dashboard-header h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.settings-container {
+    margin: auto;
+}
+
+.settings-section.card {
+    
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.settings-section.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    background-color: #c3e2e4ff;
+}
+
+.card-header h5 {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.card-body {
+    padding: 1rem 2rem; /* Add padding to the card body instead of the list items */
+}
+
+.settings-item {
+    font-size: 1rem;
+    padding: 0.5rem 0; /* Adjust padding here to create spacing between items */
+    color: var(--text-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.settings-item:hover {
+    background-color: transparent; /* Remove hover effect for a cleaner look */
+}
+
+.btn-sm {
+    padding: 0.4rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-outline-danger {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-outline-danger:hover {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.modal-body {
+    padding: 1rem 1.5rem;
+}
+
+.modal-footer {
+    border-top: none;
+    padding: 1.5rem;
+}

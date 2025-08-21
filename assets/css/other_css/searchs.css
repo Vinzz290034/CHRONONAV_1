@@ -1,0 +1,50 @@
+/* Style for the search bar container */
+.search-bar {
+    display: flex; /* Aligns the icon and input horizontally */
+    align-items: center; /* Vertically centers items */
+    background-color: #f0f2f5; /* Light grey background */
+    border-radius: 25px; /* Pill shape for the search bar */
+    padding: 10px 15px; /* Padding inside the search bar */
+    width: 100%; /* Occupy full width of its parent */
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for focus effects */
+}
+
+/* Style for the search icon */
+.search-bar .fas.fa-search {
+    color: #888; /* Darker grey color for the icon */
+    margin-right: 10px; /* Space between icon and input field */
+    font-size: 1.1rem; /* Slightly larger icon */
+}
+
+/* Style for the input field */
+.search-bar input[type="text"] {
+    border: none; /* Remove default input border */
+    background: transparent; /* Transparent background to blend with container */
+    outline: none; /* Remove outline on focus */
+    flex-grow: 1; /* Allow input to take up remaining space */
+    font-size: 1rem; /* Standard font size */
+    color: #333; /* Darker text color */
+    padding: 0; /* Remove default input padding */
+}
+
+/* Placeholder text style */
+.search-bar input[type="text"]::placeholder {
+    color: #aaa; /* Lighter grey for placeholder text */
+}
+
+/* Focus effect for the search bar (when input is active) */
+.search-bar:focus-within {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* More pronounced shadow on focus */
+    border: 1px solid #007bff; /* Highlight border with a primary color */
+    background-color: #fff; /* White background on focus */
+}
+
+/* Adjustments for smaller screens (optional, but good practice) */
+@media (max-width: 768px) {
+    .search-bar {
+        max-width: 100%; /* Allow it to take full width on smaller screens */
+        border-radius: 8px; /* Slightly less rounded on small screens */
+    }
+}

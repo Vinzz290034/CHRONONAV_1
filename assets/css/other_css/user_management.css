@@ -1,0 +1,46 @@
+    /* Basic styling to align with your dashboard layout */
+        .main-content-wrapper {
+            margin-left: 250px; /* Adjust this based on your sidenav width */
+            padding-top: 56px; /* Adjust this based on your header height */
+            padding: 20px;
+        }
+        .user-table-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-top: 20px;
+        }
+        .user-table-container h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .table thead th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #333;
+        }
+        .table tbody tr:hover {
+            background-color: #e9f5ff;
+        }
+        .table-actions {
+            white-space: nowrap; /* Keeps buttons on one line, prevents wrapping */
+            display: flex;
+            gap: 5px; /* Space between buttons */
+            justify-content: flex-end; /* Align actions to the right if space allows */
+        }
+        /* Styles for Active/Disabled badges */
+        .badge-active {
+            background-color: #28a745; /* Green for active */
+            color: white;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-weight: normal;
+        }
+        .badge-disabled {
+            background-color: #dc3545; /* Red for disabled */
+            color: white;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-weight: normal;
+        }

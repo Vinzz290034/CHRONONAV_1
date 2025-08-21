@@ -1,0 +1,186 @@
+/* Basic body padding to avoid content hiding behind fixed header */
+    body {
+        padding-top: 56px; /* Adjust based on your navbar height */
+        background-color: #ffffff; /* Light grey background for the whole page */
+    }
+
+    /* Main Content Wrapper - Essential for Sidebar Integration */
+    .main-content-wrapper {
+        flex-grow: 1; /* Allows this div to take up remaining horizontal space */
+        padding: 30px; /* Padding around the main content area */
+        box-sizing: border-box; /* Includes padding in element's total width/height */
+        overflow-y: auto; /* Enables vertical scrolling if content exceeds height */
+        transition: margin-left 0.3s ease; /* Smooth transition for sidebar changes */
+        margin-left: 250px; /* Assumes sidebar is 250px wide and fixed */
+    }
+
+    /* Page-specific Header Styling */
+    .main-content-wrapper h2 {
+        font-size: 2.2rem;
+        color: #333;
+        margin-bottom: 25px;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+        display: inline-block;
+    }
+
+    .main-content-wrapper h2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 80px;
+        height: 4px;
+        background-color: #007bff;
+        border-radius: 2px;
+    }
+
+    /* Card Styling (consistent with other admin pages) */
+    .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        padding: 25px;
+        margin-bottom: 30px;
+        border: none;
+    }
+
+    /* Form Styles */
+    .form-label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .form-control, .form-select {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 10px 15px;
+        font-size: 1rem;
+        color: #333;
+        transition: all 0.2s ease-in-out;
+        background-color: #fdfdfd;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        outline: none;
+        background-color: #fff;
+    }
+
+    /* Button Styles */
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    /* Table Styles */
+    .table-responsive {
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        overflow-x: auto;
+    }
+
+    .table thead th {
+        background-color: #e9ecef;
+        font-weight: 600;
+        color: #495057;
+        vertical-align: middle;
+        padding: 12px 15px;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table tbody td {
+        vertical-align: middle;
+        padding: 12px 15px;
+        color: #333;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #fcfcfc;
+    }
+    .table-hover tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+    .report-table th, .report-table td {
+        white-space: nowrap; /* Prevents text from wrapping in cells */
+        vertical-align: middle;
+    }
+    .report-table thead th {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    /* Alerts */
+    .alert {
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 991.98px) {
+        .main-content-wrapper {
+            margin-left: 0; /* Remove margin on smaller screens when sidenav collapses or becomes togglable */
+            padding: 15px;
+        }
+        .main-content-wrapper h2 {
+            font-size: 1.8rem;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .main-content-wrapper h2::after {
+            width: 60px;
+        }
+        .card {
+            padding: 15px;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .main-content-wrapper h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .col-md-4, .col-md-3, .col-md-2 {
+            width: 100%; /* Stack form columns on very small screens */
+        }
+        .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+    }

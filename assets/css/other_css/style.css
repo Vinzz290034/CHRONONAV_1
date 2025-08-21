@@ -1,0 +1,232 @@
+/* CHRONONAV_WEB_DOSS/assets/css/style.css */
+
+/* Basic reset and typography */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    background-color: #f4f7f6; /* A slightly softer background */
+    color: #333;
+}
+
+/* Main Header Styling */
+.main-header {
+    position: fixed; /* Keeps header fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Fixed height for the header */
+    background-color: #212529; /* Dark background */
+    color: #ffffff;
+    z-index: 1030; /* Ensures it stays above other content */
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Vertically center content */
+    padding: 0 20px; /* Padding on the sides */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.main-header .header-content {
+    width: 100%; /* Make content take full width */
+    display: flex;
+    justify-content: space-between; /* CRUCIAL: Pushes header-left and header-right to opposite ends */
+    align-items: center;
+}
+
+.main-header .header-left {
+    display: flex;
+    align-items: center;
+}
+
+.main-header .app-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 10px; /* Space between potential logo and text */
+    color: #f8f9fa;
+}
+
+.main-header .header-right {
+    display: flex; /* Use flexbox for items within header-right */
+    align-items: center;
+    gap: 15px; /* Space between elements like settings icon and user dropdown */
+}
+
+/* User Dropdown Styling in Header */
+.main-header .user-dropdown .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.main-header .user-dropdown .dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-header .user-dropdown img {
+    border: 2px solid #ffffff; /* White border around profile picture */
+}
+
+.main-header .user-dropdown strong {
+    margin-left: 8px; /* Space between profile picture and name */
+}
+
+.main-header .user-dropdown .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 10px; /* Space between toggle and dropdown menu */
+}
+
+.main-header .user-dropdown .dropdown-menu-dark {
+    background-color: #343a40; /* Darker background for dark mode dropdown */
+    color: #ffffff;
+}
+
+.main-header .user-dropdown .dropdown-item {
+    color: #e9ecef;
+    transition: background-color 0.2s ease;
+    padding: 10px 15px;
+}
+
+.main-header .user-dropdown .dropdown-item:hover,
+.main-header .user-dropdown .dropdown-item:focus {
+    background-color: #495057;
+    color: #ffffff;
+}
+
+.main-header .user-dropdown .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-header .user-dropdown .dropdown-item-text {
+    padding: 10px 15px;
+    color: #adb5bd; /* Lighter grey for informational text */
+    font-size: 0.9em;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    top: 0; /* Aligns with the very top, will be pushed down by padding-top */
+    left: 0;
+    width: 250px; /* Fixed width of the sidebar */
+    height: 100vh; /* Full viewport height */
+    background-color: #2b3a4a; /* Darker sidebar background */
+    color: #ecf0f1; /* Light text color */
+    padding-top: 60px; /* Push content below the header height */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1020; /* Below header, above main content */
+    overflow-y: auto; /* Enable scrolling for long menus */
+    transition: transform 0.3s ease, width 0.3s ease; /* Smooth transitions for responsive behavior */
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1a232f; /* Slightly darker header for the sidebar */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: absolute; /* Position absolutely within the sidebar to be at the very top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Match main header height */
+    box-sizing: border-box; /* Include padding in height */
+}
+
+.sidebar-logo {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.sidebar .app-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 5px;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.05rem;
+    border-radius: 8px; /* Slightly rounded corners for menu items */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #3a4b5c; /* Lighter hover background */
+    color: #fff;
+}
+
+.sidebar-menu li.active a {
+    background-color: #007bff; /* Active background color (Bootstrap primary blue) */
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3); /* Subtle shadow for active item */
+}
+
+.sidebar-menu .menu-icon {
+    font-size: 1.2rem;
+    margin-right: 15px;
+    width: 25px; /* Fixed width for icons to keep text aligned */
+    text-align: center;
+}
+
+.sidebar-menu .menu-item-with-badge {
+    position: relative;
+}
+
+.sidebar-menu .badge {
+    font-size: 0.75em;
+    padding: 0.3em 0.6em;
+    border-radius: 0.5rem;
+    margin-left: auto; /* Push badge to the right */
+}
+
+/* Responsive adjustments for header and sidebar */
+@media (max-width: 992px) {
+    .main-header .app-name {
+        font-size: 1.3rem;
+    }
+    .main-header {
+        padding: 0 15px;
+    }
+    /* Hide sidebar by default on smaller screens; needs JS toggle */
+    .sidebar {
+        transform: translateX(-250px);
+    }
+    .sidebar.active { /* Class to be added by JS when sidebar is toggled */
+        transform: translateX(0);
+    }
+    .main-dashboard-content {
+        margin-left: 0; /* No left margin when sidebar is hidden */
+        /* Optionally add padding for overall content */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-header .app-name {
+        display: none !important; /* Hide app name completely on very small screens */
+    }
+    .main-header .user-dropdown strong {
+        display: none !important; /* Hide username, show only profile picture */
+    }
+}

@@ -1,0 +1,188 @@
+ /* Sidenav General Styles */
+    .app-sidebar {
+        width: 250px;
+        background-color:rgba(255, 255, 255, 1); /* Dark blue/grey for a professional look */
+        color:rgb(255, 255, 255); /* Light text color */
+        padding-top: 20px;
+        position: fixed; /* Makes sidebar stay put */
+        height: 100vh; /* Full height */
+        overflow-y: auto; /* Allow scrolling if content is long */
+        z-index: 1000; /* Ensure it's above other content */
+        transition: width 0.3s ease; /* Smooth transition for potential collapse */
+        display: flex;
+        flex-direction: column; /* Stack header and menu vertically */
+    }
+
+    /* Sidebar Header (Logo and App Name) */
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(239, 232, 232, 0.1); /* Subtle separator */
+        justify-content: center; /* Center logo and text */
+    }
+
+    /* Transparent Scrollbar */
+    .app-sidebar::-webkit-scrollbar {
+        width: 6px; /* Optional: make it very thin */
+    }
+
+    .app-sidebar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .app-sidebar::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 20px;
+        border: none;
+    }
+
+    /* Firefox support */
+    .app-sidebar {
+        scrollbar-width: thin; /* "auto" or "thin" */
+        scrollbar-color: transparent transparent;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color:rgba(0, 0, 0, 1); /* Light text for app name */
+        font-size: 1.5rem; /* Larger app name */
+        font-weight: 700; /* Bolder app name */
+    }
+
+    .app-logo {
+        width: 45px; /* Slightly larger logo */
+        color:rgba(0, 0, 0, 1);
+        height: 45px;
+        object-fit: contain;
+        margin-right: 12px; /* Space between logo and text */
+        border-radius: 5px; /* Slight roundness for the logo */
+    }
+
+
+    /* Sidebar Menu */
+    .app-sidebar-menu {
+        flex-grow: 1; /* Allow the menu to take up available space */
+        list-style: none; /* Remove default list styling */
+        padding: 0;
+        margin: 0;
+    }
+
+    .app-sidebar-menu .nav-item {
+        margin-bottom: 5px; /* Space between menu items */
+    }
+
+    .app-sidebar-menu .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        color:rgba(0, 0, 0, 1); /* Light text color in sidenav for Dashboard, schedule,profile, */
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 40px; /* Slightly rounded links */
+        margin: 0 10px; /* Space from sidebar edge */
+    }
+
+    .app-sidebar-menu .nav-link .fas { /* Targeting Font Awesome icons */
+        margin-right: 15px;
+        font-size: 1.1rem;
+        color: #000000ff; /* Muted icon color */
+        transition: color 0.3s ease;
+    }
+
+    /* Hover State */
+    .app-sidebar-menu .nav-link:hover {
+        background-color: #eaeaebff; /* Slightly lighter dark blue on hover */
+        color: #000000ff; /* White text on hover */
+    }
+
+    .app-sidebar-menu .nav-link:hover .fas {
+        color: #000000ff; /* White icon on hover */
+    }
+
+    /* Active State */
+    .app-sidebar-menu .nav-item.active .nav-link {
+        background-color: #1abc9c; /* A vibrant accent color (e.g., turquoise) */
+        color: #ffffff; /* White text for active link */
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* More pronounced shadow for active */
+        transform: translateX(5px); /* Slight shift to the right */
+    }
+
+    .app-sidebar-menu .nav-item.active .nav-link .fas {
+        color: #ffffff; /* White icon for active link */
+    }
+
+    /* Specific for Logout button at the bottom */
+    .app-sidebar .nav-item.mt-auto {
+        margin-top: auto; /* Pushes this item to the bottom of the flex container */
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
+        margin-top: 20px; /* Add some space above */
+    }
+
+    .app-sidebar .nav-item.mt-auto .nav-link {
+        color: #e74c3c; /* Red for logout link */
+        font-weight: 600;
+    }
+
+    .app-sidebar .nav-item.mt-auto .nav-link .fas {
+        color: #e74c3c; /* Red for logout icon */
+    }
+
+    .app-sidebar .nav-item.mt-auto .nav-link:hover {
+        background-color: #c0392b; /* Darker red on hover */
+        color: #ffffff;
+    }
+    .app-sidebar .nav-item.mt-auto .nav-link:hover .fas {
+        color: #ffffff;
+    }
+
+    /* Media Queries for Responsiveness (Optional, but highly recommended) */
+    @media (max-width: 768px) {
+        .app-sidebar {
+            width: 70px; /* Collapse sidebar on smaller screens */
+            padding-top: 10px;
+        }
+        .sidebar-header {
+            padding: 10px;
+            justify-content: center;
+        }
+        .app-name {
+            display: none; /* Hide app name when collapsed */
+        }
+        .app-logo {
+            margin-right: 0; /* No margin when name is hidden */
+        }
+        .app-sidebar-menu .nav-link {
+            padding: 12px 0; /* Adjust padding */
+            justify-content: center; /* Center icons */
+            margin: 0 5px;
+        }
+        .app-sidebar-menu .nav-link .fas {
+            margin-right: 0; /* Remove margin for icons */
+        }
+        .app-sidebar-menu .nav-link .nav-link-text {
+            display: none; /* Hide link text when collapsed */
+        }
+        .app-sidebar-menu .nav-item.active .nav-link {
+            transform: translateX(0); /* Remove shift for collapsed state */
+        }
+    }
+
+    /* Basic styling for the main content area to make space for the sidebar */
+    /* This might be in your main.css or directly in the pages that include sidenav */
+    .main-content-wrapper {
+        margin-left: 250px; /* Same width as the sidebar */
+        transition: margin-left 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .main-content-wrapper {
+            margin-left: 70px; /* Adjusted for collapsed sidebar */
+        }
+    }

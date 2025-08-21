@@ -1,0 +1,166 @@
+/* CHRONONAV_WEBZD/assets/css/user_support_center.css */
+
+/* Ensure the main content area accounts for the sidebar */
+.main-dashboard-content.user-support-center-page {
+    margin-left: 250px; /* Default sidebar width */
+    padding: 20px;
+    transition: margin-left 0.3s ease; /* Smooth transition for sidebar collapse */
+}
+
+/* This class is added by JavaScript in sidenav.php when the sidebar is collapsed */
+.main-dashboard-content.user-support-center-page.sidebar-collapsed {
+    margin-left: 0; /* Adjust to 0 for full width when sidebar is hidden */
+}
+
+/* General Header Styling for consistency */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.dashboard-header h1 {
+    font-size: 1.8rem;
+    color: #343a40;
+}
+
+/* Layout for the main content sections using CSS Grid */
+.user-support-container {
+    display: grid;
+    /* On larger screens, two columns: Submit Ticket & History, then FAQs below */
+    grid-template-columns: 1fr; /* Default to single column for most content */
+    gap: 30px; /* Space between sections */
+    align-items: start;
+}
+
+/* Specific styling for support sections */
+.support-section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    padding: 20px; /* Adjust padding as per your design, already p-4 in HTML means 1.5rem */
+}
+
+.support-section .card-title {
+    color: #1abc9c; /* Matching your active sidebar link color */
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Form styling */
+.support-section form .form-label {
+    font-weight: 500;
+    color: #555;
+}
+
+/* Ticket History Section Specifics */
+.user-support-container .accordion-item {
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.user-support-container .accordion-button {
+    font-weight: 500;
+    color: #343a40;
+    background-color: #f8f9fa;
+}
+
+.user-support-container .accordion-button:not(.collapsed) {
+    background-color: #e9ecef;
+}
+
+/* Status Badges */
+.user-support-container .status-badge {
+    font-size: 0.8em;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-open { background-color: #0d6efd; color: #fff; } /* Bootstrap primary */
+.status-in-progress { background-color: #ffc107; color: #212529; } /* Bootstrap warning */
+.status-resolved { background-color: #28a745; color: #fff; } /* Bootstrap success */
+.status-closed { background-color: #6c757d; color: #fff; } /* Bootstrap secondary */
+
+
+.user-support-container .accordion-body {
+    background-color: #fff;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.user-support-container .admin-reply {
+    border-left: 4px solid #1abc9c;
+    padding-left: 15px;
+    margin-top: 20px;
+}
+
+/* FAQ Section Specifics (copied/adjusted from admin version for consistency) */
+.faqs-section .accordion-button {
+    font-weight: 500;
+    color: #34495e;
+    background-color: #f0f2f5; /* Light background for accordion headers */
+}
+
+.faqs-section .accordion-button:not(.collapsed) {
+    color: #fff;
+    background-color: #1abc9c; /* Active color for open FAQ */
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
+}
+
+.faqs-section .accordion-body {
+    background-color: #fdfdfd;
+    border-top: 1px solid #eee;
+    color: #555;
+    line-height: 1.6;
+}
+.faqs-section .accordion-body p {
+    margin-bottom: 0;
+}
+
+
+/* Media Queries for Responsiveness */
+@media (min-width: 992px) { /* Adjust breakpoint as needed for when columns appear */
+    .user-support-container {
+        /* On larger screens, use two columns for tickets and FAQs, and submit ticket as a single row above */
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "submit_ticket submit_ticket"
+            "history faqs";
+    }
+    .user-support-container .support-section:nth-child(1) { /* Submit a New Support Ticket */
+        grid-area: submit_ticket;
+    }
+    .user-support-container .support-section:nth-child(2) { /* Your Support Tickets History */
+        grid-area: history;
+    }
+    .user-support-container .support-section:nth-child(3) { /* Frequently Asked Questions */
+        grid-area: faqs;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .main-dashboard-content.user-support-center-page {
+        margin-left: 0; /* Full width when sidebar is hidden on small screens */
+        padding: 15px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dashboard-header h1 {
+        margin-bottom: 15px;
+    }
+
+    .user-support-container {
+        grid-template-columns: 1fr; /* Stack columns vertically on small screens */
+        gap: 20px;
+    }
+}

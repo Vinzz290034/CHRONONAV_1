@@ -1,0 +1,159 @@
+/* CHRONONAV_WEB_DOSS/assets/css/top_navbar.css */
+/* Top Navigation Bar Common Styles */
+
+/* Adjust overall body padding to account for fixed header */
+body {
+    padding-top: 56px; /* Adjust based on your navbar height */
+    background-color: #f8f9fa; /* Light grey background for the whole page */
+}
+
+.navbar {
+    position: fixed; /* Keep the navbar at the top */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1030; /* Ensure it stays on top of other content */
+    padding-top: 0.5rem;
+    padding-bottom: 1.0rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+.navbar-brand {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem; /* Standard Bootstrap brand size */
+    color: #030f1bff !important; /* A darker blue-grey for the brand text */
+}
+
+.navbar-brand img {
+    height: 30px; /* Adjust logo height */
+    margin-right: 8px; /* Space between logo and text */
+    /* margin-bottom: 19px; Removed, not needed with flex alignment */
+}
+
+/* Nav links styles */
+.navbar-nav .nav-link {
+    color: #495057 !important; /* Dark grey for nav links */
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px; /* Apply border-radius always */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #007bff !important; /* Blue on hover/active */
+    background-color: #e9ecef; /* Light grey background on hover */
+}
+
+/* Profile dropdown specific styles */
+.navbar-profile-dropdown .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding-right: 1.5rem; /* Space for the caret */
+    text-decoration: none; /* Ensure no underline */
+}
+
+.navbar-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0; /* Light border around profile pic */
+    transition: border-color 0.3s ease;
+}
+
+.navbar-profile-dropdown .dropdown-toggle:hover .navbar-profile-img {
+    border-color: #007bff; /* Blue border on hover */
+}
+
+.navbar-profile-dropdown .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: none;
+    margin-top: 0.75rem; /* Space below the toggle */
+}
+
+.navbar-profile-dropdown .dropdown-header {
+    font-weight: 600;
+    color: #343a40;
+    padding: 0.75rem 1.25rem 0.5rem; /* Adjust padding for header */
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.5rem;
+}
+
+.navbar-profile-dropdown .dropdown-item {
+    font-weight: 500;
+    color: #495057;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: 0.5rem 1.25rem; /* Adjust padding for items */
+}
+
+.navbar-profile-dropdown .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.navbar-profile-dropdown .dropdown-item .fas {
+    width: 20px; /* Align icons */
+    text-align: center;
+    margin-right: 0.5rem; /* Space between icon and text */
+}
+
+/* Styles for the circular icon container (like settings, notifications, etc.) */
+.navbar-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-icon-circle .fas {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-right: 0;
+}
+
+.navbar-nav .nav-item .nav-link:hover .navbar-icon-circle {
+    background-color: #e9ecef;
+    border-color: #007bff;
+}
+
+.navbar-nav .nav-item .nav-link:hover .navbar-icon-circle .fas {
+    color: #007bff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding-top: 1rem;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 0.5rem;
+    }
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.25rem;
+    }
+    .navbar-profile-dropdown {
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    .navbar-toggler {
+        border-color: rgba(0,0,0,.1);
+    }
+    /* Hide the circular icon container on small screens if text is shown */
+    .navbar-nav .nav-item .nav-link .navbar-icon-circle {
+        display: none;
+    }
+    /* Adjust padding for the icon-only links on small screens */
+    .navbar-nav .nav-item .nav-link {
+        justify-content: flex-start;
+    }
+}

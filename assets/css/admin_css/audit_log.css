@@ -1,0 +1,158 @@
+  /*
+    * This CSS is for the Audit Logs page.
+    * It builds upon the general ChronoNav admin UI styles.
+    * Ideally, move this to a dedicated CSS file like ../../assets/css/audit_logs_page.css
+    */
+
+    /* Basic body padding to avoid content hiding behind fixed header */
+    body {
+        padding-top: 56px; /* Adjust based on your navbar height */
+        background-color: #ffffff; /* Light grey background for the whole page */
+    }
+
+    /* Main Content Wrapper - Essential for Sidebar Integration */
+    .main-content-wrapper {
+        flex-grow: 1; /* Allows this div to take up remaining horizontal space */
+        padding: 30px; /* Padding around the main content area */
+        box-sizing: border-box; /* Includes padding in element's total width/height */
+        overflow-y: auto; /* Enables vertical scrolling if content exceeds height */
+        transition: margin-left 0.3s ease; /* Smooth transition for sidebar changes */
+        margin-left: 250px; /* Assumes sidebar is 250px wide and fixed */
+    }
+
+    /* Page-specific Header Styling */
+    .main-content-wrapper h2 {
+        font-size: 2.2rem;
+        color: #333;
+        margin-bottom: 25px;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+        display: inline-block;
+    }
+
+    .main-content-wrapper h2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 80px;
+        height: 4px;
+        background-color: #007bff;
+        border-radius: 2px;
+    }
+
+    /* Card Styling (consistent with other admin pages) */
+    .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        border: none;
+    }
+
+    .card-header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        padding: 1rem 1.25rem;
+        background-color: #007bff; /* Primary color for headers */
+        color: white;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+    .card-header h5 {
+        font-weight: 600;
+    }
+
+    /* Table Styling */
+    .table {
+        margin-bottom: 0; /* Remove default table margin if inside card-body */
+    }
+    .table th, .table td {
+        padding: 12px 15px;
+        vertical-align: middle;
+        font-size: 0.95rem;
+    }
+    .table thead th {
+        border-bottom: 2px solid #dee2e6;
+        font-weight: 600;
+        color: #555;
+        background-color: #e9ecef; /* Light background for table header */
+    }
+    .table tbody tr:hover {
+        background-color: #f2f2f2;
+    }
+
+    /* Badge styling for roles */
+    .badge {
+        font-size: 0.8em;
+        padding: 0.4em 0.7em;
+        font-weight: 600;
+        min-width: 60px;
+        text-align: center;
+    }
+
+    /* Alerts */
+    .alert {
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 991.98px) {
+        .main-content-wrapper {
+            margin-left: 0; /* Remove margin on smaller screens when sidenav collapses or becomes togglable */
+            padding: 15px;
+        }
+        .main-content-wrapper h2 {
+            font-size: 1.8rem;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .main-content-wrapper h2::after {
+            width: 60px;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .table-responsive {
+            border: 1px solid #dee2e6; /* Add border for responsiveness */
+            border-radius: 0.25rem;
+            overflow-x: auto; /* Enable horizontal scrolling for tables */
+            -webkit-overflow-scrolling: touch;
+        }
+        .table thead {
+            display: none; /* Hide header on small screens */
+        }
+        .table tbody tr {
+            display: block;
+            margin-bottom: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .table tbody td {
+            display: block;
+            text-align: right;
+            padding-left: 50% !important; /* Push content to the right */
+            position: relative;
+        }
+        .table tbody td::before {
+            content: attr(data-label); /* Use data-label for pseudo-elements */
+            position: absolute;
+            left: 15px;
+            width: calc(50% - 30px);
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+        }
+        /* Specific data-labels for audit logs table */
+        .table tbody tr td:nth-child(1)::before { content: "ID:"; }
+        .table tbody tr td:nth-child(2)::before { content: "Timestamp:"; }
+        .table tbody tr td:nth-child(3)::before { content: "User:"; }
+        .table tbody tr td:nth-child(4)::before { content: "Role:"; }
+        .table tbody tr td:nth-child(5)::before { content: "Action:"; }
+        .table tbody tr td:nth-child(6)::before { content: "Details:"; }
+    }

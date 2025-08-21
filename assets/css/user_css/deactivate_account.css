@@ -1,0 +1,159 @@
+   /* Reusing general dashboard content styles */
+    .main-dashboard-content {
+        padding: 20px;
+        background-color:rgb(255, 255, 255); /* white background */
+        min-height: calc(100vh - 60px);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dashboard-header {
+        margin-bottom: 25px;
+        width: 100%;
+        max-width: 600px; /* Align with card width */
+        text-align: left;
+    }
+    .dashboard-header h2 {
+        font-size: 2.2rem;
+        color: #333;
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .deactivate-account-card {
+        max-width: 600px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        padding: 30px !important;
+        text-align: center; /* Center content within the card */
+    }
+
+    .deactivate-account-card .fa-exclamation-triangle {
+        color: #dc3545; /* Bootstrap danger color */
+        margin-bottom: 15px;
+    }
+
+    .deactivate-account-card h4 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #dc3545; /* Red for warning */
+        margin-bottom: 10px;
+    }
+
+    .deactivate-account-card p {
+        font-size: 0.95rem;
+        color: #6c757d;
+        line-height: 1.5;
+    }
+
+    .deactivate-account-card .fw-bold {
+        color: #dc3545; /* Stronger red for emphasis */
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #333;
+        font-size: 0.95rem;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 1rem;
+        border: 1px solid #e0e0e0;
+        background-color: #f8f9fa;
+    }
+    .form-control:focus {
+        border-color: #ffc107; /* Warning-like focus */
+        box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+        background-color: #fff;
+    }
+
+    .btn-block {
+        display: block;
+        width: 100%;
+        padding: 12px 0px;/*button right space*/
+        border-radius: 8px;
+        font-size: 1.05rem;
+        font-weight: 500;
+        margin-top: 15px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #fff;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        text-align: center;
+    }
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+       /* Basic body padding to avoid content hiding behind fixed header */
+    body {
+        padding-top: 56px; /* Adjust based on your navbar height */
+        background-color: #f8f9fa; /* Light grey background for the whole page */
+    }
+
+    /* Main Content Wrapper - Essential for Sidebar Integration */
+    .main-content-wrapper {
+        flex-grow: 1;
+        padding: 30px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        transition: margin-left 0.3s ease;
+        margin-left: 250px;
+    }
+
+    /* Responsive adjustments for main content wrapper */
+    @media (max-width: 768px) {
+        .main-content-wrapper {
+            margin-left: 70px;
+            padding: 15px;
+        }
+    }
+
+    /* Style for the card within the main content area */
+    .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        border: none;
+    }
+
+    /* Ensure the deactivate-account-card takes up appropriate space within the wrapper */
+    .deactivate-account-card {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 2rem !important;
+    }

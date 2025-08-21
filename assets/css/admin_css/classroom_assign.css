@@ -1,0 +1,254 @@
+    /*
+    * class_room_manager.css (This should be the file linked via <link> tag)
+    *
+    * This CSS is for the Class Offerings & Assignments page.
+    * It builds upon the general ChronoNav admin UI styles.
+    */
+
+    /* Adjust overall body padding to account for fixed header (if not already done globally) */
+    body {
+        padding-top: 56px; /* Adjust based on your navbar height */
+        background-color: #ffffff; /* Light grey background for the whole page */
+    }
+
+    /* Main Content Wrapper - Key for Sidebar Integration */
+    .main-content-wrapper {
+        flex-grow: 1; /* Allows this div to take up remaining horizontal space */
+        padding: 30px; /* Padding around the main content area */
+        box-sizing: border-box; /* Includes padding in element's total width/height */
+        overflow-y: auto; /* Enables vertical scrolling if content exceeds height */
+        transition: margin-left 0.3s ease; /* Smooth transition for sidebar changes */
+        margin-left: 250px; /* Assumes sidebar is 250px wide and fixed */
+    }
+
+    .container-fluid.py-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+        color: #333;
+        margin-bottom: 25px;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+        display: inline-block;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 80px;
+        height: 4px;
+        background-color: #007bff;
+        border-radius: 2px;
+    }
+
+
+    /* Card Styles */
+    .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        padding: 25px; /* Padding inside the card body */
+        margin-bottom: 30px;
+        border: none; /* Remove default card border */
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Form Styles */
+    .form-label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .form-control, .form-select {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 10px 15px;
+        font-size: 1rem;
+        color: #333;
+        transition: all 0.2s ease-in-out;
+        background-color: #fdfdfd;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        outline: none;
+        background-color: #fff;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #333;
+    }
+    .btn-warning:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+        color: #333;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #c82333;
+    }
+
+    .btn-group-action {
+        display: flex;
+        gap: 8px; /* Space between action buttons */
+        align-items: center;
+    }
+    .btn-group-action .btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        border-radius: 5px;
+    }
+
+
+    /* Table Styles */
+    .table {
+        margin-bottom: 0; /* Remove default table bottom margin inside card */
+    }
+    .table thead th {
+        background-color: #e9ecef; /* Light grey background for table headers */
+        font-weight: 600;
+        color: #495057;
+        vertical-align: middle;
+        padding: 12px 15px;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table tbody td {
+        vertical-align: middle;
+        padding: 12px 15px;
+        color: #333;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #fcfcfc;
+    }
+    .table-hover tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+    .table-responsive {
+        border-radius: 8px;
+        border: 1px solid #e9ecef; /* Subtle border around the table */
+        overflow-x: auto; /* Enable horizontal scrolling for small screens */
+    }
+
+    /* Alerts */
+    .alert {
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border: none;
+    }
+    .modal-header {
+        background-color: #007bff;
+        color: white;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        padding: 15px 20px;
+        border-bottom: none;
+    }
+    .modal-header .btn-close {
+        filter: invert(1); /* Makes the close button white */
+    }
+    .modal-title {
+        font-weight: 600;
+    }
+    .modal-body {
+        padding: 25px;
+    }
+    .modal-footer {
+        padding: 15px 25px;
+        border-top: 1px solid #e9ecef;
+    }
+
+
+    /* Responsive Adjustments for the main content wrapper */
+    @media (max-width: 991.98px) {
+        .main-content-wrapper {
+            margin-left: 0; /* Remove margin on smaller screens when sidenav collapses or becomes togglable */
+            padding: 15px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            padding-bottom: 10px;
+        }
+        .card {
+            padding: 15px;
+        }
+        .btn-group-action {
+            flex-direction: column; /* Stack buttons vertically on small screens */
+            gap: 5px;
+        }
+        .btn-group-action .btn {
+            width: 100%; /* Make buttons full width */
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        h2 {
+            font-size: 1.5rem;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .form-control, .form-select, .btn-primary {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+        }
+        .modal-header {
+            padding: 10px 15px;
+        }
+        .modal-body {
+            padding: 15px;
+        }
+    }

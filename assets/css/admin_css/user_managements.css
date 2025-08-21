@@ -1,0 +1,127 @@
+/*
+ * Enhanced User Management Styles for a Modern Look
+ *
+ * This CSS replaces the basic styles with a more refined design,
+ * including updated colors, smoother effects, and a cleaner layout.
+ */
+
+/* Main container and layout */
+body {
+    background-color: #f0f2f5; /* A light, soft gray background */
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    color: #495057; /* Darker text for better readability */
+}
+
+.main-content-wrapper {
+    margin-left: 250px;
+    padding: 30px; /* Increased padding for more breathing room */
+    transition: all 0.3s ease; /* Smooth transition for sidebar changes */
+}
+
+/* Card and container styling */
+.user-table-container {
+    background-color: #fff;
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* A more subtle and diffuse shadow */
+    padding: 30px; /* Generous padding */
+    margin-top: 25px; /* More space from the top */
+    transition: transform 0.3s ease-in-out;
+}
+
+.user-table-container:hover {
+    transform: translateY(-5px); /* Subtle lift effect on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.user-table-container h3 {
+    margin-bottom: 25px;
+    font-size: 1.75rem; /* Larger, more prominent heading */
+    font-weight: 700;
+    color: #212529; /* A strong, dark color for headings */
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 15px;
+}
+
+/* Table styling */
+.table {
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Adds space between rows */
+}
+
+.table thead th {
+    background-color: #f8f9fa; /* Lighter header color */
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: none;
+    padding: 15px;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.table tbody tr:hover {
+    background-color: #f4f7f9; /* Soft hover effect */
+    transform: scale(1.01); /* Slight zoom effect */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.table td {
+    padding: 15px;
+    border-top: none;
+}
+
+/* Button and actions styling */
+.btn {
+    border-radius: 8px; /* Consistent button corners */
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Lift button on hover */
+}
+
+/* Action buttons inside the table */
+.table-actions {
+    white-space: nowrap;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+/* Badge styling */
+.badge {
+    padding: 0.4em 0.8em;
+    border-radius: 20px; /* Pill-shaped badges */
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-active {
+    background-color: #e6f7ec; /* A softer green background */
+    color: #28a745;
+}
+
+.badge-disabled {
+    background-color: #fde8e9; /* A softer red background */
+    color: #dc3545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        margin-left: 0;
+        padding-top: 70px;
+    }
+
+    .table-actions {
+        justify-content: center;
+    }
+}

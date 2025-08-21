@@ -1,0 +1,17 @@
+/* Specific styles for this page if needed */
+    .table thead th {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table tbody tr:hover {
+        background-color: #f2f2f2;
+    }
+    .action-buttons {
+        white-space: nowrap; /* Keep buttons on one line */
+    }
+    /* Adjusted padding for dashboard-header to align with main content */
+    .dashboard-header {
+        margin-bottom: 25px; /* Adjust as needed */
+        padding-bottom: 15px; /* Adjust as needed */
+        border-bottom: 1px solid #e0e0e0; /* Add a separator */
+    }

@@ -1,0 +1,121 @@
+/*
+ * This CSS file is specific to the add/edit calendar event form
+ * and should work in conjunction with the main style.css and Bootstrap.
+ */
+
+/* Adjust the main content area to make space for the sidebar */
+.main-dashboard-content {
+    margin-left: 250px; /* Adjust this value based on your sidenav's width */
+    padding: 20px; /* Add some padding around the content */
+    flex-grow: 1; /* Allows the content to fill available space in a flex container */
+    /* Ensure it doesn't overlap the header if the header is also fixed */
+    padding-top: 80px; /* Adjust if your header has a fixed height */
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #fff;
+}
+
+/* Style for the form container (the white card) */
+.form-container {
+    margin: 20px auto; /* Center the form container horizontally, added top/bottom margin */
+    padding: 30px; /* Added some padding inside the card for content */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/* Style for form labels */
+.form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Style for form inputs and textareas */
+.form-control, .form-select {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+    font-size: 1rem;
+    width: 100%; /* Ensure inputs take full width of their parent */
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+/* Style for form row for aligning elements (e.g., date and time inputs) */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px; /* Compensate for column padding */
+    margin-left: -15px; /* Compensate for column padding */
+}
+
+.form-row > .form-group {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+/* Style for buttons */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Alert messages styling */
+.alert {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-dashboard-content {
+        margin-left: 0; /* Remove margin on smaller screens */
+        padding-top: 60px; /* Adjust padding for smaller header if necessary */
+    }
+
+    .form-container {
+        padding: 15px;
+        margin: 15px; /* Adjust margin for smaller screens */
+    }
+
+    .form-row {
+        display: block; /* Stack form groups vertically on small screens */
+    }
+
+    .form-row > .form-group {
+        width: 100%; /* Full width for stacked groups */
+        padding-right: 0;
+        padding-left: 0;
+    }
+}

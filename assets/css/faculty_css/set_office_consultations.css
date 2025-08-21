@@ -1,0 +1,189 @@
+/* File: CHRONONAV_WEB_DOSS/assets/css/faculty_css/set_office_consultation.css */
+
+:root {
+    --primary-color: #4a69bd;
+    --secondary-color: #f0f4f7;
+    --background-color: #eef3f6;
+    --text-dark: #34495e;
+    --text-muted: #7f8c8d;
+    --card-bg: #ffffff;
+    --border-color: #dce4e8;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+}
+
+.main-content-wrapper {
+    margin-left: 250px; /* Adjust based on your sidenav */
+    padding: 2.5rem;
+    transition: margin-left 0.3s ease;
+}
+
+.dashboard-header h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.card p.text-muted {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(74, 105, 189, 0.25);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background-color: #3b539c;
+    border-color: #3b539c;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.btn-success:hover {
+    background-color: #219d52;
+    border-color: #219d52;
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.btn-warning:hover {
+    background-color: #d1870d;
+    border-color: #d1870d;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+.btn-group-action .btn {
+    margin-right: 0.5rem;
+}
+
+/* Table styles */
+.table-responsive {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f7f9fb;
+}
+
+/* Status badges */
+.status-pending {
+    background-color: var(--warning-color);
+    color: #fff;
+    padding: 0.3em 0.8em;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.status-approved {
+    background-color: var(--success-color);
+    color: #fff;
+    padding: 0.3em 0.8em;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.status-denied {
+    background-color: var(--danger-color);
+    color: #fff;
+    padding: 0.3em 0.8em;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.modal-content {
+    border-radius: 12px;
+}
