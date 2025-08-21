@@ -237,6 +237,3 @@ require_once $header_path;
 require_once '../../templates/footer.php';
 ?>
 
-<style>
-
-</style>
