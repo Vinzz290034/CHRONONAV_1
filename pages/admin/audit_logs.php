@@ -157,7 +157,3 @@ require_once '../../templates/admin/sidenav_admin.php';
 <?php
 require_once '../../templates/footer.php';
 ?>
-
-<style>
-  
-</style>
