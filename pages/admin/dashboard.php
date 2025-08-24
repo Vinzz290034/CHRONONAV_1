@@ -231,7 +231,7 @@ require_once '../../templates/admin/sidenav_admin.php';
                         <small class="text-muted d-block mt-1">Review and approve/reject faculty requests for office hours.</small>
                     </li>
                     <li class="list-group-item">
-                        <a href="building_room_manager.php">
+                        <a href="room_manager.php">
                             <i class="fas fa-building"></i> Building Room Manager
                         </a>
                         <small class="text-muted d-block mt-1">Add, edit, or remove physical rooms and their details.</small>
