@@ -1,106 +1,117 @@
- body {
-            font-family: Arial, sans-serif;
-            background-color:rgb(255, 255, 255); /* Light gray background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 10vh;
-            margin: 0;
-        }
-        .register-container {
-            background-color:rgb(254, 254, 254);
-            /* Changed horizontal padding from 50px to 25px for better alignment */
-            padding: 25px 25px; /* */
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 320px;
-            text-align: center;
-            margin-top: 50px;
-        }
-        .brand-name {
-            font-size: 1.2rem; /* Slightly smaller than login as it's a sub-page */
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 0px;
-            letter-spacing: 1px;
-        }
-        .form-group {
-            margin-bottom: 0px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0px;
-            font-weight: bold;
-            color: #555;
-            font-size: 0.95rem;
-        }
-        .form-control, .form-select { /* Apply to both input and select */
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-            padding: 12px 0px;
-            font-size: 1rem;
-            width: 100%;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-            -webkit-appearance: none; /* Remove default select arrow on some browsers */
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"); /* Custom arrow for select */
-            background-repeat: no-repeat;
-            background-position: right 0.75rem center;
-            background-size: 10px 12px;
-        }
-        .form-control::placeholder {
-            color: #a0a0a0;
-        }
-        .btn-register {
-            background-color: #28a745; /* Success green */
-            color: white;
-            border: none;
-            padding: 12px 0px;
-            border-radius: 8px;
-            font-size: 1.0rem;
-            font-weight: bold;
-            width: 100%;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            margin-top: 0px;
-        }
-        .btn-register:hover {
-            background-color: #218838;
-        }
-        .login-link {
-            display: block;
-            margin-top: 0px;
-            font-size: 0.95rem;
-            color: #007bff;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .login-link:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-        .alert {
-            margin-bottom: 20px;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            text-align: left;
-        }
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        .logo {
-            max-width: 50px; /* Set a maximum width for the logo */
-            height: auto; /* Maintain aspect ratio */
-            margin-bottom: 0px; /* Space below the logo */
-        }
+    body {
+         font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        /*background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') no-repeat center/cover; */
+        height: 100vh; 
+        display: flex; 
+        background-color: #ffffffff;
+        align-items: center; 
+        justify-content: center; 
+        flex-direction: column; 
+        text-align: center; 
+        color: white; 
+        background-size: cover;
+        min-height: 100vh;
+
+    }
+
+    .register-container {
+        background: rgba(255, 255, 255, 0.65);
+        border-radius: 16px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        /*box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);*/
+        width: 100%;
+        max-width: 360px;
+        padding: 30px;
+        color: white;
+        text-align: center;
+    }
+
+    .register-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #040504ff;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px 0px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #040504ff;
+      font-size: 16px;
+    }
+
+    .form-group input::placeholder {
+       color: #040504ff;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #4caf50;
+      border: none;
+      border-radius: 8px;
+      color: #080808ff;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #43a047;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 15px;
+      color: #000000ff;
+      margin-left: 20px;
+      text-decoration: underline;
+    }
+
+    .error,
+    .message {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .error {
+      background: #ffcdd2;
+      color: #c62828;
+    }
+
+    .message {
+      background: #c8e6c9;
+      color: #2e7d32;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 10px;
+      max-width: 60px;
+      height: auto;
+      border-radius: 36px;
+    }
+
+    @media (max-width: 480px) {
+      .register-box {
+        padding: 30px 20px;
+      }
+    }
