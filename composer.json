@@ -1,5 +1,18 @@
 {
-    "require": {
-        "dompdf/dompdf": "^3.1"
-    }
+    "name": "ericdominicmomo/chrononav_web_doss",
+    "description": "Campus navigation and scheduling system for UC Main Campus",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ericdominicmomo\\ChrononavWebDoss\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "EricMomo2957",
+            "email": "Momoe2957@gmail.com"
+        }
+    ],
+    "require": {}
 }
