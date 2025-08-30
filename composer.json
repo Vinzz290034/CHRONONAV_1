@@ -14,5 +14,7 @@
             "email": "Momoe2957@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "thiagoalessio/tesseract_ocr": "^2.13"
+    }
 }
