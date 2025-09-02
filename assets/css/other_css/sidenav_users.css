@@ -1,0 +1,230 @@
+/* Sidenav General Styles */
+.app-sidebar {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgb(255, 255, 255);
+    padding-top: 20px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: width 0.3s ease, background-color 0.3s ease; /* Added transition for background */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar Header (Logo and App Name) */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(239, 232, 232, 0.1);
+    justify-content: center;
+}
+
+/* Transparent Scrollbar */
+.app-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.app-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.app-sidebar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 20px;
+    border: none;
+}
+
+/* Firefox support */
+.app-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.app-logo {
+    width: 45px;
+    color: rgba(0, 0, 0, 1);
+    height: 45px;
+    object-fit: contain;
+    margin-right: 12px;
+    border-radius: 5px;
+}
+
+/* Sidebar Menu */
+.app-sidebar-menu {
+    flex-grow: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.app-sidebar-menu .nav-item {
+    margin-bottom: 5px;
+}
+
+.app-sidebar-menu .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: rgba(0, 0, 0, 1);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 40px;
+    margin: 0 10px;
+}
+
+.app-sidebar-menu .nav-link .fas {
+    margin-right: 15px;
+    font-size: 1.1rem;
+    color: #000000ff;
+    transition: color 0.3s ease;
+}
+
+/* Hover State */
+.app-sidebar-menu .nav-link:hover {
+    background-color: #eaeaebff;
+    color: #000000ff;
+}
+
+.app-sidebar-menu .nav-link:hover .fas {
+    color: #000000ff;
+}
+
+/* Active State */
+.app-sidebar-menu .nav-link.active {
+    background-color: #1abc9c;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(5px);
+}
+
+.app-sidebar-menu .nav-link.active .fas {
+    color: #ffffff;
+}
+
+/* Specific for Logout button at the bottom */
+.app-sidebar .nav-item.mt-auto {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+.app-sidebar .nav-item.mt-auto .nav-link {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.app-sidebar .nav-item.mt-auto .nav-link .fas {
+    color: #e74c3c;
+}
+
+.app-sidebar .nav-item.mt-auto .nav-link:hover {
+    background-color: #c0392b;
+    color: #ffffff;
+}
+.app-sidebar .nav-item.mt-auto .nav-link:hover .fas {
+    color: #ffffff;
+}
+
+/* Media Queries for Responsiveness (Optional, but highly recommended) */
+@media (max-width: 768px) {
+    .app-sidebar {
+        width: 70px;
+        padding-top: 10px;
+    }
+    .sidebar-header {
+        padding: 10px;
+        justify-content: center;
+    }
+    .app-name {
+        display: none;
+    }
+    .app-logo {
+        margin-right: 0;
+    }
+    .app-sidebar-menu .nav-link {
+        padding: 12px 0;
+        justify-content: center;
+        margin: 0 5px;
+    }
+    .app-sidebar-menu .nav-link .fas {
+        margin-right: 0;
+    }
+    .app-sidebar-menu .nav-link .nav-link-text {
+        display: none;
+    }
+    .app-sidebar-menu .nav-item.active .nav-link {
+        transform: translateX(0);
+    }
+}
+
+/* Basic styling for the main content area to make space for the sidebar */
+.main-content-wrapper {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        margin-left: 70px;
+    }
+}
+
+/* ====================================================================== */
+/* Dark Mode Overrides                          */
+/* ====================================================================== */
+body.dark-mode .app-sidebar {
+    background-color: #1e1e1e;
+    border-right: 1px solid #333;
+    color: #ffffff;
+}
+
+body.dark-mode .sidebar-header {
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .logo-container {
+    color: #ffffff;
+}
+
+body.dark-mode .app-sidebar-menu .nav-link {
+    color: #e0e0e0;
+}
+
+body.dark-mode .app-sidebar-menu .nav-link .fas {
+    color: #b0b0b0;
+}
+
+body.dark-mode .app-sidebar-menu .nav-link:hover {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+body.dark-mode .app-sidebar-menu .nav-link:hover .fas {
+    color: #ffffff;
+}
+
+body.dark-mode .app-sidebar-menu .nav-item.active .nav-link {
+    background-color: #1abc9c; /* Keep the accent color */
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .app-sidebar .nav-item.mt-auto {
+    border-top: 1px solid #444;
+}

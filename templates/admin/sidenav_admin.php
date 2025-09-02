@@ -6,7 +6,7 @@
 // So, to go to chrononav_web_doss/, we go up two levels.
 $base_path = '../../';
 
-$app_logo_path = $base_path . 'assets/img/chrononav_logo.jpg'; // Assuming your logo is .png
+$app_logo_path = $base_path . 'assets/img/chrononav_logo.jpg'; // Assuming your logo is .jpg
 $app_name = "ChronoNav";
 
 // The $user variable is typically available from a session check done in the main page
@@ -14,7 +14,7 @@ $app_name = "ChronoNav";
 // For example: $user_role = $_SESSION['user']['role'] ?? 'guest';
 
 ?>
-<link rel="stylesheet" href="../../assets/css/other_css/sidenav_user.css"> 
+<link rel="stylesheet" href="../../assets/css/other_css/sidenav_users.css"> 
 
 <div class="app-sidebar">
     <ul class="app-sidebar-menu">
@@ -42,9 +42,5 @@ $app_name = "ChronoNav";
                 <span class="nav-link-text">Report Generator</span>
             </a>
         </li>
-        </ul>
+    </ul>
 </div>
-
-<style>
-
-</style>

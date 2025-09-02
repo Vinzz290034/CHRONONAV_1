@@ -30,14 +30,14 @@ $chrononav_dropdown_logo_path = '../../assets/images/chrononav_logo_small.png';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $page_title ?? 'ChronoNav - Admin' ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../public/css/dashboard_admin.css">
-    <link rel="stylesheet" href="../../public/css/class_assignments.css">
-    
+    <title><?= htmlspecialchars($page_title ?? 'Dashboard') ?> - Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/admin_css/dark_mode.css">
     <link rel="stylesheet" href="../../assets/css/admin_css/header_admin.css"> 
 </head>
 <body>
+    <script src="../../assets/js/dark_mode.js" defer></script>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="../../pages/admin/dashboard.php">

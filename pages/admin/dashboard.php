@@ -101,7 +101,7 @@ require_once '../../templates/admin/sidenav_admin.php';
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-<link rel="stylesheet" href="../../assets/css/admin_css/dashboard.css">
+<link rel="stylesheet" href="../../assets/css/admin_css/dashboards.css">
 
 <div class="wrapper" data-user-role="<?= htmlspecialchars($user_role) ?>">
     <div class="main-content-wrapper">
