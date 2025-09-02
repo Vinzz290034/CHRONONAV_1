@@ -30,6 +30,13 @@ $chrononav_main_logo_path = '../../assets/img/chrononav_logo.jpg'; // Main logo 
 $chrononav_dropdown_logo_path = '../../assets/images/chrononav_logo_small.png'; // Small logo for dropdown header
 // Ensure these paths are correct and images exist!
 ?>
+
+<?php
+// CHRONONAV_WEB_DOSS/templates/faculty/header_faculty.php
+// This file assumes $user (session data), $page_title, and $current_page are set in the including script.
+
+// ... (existing PHP code) ...
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,11 +45,12 @@ $chrononav_dropdown_logo_path = '../../assets/images/chrononav_logo_small.png'; 
     <title><?= $page_title ?? 'ChronoNav - Faculty' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link rel="stylesheet" href="../../assets/css/faculty_css/header_faculty.css"> 
 
+    <link rel="stylesheet" href="../../assets/css/faculty_css/header_faculty.css"> 
+    <link rel="stylesheet" href="../../assets/css/faculty_css/dark_mode.css">
 </head>
 <body>
+    <script src="../../assets/js/dark_mode.js" defer></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="../../pages/faculty/dashboard.php">

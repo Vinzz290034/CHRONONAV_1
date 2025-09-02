@@ -1,0 +1,385 @@
+/* General Dark Mode Styles for Faculty Pages */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .main-dashboard-content {
+    background-color: #1e1e1e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Card and Section Styles */
+body.dark-mode .card,
+body.dark-mode .settings-section {
+    background-color: #2c2c2c;
+    color: #fffefe;
+    border-color: #444;
+}
+
+body.dark-mode .card-header {
+    background-color: #212121;
+    border-color: #333;
+    color: #ffffff;
+}
+
+body.dark-mode .settings-item {
+    color: #ffffff !important;
+}
+
+/* Ensure all text, including default paragraphs, is white */
+body.dark-mode,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode strong,
+body.dark-mode small,
+body.dark-mode label,
+body.dark-mode td,
+body.dark-mode th,
+body.dark-mode .form-label {
+    color: #ffffff !important;
+}
+
+/* Headings and links */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode a:not(.btn) {
+    color: #ffffff;
+}
+
+body.dark-mode .text-muted {
+    color: #b0b0b0 !important;
+}
+
+/* Form controls */
+body.dark-mode .form-control,
+body.dark-mode .form-select,
+body.dark-mode .form-control:read-only {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #444;
+    border-color: #666;
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-check-input {
+    background-color: #495057;
+    border-color: #6c757d;
+}
+
+body.dark-mode .form-check-input:checked {
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+}
+
+/* Buttons */
+body.dark-mode .btn-outline-primary {
+    color: #1abc9c;
+    border-color: #1abc9c;
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+
+body.dark-mode .btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+body.dark-mode .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+/* Modal styles (as per previous fix) */
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .modal-header {
+    background-color: #1e1e1e;
+    border-bottom-color: #333;
+}
+
+body.dark-mode .modal-body {
+    color: #ffffff;
+}
+
+body.dark-mode .modal-footer {
+    background-color: #1e1e1e;
+    border-top-color: #333;
+}
+
+body.dark-mode .modal-header .modal-title {
+    color: #ffffff;
+}
+
+body.dark-mode .modal .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* --- Overrides for the Header --- */
+body.dark-mode .navbar {
+    background-color: #212529 !important;
+}
+body.dark-mode .navbar-brand,
+body.dark-mode .navbar-nav .nav-link,
+body.dark-mode .dropdown-item {
+    color: #ffffff !important;
+}
+body.dark-mode .navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .dropdown-menu {
+    background-color: #212529 !important;
+    border-color: #444;
+}
+body.dark-mode .dropdown-item:hover {
+    background-color: #495057 !important;
+}
+body.dark-mode .dropdown-divider {
+    border-color: #495057;
+}
+body.dark-mode .navbar-icon-circle {
+    background-color: #343a40;
+}
+body.dark-mode .navbar-profile-img {
+    border-color: #495057;
+}
+body.dark-mode .navbar-profile-img:hover {
+    border-color: #ffffff;
+}
+body.dark-mode .navbar-toggler {
+    filter: invert(1);
+}
+
+/* --- Overrides for the Sidenav --- */
+body.dark-mode .app-sidebar {
+    background-color: #1e1e1e;
+    border-right: 1px solid #333;
+}
+body.dark-mode .app-sidebar-menu .nav-link {
+    color: #e0e0e0;
+}
+body.dark-mode .app-sidebar-menu .nav-link:hover {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+body.dark-mode .app-sidebar-menu .nav-link.active {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+body.dark-mode .app-sidebar .fas {
+    color: #ffffff;
+}
+body.dark-mode .app-sidebar .nav-item.mt-auto {
+    border-top: 1px solid #444;
+}
+
+/* --- Table and Calendar Specific Styles --- */
+/* The main calendar/schedule container */
+body.dark-mode .calendar-container,
+body.dark-mode .schedule-container,
+body.dark-mode .card.shadow-sm,
+body.dark-mode .list-group-item {
+    background-color: #2c2c2c !important;
+    border-color: #444 !important;
+    color: #e0e0e0 !important;
+}
+
+/* Table styles for a better dark mode look */
+body.dark-mode .table,
+body.dark-mode .table thead th,
+body.dark-mode .table tbody td,
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2c2c2c !important;
+    color: #ffffff !important;
+    border-color: #444;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(even) {
+    background-color: #212121 !important;
+    color: #ffffff !important;
+    border-color: #444;
+}
+
+body.dark-mode .table-hover tbody tr:hover {
+    background-color: #333 !important;
+}
+
+/* Styles for calendar view and popups */
+body.dark-mode .calendar-header {
+    background-color: #212121 !important;
+    color: #ffffff;
+    border-color: #444;
+}
+
+body.dark-mode .calendar-day-label,
+body.dark-mode .calendar-day-number,
+body.dark-mode .calendar-event-title,
+body.dark-mode .calendar-month-year {
+    color: #ffffff !important;
+}
+
+/* Day numbers on the calendar grid */
+body.dark-mode .calendar-grid-cell .day-number {
+    color: #ffffff !important;
+}
+
+/* Day numbers inside the light-colored circle (e.g., when an event is selected) */
+body.dark-mode .calendar-grid-cell.has-event .day-number,
+body.dark-mode .calendar-grid-cell .btn-primary {
+    color: #efeaea !important;
+}
+
+body.dark-mode .calendar-grid-cell {
+    background-color: #1e1e1e !important;
+    border-color: #444 !important;
+    color: #141212 !important;
+}
+
+/* Status Badges */
+body.dark-mode .badge {
+    color: #ffffff;
+}
+
+body.dark-mode .badge.bg-success {
+    background-color: #1abc9c !important;
+}
+body.dark-mode .badge.bg-danger {
+    background-color: #dc3545 !important;
+}
+body.dark-mode .badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+body.dark-mode .badge.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+/* Modal for "My Academic Calendar" */
+body.dark-mode .modal-content.year-view-modal {
+    background-color: #1e1e1e;
+}
+body.dark-mode .year-view-container .modal-header {
+    border-bottom: 1px solid #444;
+}
+body.dark-mode .year-view-container h5.modal-title,
+body.dark-mode .year-view-container h4,
+body.dark-mode .year-view-container .calendar-month-title {
+    color: #ffffff !important;
+}
+body.dark-mode .year-view-container .calendar-month-grid .week-day,
+body.dark-mode .year-view-container .calendar-month-grid .day-number,
+body.dark-mode .year-view-container .day-with-event .day-number {
+    color: #e0e0e0 !important;
+}
+body.dark-mode .year-view-container .btn-close {
+    filter: invert(1);
+}
+
+/* ====================================================================== */
+/* Dark Mode Overrides for Calendar/Schedule Numbers and Modals */
+/* ====================================================================== */
+body.dark-mode .calendar-day,
+body.dark-mode .calendar-days-header div,
+body.dark-mode .calendar-grid-cell,
+body.dark-mode .calendar-grid-cell .day-number {
+    color: #ffffff;
+}
+
+/* Modal-specific styles for the popup window */
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .modal-header {
+    background-color: #1e1e1e;
+    border-bottom-color: #333;
+}
+
+body.dark-mode .modal-body {
+    color: #ffffff;
+}
+
+body.dark-mode .modal-footer {
+    background-color: #1e1e1e;
+    border-top-color: #333;
+}
+
+/* Make sure modal text and close button is visible */
+body.dark-mode .modal-header .modal-title {
+    color: #ffffff;
+}
+
+body.dark-mode .modal .btn-close {
+    background-color: transparent;
+    color: #ffffff;
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Additions to fix table readability */
+body.dark-mode .table,
+body.dark-mode .table thead th,
+body.dark-mode .table tbody td,
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2c2c2c !important;
+    color: #ffffff !important;
+    border-color: #444;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(even) {
+    background-color: #212121 !important;
+    color: #ffffff !important;
+    border-color: #444;
+}
+
+/* Specific for User Management and other tables */
+body.dark-mode .table-responsive {
+    border: 1px solid #444;
+}
+
+body.dark-mode .table-hover tbody tr:hover {
+    background-color: #333 !important;
+}
+
+body.dark-mode .table-bordered {
+    border: 1px solid #444;
+}
+
+/* Specific for Support Center messages and replies */
+body.dark-mode .admin-reply,
+body.dark-mode .admin-reply-form,
+body.dark-mode .accordion-body p,
+body.dark-mode .accordion-body textarea {
+    color: #ffffff;
+}
+body.dark-mode .admin-reply {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .accordion-body {
+    background-color: #2c2c2c;
+}
+
+/* --- Profile Page Specific Overrides --- */
+body.dark-mode .profile-header h4
+body.dark-mode .profile-details-section small
+body.dark-mode .profile-details-section p,
+body.dark-mode .app-preferences-section .list-group-item,
+body.dark-mode .account-management-section .list-group-item {
+    color: #ffffff !important;
+}
+
