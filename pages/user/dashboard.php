@@ -30,7 +30,7 @@ if (isset($user['role'])) {
 require_once $header_path;
 ?>
 
-<link rel="stylesheet" href="../../assets/css/user_css/user_dashboard.css">
+<link rel="stylesheet" href="../../assets/css/user_css/dashboard.css">
 
 <div class="d-flex" id="wrapper" data-user-role="<?= $user_role ?>">
     <?php
@@ -129,6 +129,7 @@ require_once $header_path;
 <?php require_once '../../templates/footer.php'; ?>
 <script src="../../assets/js/jquery.min.js"></script>
 <script src="../../assets/js/script.js"></script>
+<script src="../../assets/js/onboarding_tour.js"></script>
 
 <script>
 // ================== AJAX SEARCH ==================
@@ -236,5 +237,6 @@ $("#restartOnboardingBtn").click(function() {
     });
 });
 </script>
+
 
 

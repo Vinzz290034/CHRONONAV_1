@@ -375,11 +375,66 @@ body.dark-mode .accordion-body {
 }
 
 /* --- Profile Page Specific Overrides --- */
-body.dark-mode .profile-header h4
-body.dark-mode .profile-details-section small
-body.dark-mode .profile-details-section p,
-body.dark-mode .app-preferences-section .list-group-item,
-body.dark-mode .account-management-section .list-group-item {
+/* The main profile container card */
+body.dark-mode .profile-container.card {
+    background-color: #2c2c2c !important;
+    border-color: #444 !important;
     color: #ffffff !important;
 }
 
+/* The profile header section containing the photo and name */
+body.dark-mode .profile-header {
+    background-color: #2c2c2c !important;
+}
+
+/* The profile details and app preferences sections */
+body.dark-mode .profile-details-section,
+body.dark-mode .app-preferences-section,
+body.dark-mode .account-management-section {
+    background-color: #212121 !important;
+    border-color: #444 !important;
+}
+
+/* Headings and specific text elements within the profile sections */
+body.dark-mode .profile-header h4,
+body.dark-mode .section-title,
+body.dark-mode .profile-details-grid .detail-item p,
+body.dark-mode .profile-details-grid .detail-item small,
+body.dark-mode .list-group-item,
+body.dark-mode .app-version {
+    color: #ffffff !important;
+}
+
+body.dark-mode .profile-details-grid .detail-item small,
+body.dark-mode .text-muted {
+    color: #b0b0b0 !important;
+}
+
+/* List items in the preferences section */
+body.dark-mode .app-preferences-section .list-group-item {
+    background-color: #2c2c2c !important;
+    border-color: #444 !important;
+    color: #ffffff !important;
+}
+
+/* The `Edit Account Info` and `Feedback` list items */
+body.dark-mode .list-group-item-action {
+    color: #ffffff !important;
+    background-color: #212121 !important;
+}
+body.dark-mode .list-group-item-action:hover {
+    background-color: #3e3e3e !important;
+}
+
+/* Buttons on the profile page */
+body.dark-mode .btn-light-grey {
+    background-color: #495057;
+    color: #ffffff !important;
+    border-color: #495057;
+}
+
+body.dark-mode .btn-light-grey:hover {
+    background-color: #555c63;
+    color: #ffffff !important;
+    border-color: #555c63;
+}

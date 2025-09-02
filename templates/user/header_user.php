@@ -37,9 +37,18 @@ $chrononav_main_logo_path = '../../assets/img/chrononav_logo.jpg'; // Main logo 
     <title><?= $page_title ?? 'ChronoNav - Student' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../../assets/css/user_css/header_user.css"> 
+    <link rel="stylesheet" href="../../assets/css/user_css/header_user.css">
+    <link rel="stylesheet" href="../../assets/css/user_css/dark_mode.css">
+
+    <script>
+        // Check localStorage for dark mode preference and apply immediately
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
 </head>
 <body>
+    <script src="../../assets/js/dark_mode.js" defer></script>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="../../pages/user/dashboard.php">
