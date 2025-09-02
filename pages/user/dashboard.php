@@ -174,10 +174,52 @@ $("#processOcrBtn").click(function() {
         data: formData,
         processData: false,
         contentType: false,
+        dataType: "json", // Add this line to tell jQuery to expect JSON
         success: function(response) {
-            $("#upload-step").hide();
-            $("#preview-step").show();
-            $("#preview-content").html(response);
+            if (response.success) {
+                // Hide upload step and show preview
+                $("#upload-step").hide();
+                $("#preview-step").show();
+                $("#ocr-alert").removeClass("d-none alert-danger").addClass("alert-success").text("Document processed successfully! Please review the extracted schedule.");
+
+                // Generate HTML for the schedule table
+                let scheduleHtml = `<table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Sched No.</th>
+                                                <th>Course No.</th>
+                                                <th>Time</th>
+                                                <th>Days</th>
+                                                <th>Room</th>
+                                                <th>Units</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>`;
+                
+                response.schedule.forEach(item => {
+                    scheduleHtml += `<tr>
+                                        <td>${item.sched_no}</td>
+                                        <td>${item.course_no}</td>
+                                        <td>${item.time}</td>
+                                        <td>${item.days}</td>
+                                        <td>${item.room}</td>
+                                        <td>${item.units}</td>
+                                    </tr>`;
+                });
+                
+                scheduleHtml += `</tbody></table>`;
+                $("#preview-content").html(scheduleHtml);
+            } else {
+                // If there's an error from the server, display it
+                $("#ocr-alert").removeClass("d-none alert-success").addClass("alert-danger").text(response.error);
+                $("#upload-step").show();
+                $("#preview-step").hide();
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle AJAX errors (e.g., server not responding)
+            $("#ocr-alert").removeClass("d-none alert-success").addClass("alert-danger").text("An unexpected error occurred during processing. Please try again.");
+            console.error("AJAX Error: ", textStatus, errorThrown);
         }
     });
 });
@@ -194,3 +236,5 @@ $("#restartOnboardingBtn").click(function() {
     });
 });
 </script>
+
+

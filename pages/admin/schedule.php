@@ -33,9 +33,9 @@ $daily_reminders = [];
 $day_name = date('l', $selected_timestamp);
 
 $stmt_schedules = $conn->prepare("SELECT s.title, s.description, s.start_time, s.end_time, r.room_name
-                                   FROM schedules s
-                                   LEFT JOIN rooms r ON s.room_id = r.id
-                                   WHERE s.user_id = ? AND s.day_of_week = ? ORDER BY s.start_time");
+                                     FROM schedules s
+                                     LEFT JOIN rooms r ON s.room_id = r.id
+                                     WHERE s.user_id = ? AND s.day_of_week = ? ORDER BY s.start_time");
 if ($stmt_schedules) {
     $stmt_schedules->bind_param("is", $user['id'], $day_name);
     $stmt_schedules->execute();
@@ -123,6 +123,7 @@ require_once '../../templates/admin/sidenav_admin.php';
             <h3><?= date('F Y', $selected_timestamp) ?></h3>
             <a href="?date=<?= date('Y-m-d', strtotime('+1 month', $first_day_of_month)) ?>" class="calendar-nav-arrow"><i class="fas fa-chevron-right"></i></a>
         </div>
+        
         <div class="calendar-days-header">
             <div>S</div>
             <div>M</div>
@@ -303,9 +304,8 @@ require_once '../../templates/admin/sidenav_admin.php';
                     'day': 'Day View'
                 };
                 modalTitle.textContent = titleMap[view];
-                
-                // Fetch content for the selected view
-                fetch(`../../includes/fetch_calendar_view.php?view=${view}`)
+                // Fetch content for the selected view, now including the user ID
+                fetch(`../../includes/fetch_calendar_view.php?view=${view}&user_id=<?= $user['id'] ?>`)
                     .then(response => response.text())
                     .then(data => {
                         modalBody.innerHTML = data;
@@ -324,8 +324,10 @@ require_once '../../templates/admin/sidenav_admin.php';
                 const view = arrow.getAttribute('data-view');
                 const year = arrow.getAttribute('data-year');
                 const date = arrow.getAttribute('data-date');
+                // Use the user_id from the data attribute or fall back to the main page's user ID
+                const userId = arrow.getAttribute('data-user-id') || '<?= $user['id'] ?>';
                 
-                let url = `../../includes/fetch_calendar_view.php?view=${view}`;
+                let url = `../../includes/fetch_calendar_view.php?view=${view}&user_id=${userId}`;
                 if (year) {
                     url += `&year=${year}`;
                 } else if (date) {
@@ -346,7 +348,4 @@ require_once '../../templates/admin/sidenav_admin.php';
     });
 </script>
 
-<?php require_once '../../templates/footer.php'; 
-
-
-
+<?php require_once '../../templates/footer.php'; ?>
