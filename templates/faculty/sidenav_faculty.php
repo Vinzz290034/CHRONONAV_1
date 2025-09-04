@@ -1,61 +1,51 @@
 <?php
 // CHRONONAV_WEB_DOSS/templates/faculty/sidenav_faculty.php
-// This file assumes $user (session data) and $current_page are set in the including script.
-// $current_page should be a string like 'dashboard', 'my_classes', 'office_hours', 'feedback', 'profile', etc.
 
-// From templates/faculty/sidenav_faculty.php to chrononav_web_doss/
-$base_app_path = '../../';
+// This file assumes $current_page is set in the including script (e.g., pages/faculty/dashboard.php)
+// Paths are relative to this file's location (templates/faculty/)
+$base_path = '../../';
 
-// From templates/faculty/sidenav_faculty.php to pages/faculty/
-$base_faculty_pages_path = $base_app_path . 'pages/faculty/';
-
-// Assuming you have chrononav_logo.png in assets/images/
-$app_logo_path = $base_app_path . 'assets/img/chrononav_logo.jpg';
+// Define the name and logo of the application
 $app_name = "ChronoNav";
+$app_logo_path = $base_path . 'assets/img/chrononav_logo.jpg';
 
-// The $user variable is typically available from a session check done in the main page
-// before including this sidenav.
+if (!isset($current_page)) {
+    $current_page = '';
+}
 ?>
-<link rel="stylesheet" href="../../assets/css/other_css/sidenav_user.css"> 
-<div class="app-sidebar">
-    
-    <ul class="app-sidebar-menu">
-        <li class="nav-item">
-            <a class="nav-link <?= ($current_page === 'dashboard') ? 'active' : '' ?>" href="<?= $base_faculty_pages_path ?>dashboard.php">
-                <i class="fas fa-home"></i>
-                <span class="nav-link-text">Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?= ($current_page === 'my_schedule') ? 'active' : '' ?>" href="<?= $base_faculty_pages_path ?>calendar.php"> <i class="fas fa-calendar-alt"></i>
-                <span class="nav-link-text">Calendar</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?= ($current_page === 'schedule') ? 'active' : '' ?>" href="<?= $base_faculty_pages_path ?>schedule.php">
-                <i class="fas fa-list"></i>
-                <span class="nav-link-text">Schedule</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?= ($current_page === 'my_classes') ? 'active' : '' ?>" href="<?= $base_faculty_pages_path ?>my_classes.php">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <span class="nav-link-text">Classes</span>
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link <?= ($current_page === 'notification_preferences') ? 'active' : '' ?>" href="<?= $base_faculty_pages_path ?>notification_preferences.php">
-                <i class="fas fa-bell"></i>
-                <span class="nav-link-text">Notifications</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?= ($current_page === 'profile') ? 'active' : '' ?>" href="<?= $base_faculty_pages_path ?>view_profile.php">
-                <i class="fas fa-user-circle"></i>
-                <span class="nav-link-text">Profile</span>
-            </a>
-        </li>
-    </ul>
-</div>
 
+<link rel="stylesheet" href="../../assets/css/other_css/sidenav_users.css">
+
+<div class="app-sidebar" id="sidebar">
+    <div class="app-sidebar-menu">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link <?= ($current_page === 'dashboard') ? 'active' : '' ?>" href="<?= $base_path ?>pages/faculty/dashboard.php">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= ($current_page === 'calendar') ? 'active' : '' ?>" href="<?= $base_path ?>pages/faculty/calendar.php">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="nav-link-text">My Calendar</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= ($current_page === 'courses') ? 'active' : '' ?>" href="<?= $base_path ?>pages/faculty/schedule.php">
+                    <i class="fas fa-book"></i>
+                    <span class="nav-link-text">Schedule</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= ($current_page === 'profile') ? 'active' : '' ?>" href="<?= $base_path ?>pages/faculty/view_profile.php">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="nav-link-text">Profile</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="app-version text-center py-3">
+        <p class="text-muted mb-0">ChronoNav v1.0</p>
+    </div>
+</div>
