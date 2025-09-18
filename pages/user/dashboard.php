@@ -30,7 +30,7 @@ if (isset($user['role'])) {
 require_once $header_path;
 ?>
 
-<link rel="stylesheet" href="../../assets/css/user_css/dashboard.css">
+<link rel="stylesheet" href="../../assets/css/user_css/dashboards.css">
 
 <div class="d-flex" id="wrapper" data-user-role="<?= $user_role ?>">
     <?php
