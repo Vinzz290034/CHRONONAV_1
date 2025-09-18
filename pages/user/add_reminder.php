@@ -164,6 +164,7 @@ if (isset($user['role'])) {
 require_once $header_path;
 ?>
 
+
 <link rel="stylesheet" href="../../assets/css/user_css/add_reminders.css">
 
 <div class="d-flex" id="wrapper">

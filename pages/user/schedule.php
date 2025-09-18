@@ -125,6 +125,7 @@ require_once '../../templates/user/sidenav_user.php';
             <h3><?= date('F Y', $selected_timestamp) ?></h3>
             <a href="?date=<?= date('Y-m-d', strtotime('+1 month', $first_day_of_month)) ?>" class="calendar-nav-arrow"><i class="fas fa-chevron-right"></i></a>
         </div>
+        
         <div class="calendar-days-header">
             <div>S</div>
             <div>M</div>
