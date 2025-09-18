@@ -177,7 +177,7 @@ require_once '../../templates/user/header_user.php';
 require_once '../../templates/user/sidenav_user.php';
 ?>
 
-<link rel="stylesheet" href="../../assets/css/user_css/calend.css">
+<link rel="stylesheet" href="../../assets/css/user_css/calends.css">
 
 <div class="main-dashboard-content">
     <div class="dashboard-header">
