@@ -1,0 +1,277 @@
+
+.main-dashboard-content {
+    padding: 20px;
+    background-color: #ffffff; /* Light background for the main content area */
+    min-height: calc(100vh - 80px); /* Adjust based on your header height */
+    
+    margin-left: 250px; /* To push content right from the fixed sidebar */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: margin-left 0.3s ease; /* Smooth transition if sidebar collapses */
+}
+
+/* Adjustments for when sidebar might be collapsed (if you have JS for it) */
+/* If your sidebar has a class like 'collapsed' or 'toggled' on a parent div */
+/* For example, if #wrapper.toggled .main-dashboard-content { margin-left: 0; } */
+
+
+/* Dashboard Header (Page Title and Add Button) */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.dashboard-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #343a40;
+    margin: 0;
+}
+
+.dashboard-header .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.dashboard-header .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+.dashboard-header .btn-primary i {
+    margin-right: 8px;
+}
+
+/* Alert Messages (Bootstrap default look) */
+.alert {
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Calendar Events List */
+.calendar-events-list {
+    margin-top: 20px;
+}
+
+.calendar-month-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Stronger shadow for month cards */
+    margin-bottom: 30px;
+    overflow: hidden; /* Ensures border-radius applies to header/footer */
+}
+
+.calendar-month-card .card-header {
+    background-color: #e9f5ff; /* Light blue header for month groups */
+    border-bottom: 1px solid #cce5ff;
+    padding: 18px 25px;
+    border-radius: 12px 12px 0 0;
+}
+
+.calendar-month-card .card-header h5 {
+    color: #0056b3; /* Darker blue for month name */
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.calendar-event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically in center */
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0f0f0; /* Very light border between events */
+    background-color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+
+.calendar-event-item:hover {
+    background-color: #fcfdff; /* Subtle highlight on hover */
+}
+
+.calendar-event-item:last-child {
+    border-bottom: none; /* No border for the last item in a group */
+}
+
+.event-details {
+    flex-grow: 1; /* Allow details to take up available space */
+    margin-right: 20px; /* Space between details and actions */
+}
+
+.event-details h6 {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    color: #343a40;
+    line-height: 1.4;
+}
+
+.event-details h6 .badge {
+    vertical-align: middle; /* Align badge better with text */
+    margin-left: 10px;
+}
+
+.event-details p {
+    font-size: 0.95rem;
+    color: #5a6268;
+    margin-bottom: 6px;
+}
+
+.event-details p:last-child {
+    margin-bottom: 0;
+}
+
+.event-details p i {
+    margin-right: 7px;
+    color: #88929c;
+    font-size: 0.9em; /* Slightly smaller icon */
+}
+
+/* Event Type Badges - Semantic Colors */
+.badge {
+    padding: 6px 10px;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.badge.Personal {
+    background-color: #28a745; /* Success green */
+    color: #fff;
+}
+.badge.Other {
+    background-color: #6c757d; /* Secondary gray */
+    color: #fff;
+}
+.badge.Study {
+    background-color: #ffc107; /* Warning yellow */
+    color: #343a40; /* Dark text for yellow badge */
+}
+.badge.Appointment {
+    background-color: #17a2b8; /* Info blue/teal */
+    color: #fff;
+}
+/* Add more event types as needed */
+.badge.Lecture { background-color: #007bff; }
+.badge.Exam { background-color: #dc3545; }
+.badge.Deadline { background-color: #6f42c1; } /* Purple */
+
+
+/* Event Actions (Buttons) */
+.event-actions {
+    display: flex;
+    flex-shrink: 0; /* Prevent actions from shrinking */
+    gap: 10px; /* Space between buttons */
+    align-items: center; /* Vertically align buttons */
+}
+
+.event-actions .btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.event-actions .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+.event-actions .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-1px);
+}
+
+.event-actions .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529; /* Dark text for warning button */
+}
+.event-actions .btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+    transform: translateY(-1px);
+}
+
+.event-actions .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+.event-actions .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-1px);
+}
+
+/* App Version Footer (Consistent) */
+.app-version {
+    font-size: 0.8em;
+    color: #a0a0a0;
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    /* Adjust content area margin if sidebar collapses */
+    .main-dashboard-content {
+        margin-left: 0; /* Remove left margin on smaller screens */
+        padding-left: 20px; /* Add normal padding */
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dashboard-header .btn-primary {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .calendar-event-item {
+        flex-direction: column;
+        align-items: stretch; /* Stretch items to fill width */
+    }
+    .event-details {
+        margin-right: 0;
+        margin-bottom: 15px; /* Space between details and stacked buttons */
+    }
+    .event-actions {
+        flex-direction: column;
+        gap: 8px; /* Space between stacked buttons */
+        width: 100%; /* Make buttons full width */
+    }
+    .event-actions .btn {
+        width: 100%;
+    }
+    .calendar-month-card .card-header {
+        padding: 15px 20px;
+    }
+    .calendar-month-card .card-header h5 {
+        font-size: 1.2rem;
+    }
+    .calendar-event-item {
+        padding: 15px 20px;
+    }
+    .event-details h6 {
+        font-size: 1.1rem;
+    }
+}
