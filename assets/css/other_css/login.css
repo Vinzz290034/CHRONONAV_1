@@ -9,6 +9,7 @@
         text-align: center;
         background-size: cover;
         min-height: 100vh;
+        margin: 0;
     }
 
     .login-container {
@@ -18,7 +19,7 @@
         -webkit-backdrop-filter: blur(15px);
         /*box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);*/
         width: 100%;
-        max-width: 360px;
+        max-width: 500px;
         padding: 30px;
         color: #fff;
         text-align: center;
@@ -45,7 +46,7 @@
 
     .form-group label {
         font-weight: 500;
-        margin-bottom: 6px;
+        margin-bottom: 10px;
         display: block;
         color: #050505ff; /*For word email and password*/
     }
@@ -53,7 +54,7 @@
     .form-control {
         border: none;
         border-radius: 8px;
-        padding: 10px 0px;
+        padding: 10px 10px;
         width: 100%;
         background: rgba(255, 255, 255, 0.15);
     }
@@ -78,7 +79,8 @@
         transition: all 0.2s ease;
         text-decoration: none;
         display: block;
-        margin-top: 10px;
+        margin: 20px 0px;
+        font-size: large;
     }
 
     .btn-login {
@@ -93,7 +95,7 @@
     .btn-signup {
         background-color: rgba(162, 163, 167, 0.3);
         color: #000000ff;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        /* border: 1px solid rgba(255, 255, 255, 0.2); */
     }
 
     .btn-signup:hover {

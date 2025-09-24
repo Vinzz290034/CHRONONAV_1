@@ -7,9 +7,10 @@
   <title>ChronoNav</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-    body { line-height: 1.6; background: #ffffffff; color: #333; scroll-behavior: smooth; }
+    body { margin: 0; line-height: 1.6; background: #ffffffff; color: #333; scroll-behavior: smooth; }
     header { background-color: #4b4d4eff; position: fixed; top: 0; width: 100%;  padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; z-index: 999; }
     .logo { font-size: 1.5rem; color: #fff; font-weight: bold; display: flex; align-items: center; }
     .logo i { font-size: 1.5rem; margin-right: 10px; }
@@ -50,6 +51,7 @@
   </style>
 </head>
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <header>
   <div class="logo">
     <img src="assets/img/chrononav_logo.jpg" alt="ChronoNav Logo" style="height: 40px; margin-right: 10px;">

@@ -97,7 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - CHRONONAV</title>
-    <link rel="stylesheet" href="../assets/css/other_css/login.css"> 
+    <link rel="stylesheet" href="../assets/css/other_css/login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
     <div class="login-container">
@@ -121,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <a href="register.php" class="btn-main btn-signup">Sign Up</a>
-        <a href="forgot_password.php" class="forgot-password-link">Reset Password</a>
+        <a href="forgot_password.php" class="text-decoration-none fs-5 fw-medium forgot-password-link">Reset Password</a>
         <div class="app-version">App Version 1.0.0 · © 2025 ChronoNav</div>
     </div>
 </body>
