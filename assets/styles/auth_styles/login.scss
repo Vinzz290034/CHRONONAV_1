@@ -1,0 +1,302 @@
+/* Login Page Specific Styles */
+.auth-login-body {
+    font-family: Inter, "Noto Sans", sans-serif;
+    background: linear-gradient(rgba(62, 153, 244, 0.85), rgba(6, 168, 249, 0.85)),
+        url('https://res.cloudinary.com/deua2yipj/image/upload/v1759258431/chrononav_bg_l38ntk.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #111418;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+}
+
+.auth-login-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.auth-login-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-logo-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+}
+
+.auth-brand-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111418;
+    margin-bottom: 0.5rem;
+}
+
+.auth-brand-tagline {
+    color: #5f7d8c;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.auth-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.auth-form-label {
+    font-weight: 500;
+    color: #111418;
+    margin-bottom: 0.5rem;
+}
+
+.auth-form-control {
+    background-color: rgba(248, 249, 250, 0.95); // slightly more opaque
+    border: 1px solid #dbe2e6;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    height: 48px;
+    width: 100%;
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.auth-form-control:focus {
+    background-color: rgba(248, 249, 250, 1);
+    border-color: #3e99f4;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(62, 153, 244, 0.2); // soft focus ring for accessibility
+}
+
+.auth-password-input {
+    position: relative;
+}
+
+.auth-password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #5f7d8c;
+    cursor: pointer;
+}
+
+.auth-btn-login {
+    background-color: #06a8f9;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    height: 48px;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.auth-btn-login:hover {
+    background-color: #0588d1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(6, 168, 249, 0.3);
+}
+
+.auth-alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-links-section {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.auth-link {
+    color: #3e99f4;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+    color: #0588d1;
+    text-decoration: underline;
+}
+
+.auth-separator {
+    margin: 0 0.5rem;
+    color: #5f7d8c;
+}
+
+.auth-terms-text {
+    text-align: center;
+    color: #5f7d8c;
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    line-height: 1.4;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: white;
+    font-size: 0.8rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.auth-footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Modal Styles for Auth Pages */
+.auth-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-modal-content {
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-modal-header {
+    background: linear-gradient(135deg, #3e99f4, #06a8f9);
+    color: white;
+    padding: 1.5rem 2rem;
+    position: relative;
+}
+
+.auth-modal-body {
+    padding: 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.auth-modal-footer {
+    padding: 1.5rem 2rem;
+    background-color: #f0f2f5;
+    border-top: 1px solid #dbe2e6;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.auth-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.auth-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+    .auth-login-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .auth-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .auth-brand-name {
+        font-size: 1.5rem;
+    }
+
+    .auth-login-body {
+        padding: 15px;
+        background-attachment: scroll;
+    }
+
+    .auth-modal {
+        padding: 10px;
+    }
+
+    .auth-modal-body {
+        padding: 1.5rem;
+    }
+
+    .auth-modal-header,
+    .auth-modal-footer {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .auth-modal-close {
+        top: 1.25rem;
+        right: 1.5rem;
+    }
+}
+
+/* Animation for better visual appeal */
+.auth-login-card {
+    animation: authFadeInUp 0.6s ease-out;
+}
+
+@keyframes authFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
