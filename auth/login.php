@@ -102,227 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
 
-    <!-- <style>
-        :root {
-            --primary-color: #3e99f4;
-            --secondary-color: #f0f2f5;
-            --accent-color: #06a8f9;
-            --text-dark: #111418;
-            --text-muted: #5f7d8c;
-            --border-color: #dbe2e6;
-            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        }
-        
-        body {
-            font-family: Inter, "Noto Sans", sans-serif;
-            background: linear-gradient(rgba(62, 153, 244, 0.85), rgba(6, 168, 249, 0.85)), 
-                        url('https://res.cloudinary.com/deua2yipj/image/upload/v1759258431/chrononav_bg_l38ntk.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--text-dark);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            margin: 0;
-        }
-        
-        .login-container {
-            width: 100%;
-            max-width: 420px;
-        }
-        
-        .login-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .logo-section {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .logo {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1rem;
-        }
-        
-        .brand-name {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .brand-tagline {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 0;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            font-weight: 500;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .form-control {
-            background-color: rgba(248, 249, 250, 0.8);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            height: 48px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            box-shadow: 0 0 0 3px rgba(62, 153, 244, 0.2);
-            background-color: white;
-            border-color: var(--primary-color);
-        }
-        
-        .password-input {
-            position: relative;
-        }
-        
-        .password-toggle {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-        }
-        
-        .btn-login {
-            background-color: var(--accent-color);
-            color: white;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            padding: 0.75rem 1.5rem;
-            height: 48px;
-            width: 100%;
-            transition: all 0.3s ease;
-            margin-bottom: 1.5rem;
-        }
-        
-        .btn-login:hover {
-            background-color: #0588d1;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(6, 168, 249, 0.3);
-        }
-        
-        .alert {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .links-section {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        
-        .link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .link:hover {
-            color: #0588d1;
-            text-decoration: underline;
-        }
-        
-        .separator {
-            margin: 0 0.5rem;
-            color: var(--text-muted);
-        }
-        
-        .terms-text {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            margin-top: 1.5rem;
-            line-height: 1.4;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 2rem;
-            color: white;
-            font-size: 0.8rem;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .footer a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 480px) {
-            .login-card {
-                padding: 2rem 1.5rem;
-            }
-            
-            .logo {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .brand-name {
-                font-size: 1.5rem;
-            }
-            
-            body {
-                padding: 15px;
-                background-attachment: scroll;
-            }
-        }
-        
-        /* Animation for better visual appeal */
-        .login-card {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style> -->
 </head>
 <body class="auth-login-body">
     <div class="auth-login-container">
@@ -375,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <div class="auth-footer">
             <p>App Version 1.0.0 · © 2025 ChronoNav</p>
-            <p><a href="#">Contact us</a></p>
+            <p><a href="#" class="auth-link">Contact us</a></p>
         </div>
     </div>
 
@@ -398,7 +177,131 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="auth-modal-body">
                 <!-- Privacy Policy content would go here -->
-                <p>Privacy policy content...</p>
+                <p class="mb-4">Welcome to <strong>CHRONONAV</strong>! Your privacy is very important to us. This
+                    Privacy
+                    Policy explains how we collect, use, and protect your information when you use our mobile and web
+                    application.</p>
+
+                <h4 class="section-title">
+                    <span class="privacy-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    Information We Collect
+                </h4>
+                <p>We collect only the information necessary to provide our services:</p>
+                <ul class="custom-list">
+                    <li><strong>Account Information:</strong> Name, email address, and student ID (if provided during
+                        registration)</li>
+                    <li><strong>Schedule Data:</strong> Uploaded study loads (PDFs or images) processed using Optical
+                        Character Recognition (OCR)</li>
+                    <li><strong>Location Data:</strong> GPS location for navigation within the campus</li>
+                    <li><strong>Device Information:</strong> Basic device and app usage data (for troubleshooting and
+                        improvements)</li>
+                </ul>
+
+                <h4 class="section-title">
+                    <span class="privacy-icon">
+                        <i class="fas fa-cogs"></i>
+                    </span>
+                    How We Use Your Information
+                </h4>
+                <p>Your data is used to:</p>
+                <ul class="custom-list">
+                    <li>Generate and organize your personalized schedule</li>
+                    <li>Provide real-time navigation and directions within the campus</li>
+                    <li>Send reminders and notifications for upcoming classes</li>
+                    <li>Improve app features, performance, and user experience</li>
+                </ul>
+                <div class="highlight-box">
+                    <p class="mb-0"><strong>We do not sell, rent, or share your information with third parties.</strong>
+                    </p>
+                </div>
+
+                <h4 class="section-title">
+                    <span class="privacy-icon">
+                        <i class="fas fa-database"></i>
+                    </span>
+                    Data Storage and Security
+                </h4>
+                <ul class="custom-list">
+                    <li>All schedule and navigation data are securely stored in encrypted databases</li>
+                    <li>Access is limited to authorized CHRONONAV developers and administrators</li>
+                    <li>Offline data (such as cached maps) is stored only on your device and is cleared when you
+                        uninstall
+                        the app</li>
+                </ul>
+
+                <h4 class="section-title">
+                    <span class="privacy-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </span>
+                    Data Sharing
+                </h4>
+                <p>We may share anonymized usage statistics (e.g., most used features, error logs) to improve the
+                    system.
+                </p>
+                <p>We will never disclose personal information unless:</p>
+                <ul class="custom-list">
+                    <li>Required by law, or</li>
+                    <li>Necessary to protect the rights, property, or safety of CHRONONAV users</li>
+                </ul>
+
+                <h4 class="section-title">
+                    <span class="privacy-icon">
+                        <i class="fas fa-user-check"></i>
+                    </span>
+                    Your Rights
+                </h4>
+                <p>You have the right to:</p>
+                <ul class="custom-list">
+                    <li><strong>Access</strong> your personal information stored in CHRONONAV</li>
+                    <li><strong>Update or correct</strong> your account details</li>
+                    <li><strong>Request deletion</strong> of your account and related data at any time</li>
+                </ul>
+                <p>To exercise these rights, please contact us at: <strong>chrononav.support@yourdomain.com</strong></p>
+
+                <h4 class="section-title">
+                    <span class="privacy-icon">
+                        <i class="fas fa-child"></i>
+                    </span>
+                    Children's Privacy
+                </h4>
+                <p>CHRONONAV is designed for university students and staff. We do not knowingly collect personal data
+                    from
+                    children under 13 years old.</p>
+
+                <h4 class="section-title">
+                    <span class="privacy-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </span>
+                    Updates to this Privacy Policy
+                </h4>
+                <p>We may update this Privacy Policy from time to time to reflect changes in technology, laws, or our
+                    services. We will notify users of significant updates via in-app notifications or email.</p>
+
+                <h4 class="section-title">
+                    <span class="privacy-icon">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    Contact Us
+                </h4>
+                <p>If you have any questions, feedback, or concerns about this Privacy Policy, please contact us at:</p>
+                <div class="contact-info">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <strong>Email:</strong> support@ChronoNav.com
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Address:</strong> Sanciangko St, Cebu City, 6000 Cebu
+                    </div>
+                </div>
             </div>
             <div class="auth-modal-footer">
                 <button class="auth-btn-login" onclick="closeAuthPrivacy()">
@@ -427,7 +330,157 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="auth-modal-body">
                 <!-- Terms of Service content would go here -->
-                <p>Terms of service content...</p>
+                <p class="mb-4">Welcome to <strong>CHRONONAV</strong>! These Terms of Service ("Terms") govern your
+                    use
+                    of
+                    the CHRONONAV mobile and web application. By downloading, accessing, or using CHRONONAV, you
+                    agree
+                    to
+                    comply with these Terms. Please read them carefully.</p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </span>
+                    Acceptance of Terms
+                </h4>
+                <p>By using CHRONONAV, you confirm that you:</p>
+                <ul class="custom-list">
+                    <li>Are at least 13 years of age (or the minimum required by your institution)</li>
+                    <li>Agree to follow these Terms and our Privacy Policy</li>
+                    <li>Use CHRONONAV only for lawful academic and personal purposes</li>
+                </ul>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-list-alt"></i>
+                    </span>
+                    Description of Service
+                </h4>
+                <p>CHRONONAV provides:</p>
+                <ul class="custom-list">
+                    <li>OCR-based schedule import from official study loads</li>
+                    <li>Personalized timetable management</li>
+                    <li>Campus navigation and turn-by-turn directions</li>
+                    <li>Class reminders and alerts</li>
+                    <li>Limited offline navigation functionality</li>
+                </ul>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </span>
+                    User Responsibilities
+                </h4>
+                <p>You agree not to:</p>
+                <ul class="custom-list">
+                    <li>Upload false or misleading information</li>
+                    <li>Share your account credentials with others</li>
+                    <li>Use CHRONONAV to engage in cheating, harassment, or illegal activities</li>
+                    <li>Tamper with or attempt to hack the system</li>
+                </ul>
+                <p>You are responsible for ensuring your device is compatible with the app.</p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-database"></i>
+                    </span>
+                    Data and Privacy
+                </h4>
+                <p>Our use of your data is described in the <strong>Privacy Policy</strong>. By using CHRONONAV, you
+                    consent
+                    to the collection and use of your information as outlined there.</p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-check-double"></i>
+                    </span>
+                    Accuracy of Information
+                </h4>
+                <p>While CHRONONAV strives to provide accurate schedules and navigation, we do not guarantee that:
+                </p>
+                <ul class="custom-list">
+                    <li>All schedules imported via OCR will be 100% error-free</li>
+                    <li>Campus navigation routes will always reflect real-time construction, closures, or events
+                    </li>
+                </ul>
+                <p>Users should verify critical details with their school's official sources.</p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-copyright"></i>
+                    </span>
+                    Intellectual Property
+                </h4>
+                <p>All rights, trademarks, and content within CHRONONAV belong to the development team and/or the
+                    affiliated
+                    university. You may not copy, modify, or redistribute CHRONONAV without permission.</p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    Limitation of Liability
+                </h4>
+                <p>CHRONONAV is provided <strong>"as is."</strong> We are not responsible for:</p>
+                <ul class="custom-list">
+                    <li>Missed classes, delays, or wrong directions caused by inaccurate data</li>
+                    <li>Damages caused by reliance on the app in critical situations</li>
+                </ul>
+                <p>Your use of the app is at your own risk.</p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </span>
+                    Service Modifications
+                </h4>
+                <p>We reserve the right to update, modify, or discontinue CHRONONAV at any time, with or without
+                    notice.
+                </p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-ban"></i>
+                    </span>
+                    Termination
+                </h4>
+                <p>We may suspend or terminate your access if you violate these Terms. You may also delete your
+                    account
+                    at
+                    any time.</p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </span>
+                    Governing Law
+                </h4>
+                <p>These Terms shall be governed by the laws of the Republic of the Philippines.</p>
+
+                <h4 class="section-title">
+                    <span class="terms-icon">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    Contact Us
+                </h4>
+                <p>If you have questions about these Terms, please contact us:</p>
+                <div class="contact-info">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <strong>Email:</strong> support@ChronoNav.com
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Address:</strong> Sanciangko St, Cebu City, 6000 Cebu
+                    </div>
+                </div>
             </div>
             <div class="auth-modal-footer">
                 <button class="auth-btn-login" onclick="closeAuthTerms()">
