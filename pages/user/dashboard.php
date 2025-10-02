@@ -28,9 +28,14 @@ if (isset($user['role'])) {
     }
 }
 require_once $header_path;
+
 ?>
 
 <link rel="stylesheet" href="../../assets/css/user_css/dashboards.css">
+<!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
+
+<?php include ('../../includes/semantics/head.php'); ?>
 
 <div class="d-flex" id="wrapper" data-user-role="<?= $user_role ?>">
     <?php
@@ -238,5 +243,5 @@ $("#restartOnboardingBtn").click(function() {
 });
 </script>
 
-
+<?php include ('../../includes/semantics/footer.php'); ?>
 

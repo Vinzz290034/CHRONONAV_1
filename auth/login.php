@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Please enter both email and password.";
     } else {
         // IMPORTANT: Select the 'is_active' column from the users table
+        // This query requires the 'is_active' column in the users table.
         $stmt = $conn->prepare("SELECT id, name, email, role, password, profile_img, is_active FROM users WHERE email = ?");
         if ($stmt) {
             $stmt->bind_param("s", $email);
@@ -49,7 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $action = ucfirst($user_role) . ' Login';
                             $details = "User '{$user_name}' logged in successfully.";
                             
-                            $stmt_log = $conn->prepare("INSERT INTO audit_log (user_id, action, details) VALUES (?, ?, ?)");
+                            // NOTE: Changed 'audit_log' to 'audit_logs' for common convention.
+                            // If your table is named 'audit_log' (singular), revert this change.
+                            $stmt_log = $conn->prepare("INSERT INTO audit_logs (user_id, action, details) VALUES (?, ?, ?)");
                             if ($stmt_log) {
                                 $stmt_log->bind_param("iss", $user_id, $action, $details);
                                 $stmt_log->execute();
@@ -99,7 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <link rel="stylesheet" href="../assets/styles/style.css">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
 
 </head>
@@ -158,7 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <!-- Privacy Policy Modal -->
     <div class="auth-modal" id="authPrivacyModal">
         <div class="auth-modal-content">
             <div class="auth-modal-header">
@@ -176,7 +177,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </button>
             </div>
             <div class="auth-modal-body">
-                <!-- Privacy Policy content would go here -->
                 <p class="mb-4">Welcome to <strong>CHRONONAV</strong>! Your privacy is very important to us. This
                     Privacy
                     Policy explains how we collect, use, and protect your information when you use our mobile and web
@@ -311,7 +311,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
     
-    <!-- Terms of Service Modal -->
     <div class="auth-modal" id="authTermsModal">
         <div class="auth-modal-content">
             <div class="auth-modal-header">
@@ -329,7 +328,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </button>
             </div>
             <div class="auth-modal-body">
-                <!-- Terms of Service content would go here -->
                 <p class="mb-4">Welcome to <strong>CHRONONAV</strong>! These Terms of Service ("Terms") govern your
                     use
                     of

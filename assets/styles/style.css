@@ -1551,7 +1551,7 @@ section {
 
 /* Footer */
 footer {
-  border-top: 1px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
 }
 
 .footer-links a {
