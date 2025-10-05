@@ -1,243 +1,186 @@
-/* --- Layout & Page Content Wrapper --- */
-
-#wrapper {
-    display: flex; /* Enables flexbox for side-by-side layout */
-    width: 100%;
-    /* overflow-x: hidden; */ /* Prevent horizontal scrollbar if sidebar is fixed */
+body {
+  font-family: "Space Grotesk", "Noto Sans", sans-serif;
+  background-color: #fff;
+  min-height: 100vh;
 }
 
-/* Styles for the content area that pushes next to the sidebar */
-#page-content-wrapper {
-    flex-grow: 1; /* Allows content to take up remaining space */
-    width: 100%;
-    min-width: 0; /* Prevents overflow with large content */
-    padding: 20px; /* Overall padding for the content area */
-    background-color: #f8f9fa; /* Light background for the page */
+/* Custom styles to match the original design */
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* This targets the inner content wrapper within page-content-wrapper */
-.main-dashboard-content {
-    margin: 0 auto; /* Center the content */
-    padding: 20px; /* Padding inside the content area */
-    background-color: #fff; /* White background for the main content block */
-    border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+.main-content {
+  max-width: 80%;
+  flex: 1;
 }
 
-/* Adjustments for smaller screens (optional, but recommended for responsiveness) */
+.nav-item {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  background-color: #f0f2f5;
+}
+
+.nav-item:hover {
+  background-color: #f8f9fa;
+}
+
+.profile-image {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn.btn-custom-secondary {
+  background-color: #f0f2f5;
+  color: #111418;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.75rem;
+}
+
+.profile-detail-row {
+  border-top: 1px solid #dbe0e6;
+  padding: 1.25rem 0;
+}
+
+.preference-item {
+  min-height: 56px;
+  padding: 0 1rem;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-flex;
+  height: 31px;
+  width: 51px;
+  cursor: pointer;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: #f0f2f5;
+  padding: 2px;
+}
+
+.toggle-switch.checked {
+  background-color: #1776f1;
+  justify-content: flex-end;
+}
+
+.toggle-knob {
+  height: 100%;
+  width: 27px;
+  border-radius: 9999px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;
+}
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.account-item {
+  min-height: 56px;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+.account-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    #page-content-wrapper {
-        padding: 15px;
-    }
-    .main-dashboard-content {
-        padding: 15px;
-    }
-}
-
-
-/* --- Profile Card Specific Styles --- */
-.profile-container {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    overflow: hidden; /* Ensures border-radius applies to children */
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.profile-header {
-    background-color: #ffffff; /* Light grey background for the header */
-    padding: 30px 20px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.profile-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 0 0 2px #e0e0e0; /* A subtle ring around the avatar */
-    margin-bottom: 15px;
-    margin-top: 25px;
-}
-
-.profile-header h4 {
-    color: #333;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.profile-header p {
-    color: #666;
-    font-size: 0.95em;
-}
-
-.btn-light-grey {
-    background-color: #e9ecef;
-    color: #495057;
-    border: 1px solid #ced4da;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-}
-
-.btn-light-grey:hover {
-    background-color: #dee2e6;
-    border-color: #adb5bd;
-    color: #343a40;
-}
-
-/* --- Profile Details Section --- */
-.profile-details-section,
-.app-preferences-section,
-.account-management-section {
-    padding: 25px;
-}
-
-.section-title {
-    color: #555;
-    font-weight: 600;
-    font-size: 1.2em;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #f0f2f5;
-    padding-bottom: 10px;
-}
-
-.profile-details-grid .detail-item {
-    margin-bottom: 15px;
-}
-
-.profile-details-grid .detail-item small {
-    display: block;
-    color: #888;
-    font-size: 0.85em;
-    margin-bottom: 5px;
-}
-
-.profile-details-grid .detail-item .profile-value {
-    color: #333;
-    font-size: 1em;
-    font-weight: 500;
-}
-
-/* --- App Preferences & Account Management Sections --- */
-.app-preferences-section,
-.account-management-section {
-    border-top: 1px solid #e9ecef; /* Separator line */
-    padding-top: 25px;
-}
-
-.preferences-list-group .list-group-item,
-.management-list-group .list-group-item {
-    padding: 15px 0;
-    border-bottom: 1px solid #f0f2f5; /* Lighter border for list items */
-    background-color: transparent; /* Ensure no background conflicts */
-    color: #495057;
-}
-
-.preferences-list-group .list-group-item:last-child,
-.management-list-group .list-group-item:last-child {
-    border-bottom: none; /* No border for the last item */
-}
-
-.list-group-item-action:hover {
-    background-color: #f8f9fa;
-    color: #007bff; /* Bootstrap primary blue on hover */
-}
-
-.list-group-item i.fas {
-    color: #adb5bd; /* Arrow icon color */
-    transition: color 0.2s ease-in-out;
-}
-
-.list-group-item-action:hover i.fas {
-    color: #007bff; /* Arrow icon color changes on hover */
-}
-
-
-.form-check-input:checked {
-    background-color: #007bff; /* Bootstrap primary blue for checked switches */
-    border-color: #007bff;
-}
-
-/* --- Logout Button --- */
-.logout-btn {
+  .sidebar {
     width: 100%;
-    margin-top: 30px;
-    padding: 12px;
-    font-size: 1.1em;
-    font-weight: 600;
-    border-radius: 8px;
-    background-color: #dc3545; /* Red for logout */
-    border-color: #dc3545;
+    min-height: auto;
+  }
 }
 
-.logout-btn:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
+/* Alert styles */
+.alert {
+  border-radius: 0.75rem;
+  border: none;
 }
 
-/* --- App Version Footer --- */
-.app-version {
-    font-size: 0.8em;
-    color: #a0a0a0;
-    margin-top: 30px;
-    padding-bottom: 20px; /* Padding at the very bottom */
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .profile-details-grid .col-md-6 {
-        width: 100%; /* Stack details vertically on small screens */
-    }
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
-/* Style for the search bar container */
-.search-bar {
-    display: flex; /* Aligns the icon and input horizontally */
-    align-items: center; /* Vertically centers items */
-    background-color: #3074daff; /* Light grey background */
-    border-radius: 25px; /* Pill shape for the search bar */
-    padding: 10px 15px; /* Padding inside the search bar */
-    
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-    transition: all 0.3s ease; /* Smooth transition for focus effects */
-    margin-top: 15px;
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
 }
 
-/* Style for the search icon */
-.search-bar .fas.fa-search {
-    color: #888; /* Darker grey color for the icon */
-    margin-right: 10px; /* Space between icon and input field */
-    font-size: 1.1rem; /* Slightly larger icon */
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
 }
 
-/* Style for the input field */
-.search-bar input[type="text"] {
-    border: none; /* Remove default input border */
-    background: transparent; /* Transparent background to blend with container */
-    outline: none; /* Remove outline on focus */
-    flex-grow: 1; /* Allow input to take up remaining space */
-    font-size: 1rem; /* Standard font size */
-    color: #333; /* Darker text color */
-    padding: 0; /* Remove default input padding */
+/* Edit Profile Modal */
+.form-control {
+  font-family: "Space Grotesk", "Noto Sans", sans-serif;
+  font-weight: 500;
 }
 
-/* Placeholder text style */
-.search-bar input[type="text"]::placeholder {
-    color: #aaa; /* Lighter grey for placeholder text */
+.form-control:focus {
+  box-shadow: 0 0 0 2px rgba(23, 118, 241, 0.2);
+  border-color: #1776f1;
 }
 
-/* Focus effect for the search bar (when input is active) */
-.search-bar:focus-within {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* More pronounced shadow on focus */
-    border: 1px solid #007bff; /* Highlight border with a primary color */
-    background-color: #fff; /* White background on focus */
+.bg-light {
+  background-color: #f8f9fa !important;
 }
 
-/* Adjustments for smaller screens (optional, but good practice) */
-@media (max-width: 768px) {
-    .search-bar {
-        border-radius: 8px; /* Slightly less rounded on small screens */
-    }
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.rounded-3 {
+  border-radius: 0.75rem !important;
+}
+
+/* Feedback Modal */
+.form-select,
+.form-control,
+textarea.form-control {
+  font-family: "Space Grotesk", "Noto Sans", sans-serif;
+  font-weight: 500;
+}
+
+.form-select:focus,
+.form-control:focus,
+textarea.form-control:focus {
+  box-shadow: 0 0 0 2px rgba(23, 118, 241, 0.2);
+  border-color: #1776f1;
+  background-color: #fff;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.rounded-3 {
+  border-radius: 0.75rem !important;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
 }

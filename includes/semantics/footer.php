@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,17 +10,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Font Awesome (for social icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-5a6b4ht5bJz8b6EzR/AvHmsZmF6y/5JSRt3TDhLroYVvL1oKkCGM58HjYpRBnmhxR1ZT9vC8rZ5YFC9lXlcbXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-5a6b4ht5bJz8b6EzR/AvHmsZmF6y/5JSRt3TDhLroYVvL1oKkCGM58HjYpRBnmhxR1ZT9vC8rZ5YFC9lXlcbXg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700">
 
   <style>
     /* ===== CHRONONAV FOOTER STYLES ===== */
     .chrononav-footer {
-      font-family: Inter, "Noto Sans", sans-serif;
-      background: linear-gradient(135deg, #2E78C6 0%, rgb(37, 191, 252) 100%);
-      color: #fff;
+      font-family: 'space grotesk', 'noto sans', sans-serif;
+      background: linear-gradient(180deg, #fff 0%, whitesmoke 30%);
+      color: rgba(0, 0, 0, .5) !important;
       text-align: center;
       padding: 20px 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      border-top: 1px solid #dbe2e6;
     }
 
     .chrononav-footer .footer-top {
@@ -43,7 +54,7 @@
     .chrononav-footer .footer-links a {
       margin: 0 8px;
       font-weight: 500;
-      color: #fff;
+      color: rgba(0, 0, 0, .5) !important;
       text-decoration: none;
       transition: opacity 0.2s ease, text-decoration 0.2s ease;
     }
@@ -55,7 +66,7 @@
 
     .chrononav-footer .footer-bottom {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(0, 0, 0, .5) !important;
       display: flex;
       justify-content: center;
       gap: 16px;
@@ -64,7 +75,7 @@
     }
 
     .chrononav-footer .footer-bottom a {
-      color: rgba(255, 255, 255, 0.95);
+      color: rgba(0, 0, 0, .5) !important;
       text-decoration: none;
     }
 
@@ -83,7 +94,7 @@
 
     .chrononav-footer .footer-socials a {
       font-size: 20px;
-      color: #fff;
+      color: rgba(0, 0, 0, .5) !important;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
@@ -97,31 +108,32 @@
       .chrononav-footer {
         padding: 20px;
       }
+
       .chrononav-footer .footer-links {
         display: flex;
         flex-direction: column;
         gap: 6px;
       }
+
       .chrononav-footer .footer-bottom {
         flex-direction: column;
         gap: 4px;
       }
+
       .chrononav-footer .footer-socials {
         margin-top: 14px;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- ===== CHRONONAV FOOTER ===== -->
   <footer class="chrononav-footer">
     <div class="footer-top">
-      <img 
-        src="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png" 
-        alt="ChronoNav Logo" 
-        class="footer-logo"
-      />
+      <img src="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png"
+        alt="ChronoNav Logo" class="footer-logo" />
     </div>
 
     <div class="footer-links">
@@ -154,4 +166,5 @@
   </footer>
 
 </body>
+
 </html>

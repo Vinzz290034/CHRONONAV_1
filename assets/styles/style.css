@@ -334,8 +334,8 @@ ul.custom-list li:before {
 }
 /* Login Page Specific Styles */
 .auth-login-body {
-  font-family: Inter, "Noto Sans", sans-serif;
-  background: linear-gradient(rgba(62, 153, 244, 0.85), rgba(6, 168, 249, 0.85)), url("https://res.cloudinary.com/deua2yipj/image/upload/v1759258431/chrononav_bg_l38ntk.png");
+  background: linear-gradient(rgba(62, 153, 244, 0.85), rgba(6, 168, 249, 0.85)),
+    url("https://res.cloudinary.com/deua2yipj/image/upload/v1759258431/chrononav_bg_l38ntk.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -357,7 +357,20 @@ ul.custom-list li:before {
 .auth-login-card {
   background: rgba(255, 255, 255, 0.95);
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  backdrop-filter: blur(10px);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -627,8 +640,8 @@ ul.custom-list li:before {
 }
 /* Forgot Password Page Specific Styles */
 .auth-forgot-body {
-  font-family: Inter, "Noto Sans", sans-serif;
-  background: linear-gradient(rgba(62, 153, 244, 0.85), rgba(6, 168, 249, 0.85)), url("https://res.cloudinary.com/deua2yipj/image/upload/v1759258431/chrononav_bg_l38ntk.png");
+  background: linear-gradient(rgba(62, 153, 244, 0.85), rgba(6, 168, 249, 0.85)),
+    url("https://res.cloudinary.com/deua2yipj/image/upload/v1759258431/chrononav_bg_l38ntk.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -650,7 +663,7 @@ ul.custom-list li:before {
 .auth-forgot-card {
   background: rgba(255, 255, 255, 0.95);
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -903,8 +916,8 @@ ul.custom-list li:before {
 }
 /* Register Page Specific Styles */
 .auth-register-body {
-  font-family: Inter, "Noto Sans", sans-serif;
-  background: linear-gradient(rgba(62, 153, 244, 0.85), rgba(6, 168, 249, 0.85)), url("https://res.cloudinary.com/deua2yipj/image/upload/v1759258431/chrononav_bg_l38ntk.png");
+  background: linear-gradient(rgba(62, 153, 244, 0.85), rgba(6, 168, 249, 0.85)),
+    url("https://res.cloudinary.com/deua2yipj/image/upload/v1759258431/chrononav_bg_l38ntk.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -926,7 +939,7 @@ ul.custom-list li:before {
 .auth-register-card {
   background: rgba(255, 255, 255, 0.95);
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -1238,7 +1251,7 @@ ul.custom-list li:before {
 :root {
   --primary-color: #3e99f4;
   --secondary-color: #f0f2f5;
-  --accent-color: #2E78C6;
+  --accent-color: #2e78c6;
   --text-dark: #111418;
   --text-muted: #5f7d8c;
   --border-color: #dbe2e6;
@@ -1248,7 +1261,7 @@ ul.custom-list li:before {
 }
 
 body {
-  font-family: Inter, "Noto Sans", sans-serif;
+  font-family: "space grotesk", "noto sans", sans-serif;
   background-color: #fff;
   line-height: 1.6;
   scroll-behavior: smooth;
@@ -1324,7 +1337,11 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
   z-index: 1;
 }
 
@@ -1551,7 +1568,7 @@ section {
 
 /* Footer */
 footer {
-  border-top: 2px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
 }
 
 .footer-links a {
@@ -1609,7 +1626,7 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #2E78C6;
+  background-color: #2e78c6;
   /* blue on hover */
 }
 
@@ -1645,4 +1662,4 @@ footer {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

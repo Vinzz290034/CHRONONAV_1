@@ -13,7 +13,7 @@ if (isset($_SESSION['message'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email    = trim($_POST['email'] ?? ''); // Use trim() to remove whitespace
+    $email = trim($_POST['email'] ?? ''); // Use trim() to remove whitespace
     $password = $_POST['password'] ?? '';
 
     // Basic validation
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
-            $user   = $result->fetch_assoc();
+            $user = $result->fetch_assoc();
             $stmt->close(); // Close statement
 
             if ($user) {
@@ -46,10 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $user_id = $user['id'];
                             $user_name = $user['name'];
                             $user_role = $user['role'];
-                            
+
                             $action = ucfirst($user_role) . ' Login';
                             $details = "User '{$user_name}' logged in successfully.";
-                            
+
                             // NOTE: Changed 'audit_log' to 'audit_logs' for common convention.
                             // If your table is named 'audit_log' (singular), revert this change.
                             $stmt_log = $conn->prepare("INSERT INTO audit_logs (user_id, action, details) VALUES (?, ?, ?)");
@@ -65,11 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         // --- END OF NEW CODE ---
 
                         $_SESSION['user'] = [
-                            'id'            => $user['id'],
-                            'name'          => $user['name'],
-                            'email'         => $user['email'],
-                            'role'          => $user['role'],
-                            'profile_img'   => $user['profile_img']
+                            'id' => $user['id'],
+                            'name' => $user['name'],
+                            'email' => $user['email'],
+                            'role' => $user['role'],
+                            'profile_img' => $user['profile_img']
                         ];
                         $_SESSION['loggedin'] = true; // A general flag for being logged in
 
@@ -93,67 +93,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../assets/styles/style.css">
 
-    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
 
 </head>
+
+<style>
+    .auth-login-body {
+        font-family: "Space Grotesk", "Noto Sans", sans-serif;
+    }
+</style>
+
 <body class="auth-login-body">
     <div class="auth-login-container">
         <div class="auth-login-card">
             <div class="auth-logo-section">
                 <div class="auth-logo">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-                        <image href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png" x="0" y="0" width="100" height="100" />
+                        <image
+                            href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png"
+                            x="0" y="0" width="100" height="100" />
                     </svg>
                 </div>
                 <h1 class="auth-brand-name text-black-50">ChronoNav</h1>
                 <p class="auth-brand-tagline">Navigate your campus with ease</p>
             </div>
-            
+
             <?php if (!empty($error)): ?>
                 <div class="auth-alert"><?= htmlspecialchars($error) ?></div>
             <?php endif; ?>
-            
+
             <form method="POST" id="loginForm">
                 <div class="auth-form-group">
                     <label for="email" class="auth-form-label fw-bold text-black-50">Email address</label>
-                    <input type="email" class="auth-form-control" id="email" name="email" placeholder="Enter your email address" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+                    <input type="email" class="auth-form-control" id="email" name="email"
+                        placeholder="Enter your email address" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+                        required>
                 </div>
-                
+
                 <div class="auth-form-group">
                     <label for="password" class="auth-form-label fw-bolder text-black-50">Password</label>
                     <div class="auth-password-input">
-                        <input type="password" class="auth-form-control" id="password" name="password" placeholder="Enter your password" required>
+                        <input type="password" class="auth-form-control" id="password" name="password"
+                            placeholder="Enter your password" required>
                         <button type="button" class="auth-password-toggle" id="togglePassword">
                             <i class="far fa-eye"></i>
                         </button>
                     </div>
                 </div>
-                
+
                 <button type="submit" class="auth-btn-login">Log in</button>
             </form>
-            
+
             <div class="auth-links-section">
                 <a href="forgot_password.php" class="auth-link">Forgot password?</a>
                 <span class="auth-separator">•</span>
                 <a href="register.php" class="auth-link">Sign up</a>
             </div>
-            
+
             <p class="auth-terms-text">
-                By signing up or logging in, you consent to ChronoNav's 
-                <a href="#" class="auth-link" onclick="openAuthTerms()">Terms of Use</a> and 
+                By signing up or logging in, you consent to ChronoNav's
+                <a href="#" class="auth-link" onclick="openAuthTerms()">Terms of Use</a> and
                 <a href="#" class="auth-link" onclick="openAuthPrivacy()">Privacy Policy</a>.
             </p>
         </div>
-        
+
         <div class="auth-footer">
             <p>App Version 1.0.0 · © 2025 ChronoNav</p>
             <p><a href="#" class="auth-link">Contact us</a></p>
@@ -164,7 +187,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="auth-modal-content">
             <div class="auth-modal-header">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <div style="background-color: rgba(255, 255, 255, 0.2); border-radius: 8px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+                    <div
+                        style="background-color: rgba(255, 255, 255, 0.2); border-radius: 8px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <div>
@@ -310,12 +334,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-    
+
     <div class="auth-modal" id="authTermsModal">
         <div class="auth-modal-content">
             <div class="auth-modal-header">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <div style="background-color: rgba(255, 255, 255, 0.2); border-radius: 8px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+                    <div
+                        style="background-color: rgba(255, 255, 255, 0.2); border-radius: 8px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <div>
@@ -490,10 +515,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script>
         // Password visibility toggle
-        document.getElementById('togglePassword').addEventListener('click', function() {
+        document.getElementById('togglePassword').addEventListener('click', function () {
             const passwordInput = document.getElementById('password');
             const icon = this.querySelector('i');
-            
+
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 icon.classList.remove('fa-eye');
@@ -504,34 +529,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 icon.classList.add('fa-eye');
             }
         });
-        
+
         // Functions for modals
         function openAuthPrivacy() {
             document.getElementById('authPrivacyModal').style.display = 'flex';
             event.preventDefault();
         }
-        
+
         function closeAuthPrivacy() {
             document.getElementById('authPrivacyModal').style.display = 'none';
         }
-        
+
         function openAuthTerms() {
             document.getElementById('authTermsModal').style.display = 'flex';
             event.preventDefault();
         }
-        
+
         function closeAuthTerms() {
             document.getElementById('authTermsModal').style.display = 'none';
         }
-        
+
         // Close modals when clicking outside
-        document.getElementById('authPrivacyModal').addEventListener('click', function(e) {
+        document.getElementById('authPrivacyModal').addEventListener('click', function (e) {
             if (e.target === this) closeAuthPrivacy();
         });
-        
-        document.getElementById('authTermsModal').addEventListener('click', function(e) {
+
+        document.getElementById('authTermsModal').addEventListener('click', function (e) {
             if (e.target === this) closeAuthTerms();
         });
     </script>
 </body>
+
 </html>
