@@ -138,8 +138,8 @@
 
     <div class="footer-links">
       <span>CHRONONAV © 2025</span>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
+      <a class="text-muted text-decoration-none" href="../../includes/semantics/privacy.html">Privacy Policy</a>
+      <a class="text-muted text-decoration-none" href="../../includes/semantics/terms.html">Terms of Service</a>
     </div>
 
     <div class="footer-bottom">
@@ -163,8 +163,6 @@
         <i class="fab fa-github"></i>
       </a>
     </div>
-  </footer>
-
 </body>
 
 </html>

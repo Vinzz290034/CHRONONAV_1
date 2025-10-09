@@ -34,7 +34,30 @@ require_once $header_path;
 <link rel="stylesheet" href="../../assets/css/user_css/dashboards.css">
 
 <style>
+    .main-dashboard-content {
+        margin-left: 20%;
+        padding: 20px 35px;
+    }
+
+    .main-dashboard-content-wrapper {
+        font-family: "Space Grotesk", "Noto Sans", sans-serif;
+        min-height: 100vh;
+        padding-top: 20px;
+    }
+
     /* Custom styles to match the exact design */
+    .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: rgb(231, 231, 231);
+        border-radius: 0.75rem;
+        padding: 0px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+
     .search-bar-custom {
         height: 48px;
         background-color: #eaedf1;
@@ -145,6 +168,30 @@ require_once $header_path;
         color: #101518;
         line-height: 1.2;
     }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #ffffff;
+        /* white track */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #737373;
+        /* gray thumb */
+        border-radius: 6px;
+        border: 3px solid #ffffff;
+        /* padding effect with white border */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #2e78c6;
+        /* blue on hover */
+    }
 </style>
 
 <!-- Favicon -->
@@ -174,7 +221,7 @@ require_once $header_path;
             </div>
 
             <!-- SEARCH BAR WITH AJAX - Updated with proper styling -->
-            <div class="search-bar position-relative mb-4 px-3">
+            <div class="search-bar position-relative mb-4">
                 <div class="input-group search-bar-custom">
                     <span class="input-group-text">
                         <i class="fas fa-search"></i>
@@ -187,22 +234,24 @@ require_once $header_path;
             </div>
 
             <!-- Welcome Card - Keep original structure but update styling -->
-            <div class="card p-4 mb-4 mx-3 border-0 shadow-sm">
-                <p class="mb-3">This is your personal space in ChronoNav. Keep an eye on your upcoming schedules and
-                    reminders.</p>
+            <div class="card p-4 mb-4 border-0">
+                <p class="text-dark mb-3">This is your personal space in ChronoNav. Keep an eye on your upcoming
+                    schedules and reminders.</p>
                 <div class="onboarding-controls mt-4 p-3 border rounded">
-                    <h5 class="fw-bold">Onboarding & Quick Guides</h5>
+                    <h5 class="text-dark fw-bold mb-3">Onboarding & Quick Guides</h5>
                     <p class="text-muted mb-3">Learn more about using ChronoNav, view helpful tips, or restart your
                         guided tour.</p>
-                    <button class="btn btn-primary me-2 mb-2" id="viewTourBtn">
-                        <i class="fas fa-route me-1"></i> View Step-by-Step Tour
-                    </button>
-                    <button class="btn btn-info me-2 mb-2" id="viewTipsBtn">
-                        <i class="fas fa-lightbulb me-1"></i> View Tips
-                    </button>
-                    <button class="btn btn-secondary mb-2" id="restartOnboardingBtn">
-                        <i class="fas fa-sync-alt me-1"></i> Restart Onboarding
-                    </button>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button class="btn btn-custom-blue" id="viewTourBtn">
+                            <i class="fas fa-route me-1"></i> View Tour
+                        </button>
+                        <button class="btn btn-custom-primary" id="viewTipsBtn">
+                            <i class="fas fa-lightbulb me-1"></i> View Tips
+                        </button>
+                        <button class="btn btn-custom-outline" id="restartOnboardingBtn">
+                            <i class="fas fa-sync-alt me-1"></i> Restart Onboarding
+                        </button>
+                    </div>
                 </div>
                 <!-- AJAX container for onboarding tips -->
                 <div id="onboardingContent" class="mt-3"></div>
@@ -210,7 +259,7 @@ require_once $header_path;
 
             <!-- Study Load Card - Updated with proper Bootstrap grid -->
             <div class="dashboard-widgets-grid mb-4 px-3">
-                <div class="card study-load-card-custom p-0">
+                <div class="card study-load-card-custom p-0 w-100">
                     <div class="row g-0">
                         <div class="col-12 col-xl-8">
                             <div class="study-load-image-custom"

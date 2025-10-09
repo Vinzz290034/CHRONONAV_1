@@ -75,10 +75,6 @@ require_once $header_path;
 
 ?>
 
-
-
-<link rel="stylesheet" href="../../assets/css/user_css/user_view_profiles.css">
-
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -104,6 +100,211 @@ if (isset($user['role'])) {
 }
 require_once $sidenav_path;
 ?>
+
+<style>
+    /* Custom styles to match the original design */
+    .layout-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-content {
+        max-width: 80%;
+        flex: 1;
+    }
+
+    .nav-item {
+        cursor: pointer;
+    }
+
+    .nav-item.active {
+        background-color: #f0f2f5;
+    }
+
+    .nav-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    .profile-image {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .btn.btn-custom-secondary {
+        background-color: #f0f2f5;
+        color: #111418;
+        font-weight: bold;
+        border: none;
+        border-radius: 0.75rem;
+    }
+
+    .profile-detail-row {
+        border-top: 1px solid #dbe0e6;
+        padding: 1.25rem 0;
+    }
+
+    .preference-item {
+        min-height: 56px;
+        padding: 0 1rem;
+    }
+
+    .toggle-switch {
+        position: relative;
+        display: inline-flex;
+        height: 31px;
+        width: 51px;
+        cursor: pointer;
+        align-items: center;
+        border-radius: 9999px;
+        background-color: #f0f2f5;
+        padding: 2px;
+    }
+
+    .toggle-switch.checked {
+        background-color: #1776f1;
+        justify-content: flex-end;
+    }
+
+    .toggle-knob {
+        height: 100%;
+        width: 27px;
+        border-radius: 9999px;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;
+    }
+
+    .toggle-input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .account-item {
+        min-height: 56px;
+        padding: 0 1rem;
+        cursor: pointer;
+    }
+
+    .account-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 100%;
+            min-height: auto;
+        }
+    }
+
+    /* Alert styles */
+    .alert {
+        border-radius: 0.75rem;
+        border: none;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .alert-warning {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    .alert-info {
+        background-color: #d1ecf1;
+        color: #0c5460;
+    }
+
+    /* Edit Profile Modal */
+    .form-control {
+        font-family: "Space Grotesk", "Noto Sans", sans-serif;
+        font-weight: 500;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 0 2px rgba(23, 118, 241, 0.2);
+        border-color: #1776f1;
+    }
+
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .rounded-3 {
+        border-radius: 0.75rem !important;
+    }
+
+    /* Feedback Modal */
+    .form-select,
+    .form-control,
+    textarea.form-control {
+        font-family: "Space Grotesk", "Noto Sans", sans-serif;
+        font-weight: 500;
+    }
+
+    .form-select:focus,
+    .form-control:focus,
+    textarea.form-control:focus {
+        box-shadow: 0 0 0 2px rgba(23, 118, 241, 0.2);
+        border-color: #1776f1;
+        background-color: #fff;
+    }
+
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+
+    .rounded-3 {
+        border-radius: 0.75rem !important;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #ffffff;
+        /* white track */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #737373;
+        /* gray thumb */
+        border-radius: 6px;
+        border: 3px solid #ffffff;
+        /* padding effect with white border */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #2e78c6;
+        /* blue on hover */
+    }
+</style>
 
 <div class="layout-container">
     <style>

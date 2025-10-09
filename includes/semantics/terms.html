@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - ChronoNav</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
+
+    <style>
+        body {
+            font-family: "Space Grotesk", "Noto Sans", sans-serif;
+            background-color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Custom styles to match the original design */
+        .layout-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            max-width: 960px;
+            flex: 1;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .terms-header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .terms-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #28a745;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: #111418;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terms-item {
+            background: #f8f9fa;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #28a745;
+            transition: all 0.3s ease;
+        }
+
+        .terms-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .warning-item {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .danger-item {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .badge-custom {
+            background: #28a745;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .acceptance-box {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+            /* white track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #737373;
+            /* gray thumb */
+            border-radius: 6px;
+            border: 3px solid #ffffff;
+            /* padding effect with white border */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #2e78c6;
+            /* blue on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 0 1rem;
+            }
+
+            .terms-header {
+                padding: 2rem 1rem;
+            }
+
+            .terms-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout-container">
+        <div class="d-flex flex-column flex-md-row gap-3 px-4 px-md-5 py-4 flex-grow-1 justify-content-center">
+
+            <!-- Main Content -->
+            <div class="main-content d-flex flex-column">
+                <!-- Header -->
+                <div class="terms-header">
+                    <div class="icon-circle">
+                        <i class="fas fa-file-contract fa-lg"></i>
+                    </div>
+                    <h1 class="fw-bold mb-3">📜 Terms of Service – CHRONONAV</h1>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <span class="badge-custom">Effective Date: [Insert Date]</span>
+                        <span class="badge-custom">Last Updated: [Insert Date]</span>
+                    </div>
+                </div>
+
+                <!-- Introduction -->
+                <div class="terms-section">
+                    <p class="lead mb-0">
+                        Welcome to <strong>CHRONONAV</strong>! These Terms of Service ("Terms") govern your use of the
+                        CHRONONAV mobile and web application. By downloading, accessing, or using CHRONONAV, you agree
+                        to comply with these Terms. Please read them carefully.
+                    </p>
+                </div>
+
+                <!-- Acceptance Box -->
+                <div class="acceptance-box">
+                    <i class="fas fa-handshake fa-2x text-success mb-3"></i>
+                    <h4 class="text-success mb-3">By using CHRONONAV, you agree to these Terms</h4>
+                    <p class="mb-0">Your continued use of the service constitutes acceptance of these terms and
+                        conditions.</p>
+                </div>
+
+                <!-- Acceptance of Terms -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-check-circle text-success"></i>
+                        📌 1. Acceptance of Terms
+                    </h3>
+                    <p>By using CHRONONAV, you confirm that you:</p>
+
+                    <div class="terms-item">
+                        <i class="fas fa-user-check text-success me-2"></i>
+                        Are at least 13 years of age (or the minimum required by your institution).
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-file-signature text-success me-2"></i>
+                        Agree to follow these Terms and our Privacy Policy.
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-graduation-cap text-success me-2"></i>
+                        Use CHRONONAV only for lawful academic and personal purposes.
+                    </div>
+                </div>
+
+                <!-- Description of Service -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-list-alt text-success"></i>
+                        📌 2. Description of Service
+                    </h3>
+                    <p>CHRONONAV provides:</p>
+
+                    <div class="terms-item">
+                        <i class="fas fa-file-upload text-success me-2"></i>
+                        OCR-based schedule import from official study loads.
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-calendar-alt text-success me-2"></i>
+                        Personalized timetable management.
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-map-marked-alt text-success me-2"></i>
+                        Campus navigation and turn-by-turn directions.
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-bell text-success me-2"></i>
+                        Class reminders and alerts.
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-wifi text-success me-2"></i>
+                        Limited offline navigation functionality.
+                    </div>
+                </div>
+
+                <!-- User Responsibilities -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-user-shield text-success"></i>
+                        📌 3. User Responsibilities
+                    </h3>
+                    <p>You agree not to:</p>
+
+                    <div class="terms-item danger-item">
+                        <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                        Upload false or misleading information.
+                    </div>
+
+                    <div class="terms-item danger-item">
+                        <i class="fas fa-key text-danger me-2"></i>
+                        Share your account credentials with others.
+                    </div>
+
+                    <div class="terms-item danger-item">
+                        <i class="fas fa-ban text-danger me-2"></i>
+                        Use CHRONONAV to engage in cheating, harassment, or illegal activities.
+                    </div>
+
+                    <div class="terms-item danger-item">
+                        <i class="fas fa-lock text-danger me-2"></i>
+                        Tamper with or attempt to hack the system.
+                    </div>
+
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-mobile-alt me-2"></i>
+                        You are responsible for ensuring your device is compatible with the app.
+                    </div>
+                </div>
+
+                <!-- Data and Privacy -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-database text-success"></i>
+                        📌 4. Data and Privacy
+                    </h3>
+                    <div class="terms-item">
+                        <i class="fas fa-shield-alt text-success me-2"></i>
+                        Our use of your data is described in the <strong>Privacy Policy</strong>. By using CHRONONAV,
+                        you consent to the collection and use of your information as outlined there.
+                    </div>
+                </div>
+
+                <!-- Accuracy of Information -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-crosshairs text-success"></i>
+                        📌 5. Accuracy of Information
+                    </h3>
+                    <div class="terms-item warning-item">
+                        <p class="mb-2">While CHRONONAV strives to provide accurate schedules and navigation, we do not
+                            guarantee that:</p>
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-exclamation-circle text-warning me-2"></i>
+                        All schedules imported via OCR will be 100% error-free.
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-route text-warning me-2"></i>
+                        Campus navigation routes will always reflect real-time construction, closures, or events.
+                    </div>
+
+                    <div class="alert alert-warning mt-3">
+                        <i class="fas fa-university me-2"></i>
+                        Users should verify critical details with their school's official sources.
+                    </div>
+                </div>
+
+                <!-- Intellectual Property -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-copyright text-success"></i>
+                        📌 6. Intellectual Property
+                    </h3>
+                    <div class="terms-item">
+                        <i class="fas fa-gem text-success me-2"></i>
+                        All rights, trademarks, and content within CHRONONAV belong to the development team and/or the
+                        affiliated university. You may not copy, modify, or redistribute CHRONONAV without permission.
+                    </div>
+                </div>
+
+                <!-- Limitation of Liability -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-balance-scale text-success"></i>
+                        📌 7. Limitation of Liability
+                    </h3>
+                    <div class="terms-item warning-item">
+                        <p class="mb-2">CHRONONAV is provided <strong>"as is."</strong> We are not responsible for:</p>
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-clock text-warning me-2"></i>
+                        Missed classes, delays, or wrong directions caused by inaccurate data.
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                        Damages caused by reliance on the app in critical situations.
+                    </div>
+
+                    <div class="alert alert-danger mt-3">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Your use of the app is at your own risk.
+                    </div>
+                </div>
+
+                <!-- Service Modifications -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-cogs text-success"></i>
+                        📌 8. Service Modifications
+                    </h3>
+                    <div class="terms-item">
+                        <i class="fas fa-sync-alt text-success me-2"></i>
+                        We reserve the right to update, modify, or discontinue CHRONONAV at any time, with or without
+                        notice.
+                    </div>
+                </div>
+
+                <!-- Termination -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-power-off text-success"></i>
+                        📌 9. Termination
+                    </h3>
+                    <div class="terms-item">
+                        <i class="fas fa-user-slash text-success me-2"></i>
+                        We may suspend or terminate your access if you violate these Terms.
+                    </div>
+
+                    <div class="terms-item">
+                        <i class="fas fa-trash-alt text-success me-2"></i>
+                        You may also delete your account at any time.
+                    </div>
+                </div>
+
+                <!-- Governing Law -->
+                <div class="terms-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-gavel text-success"></i>
+                        📌 10. Governing Law
+                    </h3>
+                    <div class="terms-item">
+                        <i class="fas fa-balance-scale-left text-success me-2"></i>
+                        These Terms shall be governed by the laws of [Insert Country/Region/University Jurisdiction].
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="contact-info">
+                    <h3 class="section-title justify-content-center">
+                        <i class="fas fa-envelope text-success"></i>
+                        📌 11. Contact Us
+                    </h3>
+                    <p>If you have questions about these Terms, please contact us:</p>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="terms-item text-center">
+                                <i class="fas fa-envelope fa-2x text-success mb-3"></i>
+                                <h6>Email</h6>
+                                <p class="mb-0">chrononav.support@[yourdomain].com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="terms-item text-center">
+                                <i class="fas fa-map-marker-alt fa-2x text-success mb-3"></i>
+                                <h6>Address</h6>
+                                <p class="mb-0">[Insert University/Organization Name, Campus Address]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong>Complete Legal Foundation:</strong> With this ToS + the Privacy Policy, you'll have
+                            the <strong>two essential legal pages</strong> your panel (and potential users) will expect.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -365,6 +365,30 @@ require_once $header_path;
             margin-left: -1px;
             background-color: transparent;
         }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+            /* white track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #737373;
+            /* gray thumb */
+            border-radius: 6px;
+            border: 3px solid #ffffff;
+            /* padding effect with white border */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #2e78c6;
+            /* blue on hover */
+        }
     </style>
 </head>
 
@@ -462,13 +486,13 @@ require_once $header_path;
             // Prepare events for FullCalendar from PHP data
             const calendarEvents = [
                 <?php foreach ($all_daily_events as $event): ?>
-                                                                                                                                                                                                        {
+                                                                                                                                                                                                            {
                         title: '<?= addslashes($event['title']) ?>',
                         start: '<?= $selected_date ?>T<?= $event['time'] ?>',
                         <?php if ($event['type'] === 'schedule' && !empty($event['end_time'])): ?>
-                                                                                                                                                                                                                                                                                                                                                                                                    end: '<?= $selected_date ?>T<?= $event['end_time'] ?>',
+                                                                                                                                                                                                                                                                                                                                                                                                            end: '<?= $selected_date ?>T<?= $event['end_time'] ?>',
                         <?php endif; ?>
-                                                                                                                                                                                                            description: '<?= addslashes($event['type'] === 'schedule' ? $event['location'] : $event['description']) ?>',
+                                                                                                                                                                                                                description: '<?= addslashes($event['type'] === 'schedule' ? $event['location'] : $event['description']) ?>',
                         color: '<?= $event['type'] === 'schedule' ? '   ' : '#ffc107' ?>'
                     },
                 <?php endforeach; ?>
