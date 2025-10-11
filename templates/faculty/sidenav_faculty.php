@@ -14,7 +14,7 @@ if (!isset($current_page)) {
 }
 ?>
 
-<link rel="stylesheet" href="../../assets/css/other_css/sidenav_users.css">
+<!-- <link rel="stylesheet" href="../../assets/css/other_css/sidenav_users.css"> -->
 
 <style>
     /* Sidenav General Styles */
