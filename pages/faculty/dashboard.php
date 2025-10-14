@@ -52,7 +52,6 @@ require_once $header_path;
     .main-dashboard-content-wrapper {
         font-family: "Space Grotesk", "Noto Sans", sans-serif;
         min-height: 100vh;
-        padding-top: 20px;
         width: 100%;
     }
 

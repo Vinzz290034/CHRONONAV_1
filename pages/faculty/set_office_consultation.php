@@ -244,10 +244,10 @@ require_once '../../templates/faculty/header_faculty.php';
             <div class="row justify-content-center">
                 <!-- Main content -->
                 <div class="col-12">
-                    <div class="layout-content-container">
+                    <div class="layout-content-container px-4">
                         <!-- Page header -->
-                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 p-3">
-                            <h1 class="page-title m-0">Set Office & Consultation Hours</h1>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 p-2">
+                            <h1 class="page-title m-0 fs-3">Set Office & Consultation Hours</h1>
                         </div>
 
                         <?php if (!empty($message)): ?>
