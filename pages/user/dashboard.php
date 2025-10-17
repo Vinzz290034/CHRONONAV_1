@@ -169,6 +169,18 @@ require_once $header_path;
         line-height: 1.2;
     }
 
+    .onboarding-controls .btn-custom-blue,
+    .onboarding-controls .btn-custom-primary,
+    .onboarding-controls .btn-custom-outline {
+        background: #E8EDF2;
+    }
+
+    .onboarding-controls .btn-custom-blue:hover,
+    .onboarding-controls .btn-custom-primary:hover,
+    .onboarding-controls .btn-custom-outline:hover {
+        color: #2e78c6;
+    }
+
     /* Scrollbar Styling */
     ::-webkit-scrollbar {
         width: 12px;
@@ -242,13 +254,13 @@ require_once $header_path;
                     <p class="text-muted mb-3">Learn more about using ChronoNav, view helpful tips, or restart your
                         guided tour.</p>
                     <div class="d-flex flex-wrap gap-2">
-                        <button class="btn btn-custom-blue" id="viewTourBtn">
+                        <button class="btn btn-custom-blue rounded-pill" id="viewTourBtn">
                             <i class="fas fa-route me-1"></i> View Tour
                         </button>
-                        <button class="btn btn-custom-primary" id="viewTipsBtn">
+                        <button class="btn btn-custom-primary rounded-pill" id="viewTipsBtn">
                             <i class="fas fa-lightbulb me-1"></i> View Tips
                         </button>
-                        <button class="btn btn-custom-outline" id="restartOnboardingBtn">
+                        <button class="btn btn-custom-outline rounded-pill" id="restartOnboardingBtn">
                             <i class="fas fa-sync-alt me-1"></i> Restart Onboarding
                         </button>
                     </div>
@@ -305,7 +317,8 @@ require_once $header_path;
                             <p class="text-muted small mb-0 text-truncate-2">Room 201 · 10:00 AM - 11:00 AM</p>
                         </div>
                     </div>
-                    <button class="btn btn-custom-outline ms-3 flex-shrink-0">
+                    <button
+                        class="btn btn-custom-outline ms-3 flex-shrink-0 btn-outline-secondary ms-3 flex-shrink-0 rounded-pill">
                         <span>View</span>
                     </button>
                 </div>
@@ -321,7 +334,8 @@ require_once $header_path;
                             <p class="text-muted small mb-0 text-truncate-2">Room 305 · 11:30 AM - 12:30 PM</p>
                         </div>
                     </div>
-                    <button class="btn btn-custom-outline ms-3 flex-shrink-0">
+                    <button
+                        class="btn btn-custom-outline ms-3 flex-shrink-0 btn-outline-secondary ms-3 flex-shrink-0 rounded-pill">
                         <span>View</span>
                     </button>
                 </div>
@@ -337,7 +351,8 @@ require_once $header_path;
                             <p class="text-muted small mb-0 text-truncate-2">Room 102 · 1:00 PM - 2:00 PM</p>
                         </div>
                     </div>
-                    <button class="btn btn-custom-outline ms-3 flex-shrink-0">
+                    <button
+                        class="btn btn-custom-outline ms-3 flex-shrink-0 btn-outline-secondary ms-3 flex-shrink-0 rounded-pill">
                         <span>View</span>
                     </button>
                 </div>

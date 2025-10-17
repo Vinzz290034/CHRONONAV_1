@@ -183,6 +183,12 @@ require_once $header_path;
         background-color: #e9f5ff;
     }
 
+    .onboarding-controls .btn-custom-blue,
+    .onboarding-controls .btn-custom-primary,
+    .onboarding-controls .btn-custom-outline {
+        background: #E8EDF2;
+    }
+
     /* Scrollbar Styling */
     ::-webkit-scrollbar {
         width: 12px;
@@ -222,7 +228,7 @@ require_once $header_path;
     }
 
     .profile.btn.btn-custom-outline {
-        border-color: rgba(115, 115, 115, 0.5);
+        background: #2e77c67a;
     }
 
     .profile.btn.btn-custom-outline:hover {
@@ -312,13 +318,13 @@ require_once $header_path;
                     <p class="text-muted mb-3">Learn more about using ChronoNav, view helpful tips, or restart your
                         guided tour.</p>
                     <div class="d-flex flex-wrap gap-2">
-                        <button class="btn btn-custom-blue" id="viewTourBtn">
+                        <button class="btn btn-custom-blue rounded-pill fw-medium" id="viewTourBtn">
                             <i class="fas fa-route me-1"></i> View Tour
                         </button>
-                        <button class="btn btn-custom-primary" id="viewTipsBtn">
+                        <button class="btn btn-custom-primary rounded-pill fw-medium" id="viewTipsBtn">
                             <i class="fas fa-lightbulb me-1"></i> View Tips
                         </button>
-                        <button class="btn btn-custom-outline" id="restartOnboardingBtn">
+                        <button class="btn btn-custom-outline rounded-pill fw-medium" id="restartOnboardingBtn">
                             <i class="fas fa-sync-alt me-1"></i> Restart Onboarding
                         </button>
                     </div>
@@ -334,7 +340,7 @@ require_once $header_path;
 
             <div class="faculty-links px-3">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
+                    <li class="list-group-item bg-info-subtle">
                         <a href="my_classes.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 viewBox="0 0 256 256">
@@ -348,7 +354,7 @@ require_once $header_path;
                             View all your assigned classes, including rooms, days, and times.
                         </small>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item bg-info-subtle">
                         <a href="set_office_consultation.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 viewBox="0 0 256 256">
@@ -362,7 +368,7 @@ require_once $header_path;
                             Request office hours for admin approval and manage your general consultation slots.
                         </small>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item bg-info-subtle">
                         <a href="calendar.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 viewBox="0 0 256 256">
@@ -451,9 +457,9 @@ require_once $header_path;
                                 Role: <strong
                                     class="text-dark"><?= ucfirst(htmlspecialchars($user['role'] ?? 'N/A')) ?></strong>
                             </p>
-                            <a href="view_profile.php" class="profile btn btn-custom-outline">
+                            <a href="view_profile.php" class="profile btn btn-custom-outline rounded-pill">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="me-1" viewBox="0 0 256 256">
+                                    class="me-1 mb-1" viewBox="0 0 256 256">
                                     <path
                                         d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z">
                                     </path>
