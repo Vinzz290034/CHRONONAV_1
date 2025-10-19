@@ -34,7 +34,7 @@ $form_action_text = 'Publish Announcement';
 
 // --- Handle Announcement Deletion ---
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $announcement_id = (int)$_GET['id'];
+    $announcement_id = (int) $_GET['id'];
     $deleted_title = 'N/A'; // Default value in case we can't fetch it
 
     // First, get the image path and title to delete the file from the server and log the action
@@ -80,7 +80,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
 
 // --- Handle Announcement Editing (Load Data into Form) ---
 if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $announcement_id_to_edit = (int)$_GET['id'];
+    $announcement_id_to_edit = (int) $_GET['id'];
     $form_action_text = 'Update Announcement';
 
     // Fetch existing announcement data
@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // It's an UPDATE operation
             $sql = "UPDATE announcements SET title = ?, content = ?, updated_at = NOW() " . ($has_new_image ? ", image_path = ?" : "") . " WHERE id = ?";
             $stmt = $conn->prepare($sql);
-            
+
             if ($stmt) {
                 if ($has_new_image) {
                     $stmt->bind_param("sssi", $title, $content, $image_path, $submitted_announcement_id);
@@ -233,60 +233,454 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message']);
     unset($_SESSION['message_type']);
 }
+
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-<link rel="stylesheet" href="../../assets/css/admin_css/add_announcement.css">
+<!-- Font Family -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<!-- important------------------------------------------------------------------------------------------------ -->
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon"
+    href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
+</style>
+
+<style>
+    /* Enhanced Announcements Styles */
+    body {
+        font-family: "Space Grotesk", "Noto Sans", sans-serif;
+        background-color: #f8fafb;
+        min-height: 100vh;
+    }
+
+    .main-content-wrapper {
+        background-color: #f8fafb;
+        min-height: 100vh;
+    }
+
+    .main-dashboard-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .announcement-board-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e8edf3;
+    }
+
+    .announcement-board-header h1 {
+        color: #0e151b;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        margin: 0;
+    }
+
+    /* Alert Styling */
+    .alert {
+        border-radius: 0.5rem;
+        border: none;
+        padding: 1rem 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .alert-success {
+        background-color: #e8f5e9;
+        color: #078838;
+        border-left: 4px solid #078838;
+    }
+
+    .alert-danger {
+        background-color: #ffebee;
+        color: #e73908;
+        border-left: 4px solid #e73908;
+    }
+
+    /* Section Styling */
+    .announcement-section {
+        border-radius: 0.75rem;
+        padding: 2rem;
+        margin-bottom: 2.5rem;
+        transition: box-shadow 0.2s ease;
+    }
+
+    .announcement-section:hover {
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .announcement-section h2 {
+        color: #0e151b;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #e8edf3;
+    }
+
+    .announcement-section h2 i {
+        margin-right: 0.75rem;
+        color: #507495;
+        font-size: 1.25rem;
+    }
+
+    /* Form Styling */
+    .form-group {
+        margin-bottom: 1.75rem;
+    }
+
+    .form-group label {
+        color: #0e151b;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+
+    .form-control {
+        background-color: #f8fafb;
+        border: 1px solid #d1dce6;
+        color: #0e151b;
+        height: 3.5rem;
+        padding: 1rem 1.25rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        width: 50%;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 0 3px rgba(80, 116, 149, 0.15);
+        border-color: #507495;
+        background-color: #fff;
+    }
+
+    .form-control::placeholder {
+        color: #8fa3b8;
+        font-weight: 400;
+    }
+
+    textarea.form-control {
+        min-height: 12rem;
+        resize: vertical;
+        line-height: 1.6;
+    }
+
+    .form-control-file {
+        padding: 1rem;
+        border: 2px dashed #d1dce6;
+        border-radius: 0.5rem;
+        background-color: #f8fafb;
+        transition: all 0.2s ease;
+        width: 100%;
+    }
+
+    .form-control-file:hover {
+        border-color: #507495;
+        background-color: #e8edf3;
+    }
+
+    /* Button Styling */
+    .btn {
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-secondary {
+        background-color: #e8edf3;
+        color: #0e151b;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+        background-color: #d1dce6;
+        color: #0e151b;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background-color: #1d7dd7;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .btn-primary:hover {
+        background-color: #1669b8;
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(29, 125, 215, 0.3);
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #0e151b;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        color: #0e151b;
+        transform: translateY(-1px);
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    /* Announcement Item Styling */
+    .announcement-item {
+        border-radius: 0.75rem;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .announcement-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(135deg, #1d7dd7, #507495);
+    }
+
+    .announcement-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .announcement-meta {
+        margin-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .badge {
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+    }
+
+    .badge-info {
+        background-color: #e3f2fd;
+        color: #1976d2;
+        border: 1px solid #bbdefb;
+    }
+
+    .badge-secondary {
+        background-color: #e8edf3;
+        color: #507495;
+        border: 1px solid #d1dce6;
+    }
+
+    .announcement-item h3 {
+        color: #0e151b;
+        font-size: 1.375rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+
+    .announcement-content {
+        color: #2d3748;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .announcement-content img {
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .announcement-actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e8edf3;
+    }
+
+    /* Image Preview */
+    .mt-2 img {
+        border-radius: 0.5rem;
+        border: 2px solid #e8edf3;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s ease;
+    }
+
+    .mt-2 img:hover {
+        transform: scale(1.02);
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #737373;
+        border-radius: 6px;
+        border: 3px solid #ffffff;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #2e78c6;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .main-dashboard-content {
+            padding: 1.5rem 1rem;
+        }
+
+        .announcement-board-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .announcement-board-header h1 {
+            font-size: 1.75rem;
+        }
+
+        .announcement-section {
+            padding: 1.5rem;
+        }
+
+        .announcement-item {
+            padding: 1.5rem;
+        }
+
+        .announcement-actions {
+            flex-direction: column;
+        }
+
+        .announcement-actions .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .announcement-meta {
+            flex-direction: column;
+        }
+    }
+</style>
 
 <div class="main-content-wrapper">
     <div class="main-dashboard-content announcement-board-page">
         <div class="announcement-board-header">
-            <h1>Campus Announcement Board</h1>
+            <h1 class="fs-3">Campus Announcement Board</h1>
             <a href="../admin/dashboard.php" class="btn btn-secondary btn-back">
-                <i class="fas fa-arrow-left"></i> Back to Home
+                <i class="fas fa-arrow-left me-2"></i> Back to Home
             </a>
         </div>
 
         <?php if ($message): ?>
             <div class="alert alert-<?= htmlspecialchars($message_type) ?> alert-dismissible fade show" role="alert">
-                <?= htmlspecialchars($message) ?>
+                <div class="d-flex align-items-center">
+                    <i
+                        class="fas <?= $message_type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle' ?> me-2"></i>
+                    <span><?= htmlspecialchars($message) ?></span>
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif; ?>
 
         <?php if ($user_role === 'admin'): ?>
-        <div class="announcement-section create-post-section">
-            <h2><i class="fas fa-bullhorn"></i> <?= ($announcement_id_to_edit) ? 'Edit Announcement' : 'Create New Announcement' ?></h2>
-            <form action="announcements.php" method="POST" class="announcement-form" enctype="multipart/form-data">
-                <?php if ($announcement_id_to_edit): ?>
-                    <input type="hidden" name="announcement_id" value="<?= htmlspecialchars($announcement_id_to_edit) ?>">
-                <?php endif; ?>
-
-                <div class="form-group">
-                    <label for="announcement_title">Title:</label>
-                    <input type="text" id="announcement_title" name="announcement_title" class="form-control" placeholder="e.g., Important Schedule Change" value="<?= htmlspecialchars($announcement_title_form) ?>" required>
-                </div>
-                <div class="form-group">
-                    <label for="announcement_content">Content:</label>
-                    <textarea id="announcement_content" name="announcement_content" class="form-control" rows="8" placeholder="Write your announcement details here..." required><?= htmlspecialchars($announcement_content_form) ?></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="announcement_image">Upload Image (Optional):</label>
-                    <input type="file" id="announcement_image" name="announcement_image" class="form-control-file" accept="image/*">
-                    <?php if ($current_image_path): ?>
-                        <div class="mt-2">
-                            <p>Current Image:</p>
-                            <img src="../../<?= htmlspecialchars($current_image_path) ?>" alt="Current Announcement Image" style="max-width: 200px; height: auto;">
-                        </div>
+            <div class="announcement-section create-post-section">
+                <h2><i class="fas fa-bullhorn"></i>
+                    <?= ($announcement_id_to_edit) ? 'Edit Announcement' : 'Create New Announcement' ?></h2>
+                <form action="announcements.php" method="POST" class="announcement-form" enctype="multipart/form-data">
+                    <?php if ($announcement_id_to_edit): ?>
+                        <input type="hidden" name="announcement_id" value="<?= htmlspecialchars($announcement_id_to_edit) ?>">
                     <?php endif; ?>
-                </div>
-                <button type="submit" name="submit_announcement" class="btn btn-primary"><?= $form_action_text ?></button>
-                <?php if ($announcement_id_to_edit): ?>
-                    <a href="announcements.php" class="btn btn-secondary">Cancel Edit</a>
-                <?php endif; ?>
-            </form>
-        </div>
+
+                    <div class="form-group">
+                        <label for="announcement_title" class="form-label">Title</label>
+                        <input type="text" id="announcement_title" name="announcement_title" class="form-control"
+                            placeholder="e.g., Important Schedule Change"
+                            value="<?= htmlspecialchars($announcement_title_form) ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="announcement_content" class="form-label">Content</label>
+                        <textarea id="announcement_content" name="announcement_content" class="form-control" rows="8"
+                            placeholder="Write your announcement details here..."
+                            required><?= htmlspecialchars($announcement_content_form) ?></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="announcement_image" class="form-label">Upload Image (Optional)</label>
+                        <input type="file" id="announcement_image" name="announcement_image" class="form-control-file"
+                            accept="image/*">
+                        <?php if ($current_image_path): ?>
+                            <div class="mt-3">
+                                <p class="text-muted mb-2">Current Image:</p>
+                                <img src="../../<?= htmlspecialchars($current_image_path) ?>" alt="Current Announcement Image"
+                                    class="img-thumbnail" style="max-width: 200px; height: auto;">
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="d-flex gap-3 flex-wrap">
+                        <button type="submit" name="submit_announcement" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i><?= $form_action_text ?>
+                        </button>
+                        <?php if ($announcement_id_to_edit): ?>
+                            <a href="announcements.php" class="btn btn-secondary">
+                                <i class="fas fa-times me-2"></i>Cancel Edit
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </form>
+            </div>
         <?php endif; ?>
 
         <div class="announcement-section view-posts-section">
@@ -296,23 +690,33 @@ if (isset($_SESSION['message'])) {
                     <?php foreach ($announcements as $announcement): ?>
                         <div class="announcement-item">
                             <div class="announcement-meta">
-                                <span class="badge badge-info"><i class="fas fa-calendar-alt"></i> <?= date('F j, Y, g:i a', strtotime($announcement['published_at'])) ?></span>
-                                <span class="badge badge-secondary"><i class="fas fa-user-tie"></i> Posted by: <?= htmlspecialchars($announcement['posted_by_name']) ?></span>
+                                <span class="badge badge-info">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <?= date('F j, Y, g:i a', strtotime($announcement['published_at'])) ?>
+                                </span>
+                                <span class="badge badge-secondary">
+                                    <i class="fas fa-user-tie"></i>
+                                    Posted by: <?= htmlspecialchars($announcement['posted_by_name']) ?>
+                                </span>
                             </div>
                             <h3><?= htmlspecialchars($announcement['title']) ?></h3>
                             <div class="announcement-content">
                                 <?php if (!empty($announcement['image_path'])): ?>
-                                    <img src="../../<?= htmlspecialchars($announcement['image_path']) ?>" alt="Announcement Image" class="img-fluid mb-3">
+                                    <img src="../../<?= htmlspecialchars($announcement['image_path']) ?>" alt="Announcement Image"
+                                        class="img-fluid mb-4 rounded shadow-sm">
                                 <?php endif; ?>
-                                <p><?= nl2br(htmlspecialchars($announcement['content'])) ?></p>
+                                <p class="mb-0"><?= nl2br(htmlspecialchars($announcement['content'])) ?></p>
                             </div>
                             <?php if ($user_role === 'admin'): ?>
                                 <div class="announcement-actions">
-                                    <a href="announcements.php?action=edit&id=<?= htmlspecialchars($announcement['id']) ?>" class="btn btn-warning">
-                                        <i class="fas fa-edit"></i> Edit
+                                    <a href="announcements.php?action=edit&id=<?= htmlspecialchars($announcement['id']) ?>"
+                                        class="btn btn-warning">
+                                        <i class="fas fa-edit me-2"></i> Edit
                                     </a>
-                                    <a href="announcements.php?action=delete&id=<?= htmlspecialchars($announcement['id']) ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this announcement? This action cannot be undone.');">
-                                        <i class="fas fa-trash-alt"></i> Delete
+                                    <a href="announcements.php?action=delete&id=<?= htmlspecialchars($announcement['id']) ?>"
+                                        class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete this announcement? This action cannot be undone.');">
+                                        <i class="fas fa-trash-alt me-2"></i> Delete
                                     </a>
                                 </div>
                             <?php endif; ?>
@@ -320,7 +724,10 @@ if (isset($_SESSION['message'])) {
                     <?php endforeach; ?>
                 </div>
             <?php else: ?>
-                <p>No announcements available at the moment.</p>
+                <div class="text-center py-5">
+                    <i class="fas fa-bullhorn text-muted mb-3" style="font-size: 3rem;"></i>
+                    <p class="text-muted fs-5">No announcements available at the moment.</p>
+                </div>
             <?php endif; ?>
         </div>
     </div>
