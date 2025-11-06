@@ -370,6 +370,102 @@ require_once '../../templates/admin/header_admin.php';
     .dashboard-overview-cards .card i {
         color: #737373;
     }
+
+
+
+
+
+    /* Chart container styling */
+    /* Enhanced Chart Styling */
+    .chart-container {
+        position: relative;
+        height: 320px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .chart-card {
+        background: #ffffff;
+        border: 1px solid #e8edf3;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .chart-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .chart-card .card-body {
+        padding: 20px;
+    }
+
+    .chart-title {
+        font-family: "Inter", "Noto Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #0e151b;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .chart-title i {
+        color: #1d7dd7;
+        font-size: 18px;
+    }
+
+    canvas {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Custom scrollbar for chart legends */
+    .chart-legend-container {
+        max-height: 200px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #d1dce6 #f8fafb;
+    }
+
+    .chart-legend-container::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .chart-legend-container::-webkit-scrollbar-track {
+        background: #f8fafb;
+        border-radius: 3px;
+    }
+
+    .chart-legend-container::-webkit-scrollbar-thumb {
+        background: #d1dce6;
+        border-radius: 3px;
+    }
+
+    .chart-legend-container::-webkit-scrollbar-thumb:hover {
+        background: #a8b5c1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .chart-container {
+            height: 280px;
+            padding: 10px;
+        }
+
+        .chart-card .card-body {
+            padding: 15px;
+        }
+
+        .chart-title {
+            font-size: 14px;
+        }
+    }
 </style>
 
 <!-- Favicon -->
@@ -1021,3 +1117,172 @@ require_once '../../templates/admin/header_admin.php';
 </script>
 
 <?php include('../../includes/semantics/footer.php'); ?>
+
+
+
+
+
+
+<!-- // =========================================================================================
+// JavaScript for Chart Rendering
+// =========================================================================================
+?> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 1. Get PHP data and pass it to JavaScript
+        const totalUsers = <?= json_encode($total_users) ?>;
+        const activeTickets = <?= json_encode($active_tickets) ?>;
+        const announcements = <?= json_encode($new_announcements) ?>;
+        const totalFeedbacks = <?= json_encode($total_feedbacks) ?>;
+        const totalRooms = <?= json_encode($total_rooms) ?>;
+
+        // Data for User Role Distribution Pie Chart
+        const adminCount = <?= json_encode($admin_count) ?>;
+        const facultyCount = <?= json_encode($faculty_count) ?>;
+        const studentCount = <?= json_encode($student_count) ?>;
+
+        // Data for Department Distribution Pie Chart
+        const departmentCounts = <?= json_encode($department_counts) ?>;
+
+        // Set fixed height for all chart containers
+        const chartHeight = '300px'; // Fixed height for all charts
+
+        // ======================================================================
+        // 2. Bar Chart: Activity Metrics
+        // ======================================================================
+        const barCtx = document.getElementById('dashboardBarChart');
+
+        if (barCtx) {
+            // Set container height
+            barCtx.parentElement.style.height = chartHeight;
+            barCtx.style.height = '100%';
+
+            new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Active Tickets', 'Announcements', 'Total Feedback', 'Total Rooms'],
+                    datasets: [{
+                        label: 'Counts',
+                        data: [activeTickets, announcements, totalFeedbacks, totalRooms],
+                        backgroundColor: [
+                            'rgba(23, 162, 184, 0.6)',
+                            'rgba(253, 126, 20, 0.6)',
+                            'rgba(111, 66, 193, 0.6)',
+                            'rgba(40, 167, 69, 0.6)'
+                        ],
+                        borderColor: [
+                            '#17a2b8',
+                            '#fd7e14',
+                            '#6f42c1',
+                            '#28a745'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true, // Changed to true for better proportions
+                    aspectRatio: 2, // Set aspect ratio for better bar chart proportions
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // ======================================================================
+        // 3. Pie Chart: User Role Distribution
+        // ======================================================================
+        const userRoleCtx = document.getElementById('userRolePieChart');
+
+        if (userRoleCtx) {
+            // Set container height
+            userRoleCtx.parentElement.style.height = chartHeight;
+            userRoleCtx.style.height = '100%';
+
+            new Chart(userRoleCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Admin', 'Faculty', 'Student (User)'],
+                    datasets: [{
+                        data: [adminCount, facultyCount, studentCount],
+                        backgroundColor: [
+                            '#007bff',
+                            '#ffc107',
+                            '#28a745'
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2, // Square aspect ratio for pie charts
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: false,
+                        }
+                    }
+                }
+            });
+        }
+
+        // ======================================================================
+        // 4. Pie Chart: User Distribution by Department
+        // ======================================================================
+        const departmentCtx = document.getElementById('departmentPieChart');
+        const departmentLabels = Object.keys(departmentCounts);
+        const departmentData = Object.values(departmentCounts);
+
+        const departmentColors = departmentLabels.map((_, index) => {
+            const colors = ['#dc3545', '#007bff', '#17a2b8', '#ffc107', '#28a745', '#6f42c1', '#fd7e14'];
+            return colors[index % colors.length];
+        });
+
+        if (departmentCtx) {
+            // Set container height
+            departmentCtx.parentElement.style.height = chartHeight;
+            departmentCtx.style.height = '100%';
+
+            new Chart(departmentCtx, {
+                type: 'pie',
+                data: {
+                    labels: departmentLabels,
+                    datasets: [{
+                        data: departmentData,
+                        backgroundColor: departmentColors,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 2, // Square aspect ratio for pie charts
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: false,
+                        }
+                    }
+                }
+            });
+        }
+
+    });
+</script>

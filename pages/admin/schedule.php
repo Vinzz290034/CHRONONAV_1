@@ -3,12 +3,10 @@
 session_start();
 require_once '../../middleware/auth_check.php';
 require_once '../../config/db_connect.php';
+require_once '../../includes/functions.php';
 
-// Check if the user is an admin
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
-    header("Location: ../../auth/logout.php");
-    exit();
-}
+// Check if the user is an admin using the custom function
+requireRole(['admin']);
 
 $user = $_SESSION['user'];
 
@@ -20,22 +18,15 @@ $current_page = "schedule";
 $selected_date = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
 $selected_timestamp = strtotime($selected_date);
 
-$current_month = date('m', $selected_timestamp);
-$current_year = date('Y', $selected_timestamp);
-
-$first_day_of_month = strtotime($current_year . '-' . $current_month . '-01');
-$num_days_in_month = date('t', $first_day_of_month);
-$first_day_of_week = date('N', $first_day_of_month);
-
 $daily_schedules = [];
 $daily_reminders = [];
 
 $day_name = date('l', $selected_timestamp);
 
 $stmt_schedules = $conn->prepare("SELECT s.title, s.description, s.start_time, s.end_time, r.room_name
-                                     FROM schedules s
-                                     LEFT JOIN rooms r ON s.room_id = r.id
-                                     WHERE s.user_id = ? AND s.day_of_week = ? ORDER BY s.start_time");
+                                 FROM schedules s
+                                 LEFT JOIN rooms r ON s.room_id = r.id
+                                 WHERE s.user_id = ? AND s.day_of_week = ? ORDER BY s.start_time");
 if ($stmt_schedules) {
     $stmt_schedules->bind_param("is", $user['id'], $day_name);
     $stmt_schedules->execute();
@@ -88,7 +79,7 @@ foreach ($daily_reminders as $rem) {
     ];
 }
 
-usort($all_daily_events, function($a, $b) {
+usort($all_daily_events, function ($a, $b) {
     $timeA = $a['time'] ? strtotime($a['time']) : 0;
     $timeB = $b['time'] ? strtotime($b['time']) : 0;
     return $timeA - $timeB;
@@ -103,63 +94,320 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message_type']);
 }
 
+// Variables for header
+$display_username = htmlspecialchars($user['name'] ?? 'Admin');
+$display_user_role = htmlspecialchars($user['role'] ?? 'Admin');
+$profile_img_src = '../../uploads/profiles/default-avatar.png';
+if (!empty($user['profile_img']) && file_exists('../../' . $user['profile_img'])) {
+    $profile_img_src = '../../' . $user['profile_img'];
+}
+
+// Use admin-specific templates
 require_once '../../templates/admin/header_admin.php';
-require_once '../../templates/admin/sidenav_admin.php';
 ?>
 
-<link rel="stylesheet" href="../../assets/css/admin_css/schedules.css">
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="main-dashboard-content">
-    <div class="schedule-calendar-container card p-4 mb-4">
-        <div class="calendar-nav-bar">
-            <a href="#" class="nav-item" data-bs-toggle="modal" data-bs-target="#calendarModal" data-view="year">Year</a>
-            <a href="#" class="nav-item active" data-bs-toggle="modal" data-bs-target="#calendarModal" data-view="month">Month</a>
-            <a href="#" class="nav-item" data-bs-toggle="modal" data-bs-target="#calendarModal" data-view="week">Week</a>
-            <a href="#" class="nav-item" data-bs-toggle="modal" data-bs-target="#calendarModal" data-view="day">Day</a>
-        </div>
-        
-        <div class="calendar-header">
-            <a href="?date=<?= date('Y-m-d', strtotime('-1 month', $first_day_of_month)) ?>" class="calendar-nav-arrow"><i class="fas fa-chevron-left"></i></a>
-            <h3><?= date('F Y', $selected_timestamp) ?></h3>
-            <a href="?date=<?= date('Y-m-d', strtotime('+1 month', $first_day_of_month)) ?>" class="calendar-nav-arrow"><i class="fas fa-chevron-right"></i></a>
-        </div>
-        
-        <div class="calendar-days-header">
-            <div>S</div>
-            <div>M</div>
-            <div>T</div>
-            <div>W</div>
-            <div>T</div>
-            <div>F</div>
-            <div>S</div>
-        </div>
-        <div class="calendar-grid">
-            <?php
-            for ($i = 1; $i < $first_day_of_week; $i++) {
-                echo '<div class="calendar-day empty"></div>';
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $page_title ?? 'ChronoNav - Admin Schedule' ?></title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
+
+    <style>
+        body {
+            font-family: "Space Grotesk", "Noto Sans", sans-serif;
+            background-color: #fff;
+        }
+
+        /* Exact styles from the first code */
+        .layout-content-container {
+            max-width: 80%;
+            flex: 1;
+            margin: 0 auto;
+            margin-left: 20%;
+        }
+
+        .nav-tabs-custom {
+            border-bottom: 1px solid #cedce8;
+            gap: 2rem;
+        }
+
+        .nav-tabs-custom .nav-link {
+            border: none;
+            color: #49749c;
+            font-weight: bold;
+            font-size: 0.875rem;
+            padding: 1rem 0 0.8125rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tabs-custom .nav-link.active {
+            color: #0d151c;
+            border-bottom: 3px solid #2E78C6;
+        }
+
+        .class-item {
+            min-height: 72px;
+            background-color: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .class-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #e7edf4;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .floating-btn {
+            background-color: #565e64;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 1.25rem;
+            right: 1.25rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .floating-btn.fw-bold {
+            background-color: #2E78C6;
+        }
+
+        .text-truncate-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* FullCalendar Custom Styling - exact from first code */
+        .fc {
+            font-family: "Space Grotesk", "Noto Sans", sans-serif;
+        }
+
+        .fc-toolbar {
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .fc-toolbar-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #0d151c;
+        }
+
+        .fc-button {
+            background-color: transparent;
+            border: 1px solid #cedce8;
+            color: #0d151c;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+        }
+
+        .fc-button:hover {
+            background-color: #f0f2f5;
+        }
+
+        .fc-button-primary:not(:disabled).fc-button-active {
+            background-color: #2E78C6;
+            border-color: #2E78C6;
+        }
+
+        .fc-col-header-cell {
+            background-color: transparent;
+            padding: 0.75rem 0;
+        }
+
+        .fc-col-header-cell-cushion {
+            color: #0d151c;
+            font-weight: bold;
+            font-size: 0.8125rem;
+            text-decoration: none;
+        }
+
+        .fc-daygrid-day-number {
+            color: #0d151c;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.5rem;
+        }
+
+        .fc-daygrid-day.fc-day-today {
+            background-color: rgba(11, 128, 238, 0.1);
+        }
+
+        .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+            color: white;
+            background-color: #2E78C6;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.25rem;
+        }
+
+        .fc-event {
+            background-color: #2E78C6;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            padding: 2px 4px;
+        }
+
+        .fc-event-title {
+            font-weight: 500;
+        }
+
+        .fc-daygrid-event-dot {
+            border-color: #2E78C6;
+        }
+
+        @media (min-width: 768px) {
+            .floating-btn {
+                position: static;
+                width: auto;
+                height: auto;
+                border-radius: 9999px;
+                padding: 0.875rem 1.5rem;
+                gap: 1rem;
             }
-            for ($day = 1; $day <= $num_days_in_month; $day++) {
-                $date_obj = new DateTime("{$current_year}-{$current_month}-{$day}");
-                $full_date = $date_obj->format('Y-m-d');
-                $is_selected = ($full_date === $selected_date) ? 'selected' : '';
-                $is_today = ($full_date === date('Y-m-d')) ? 'today' : '';
-                echo "<div class='calendar-day {$is_selected} {$is_today}' data-date='{$full_date}'>{$day}</div>";
-            }
-            ?>
+        }
+
+        /* Additional styles for your PHP functionality */
+        .main-dashboard-content {
+            padding: 2rem 1rem;
+        }
+
+        .alert {
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        [type=button]:not(:disabled),
+        [type=reset]:not(:disabled),
+        [type=submit]:not(:disabled),
+        button:not(:disabled) {
+            cursor: pointer;
+            background-color: #f0f2f5;
+            color: #111418;
+            font-weight: bold;
+            border: none;
+            border-radius: 0.75rem;
+        }
+
+        /* Calendar Customization */
+        button.fc-prev-button.fc-button.fc-button-primary,
+        button.fc-next-button.fc-button.fc-button-primary {
+            background-color: #fff;
+        }
+
+        button.fc-prev-button.fc-button.fc-button-primary:hover,
+        button.fc-next-button.fc-button.fc-button-primary:hover {
+            background-color: #737373;
+        }
+
+        span.fc-icon.fc-icon-chevron-left:hover {
+            color: #fff;
+        }
+
+        button.fc-today-button.fc-button.fc-button-primary {
+            background-color: transparent;
+            border-color: transparent;
+            color: #212528;
+            font-weight: bold;
+        }
+
+        .fc-direction-ltr .fc-button-group>.fc-button:not(:last-child) {
+            border-bottom-right-radius: 0px;
+            border-top-right-radius: 0px;
+            background-color: transparent;
+            color: #212529;
+        }
+
+        .fc-direction-ltr .fc-button-group>.fc-button:hover {
+            color: #212529;
+        }
+
+        .fc-direction-ltr .fc-button-group>.fc-button:not(:first-child) {
+            border-bottom-left-radius: 0px;
+            border-top-left-radius: 0px;
+            margin-left: -1px;
+            background-color: transparent;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #737373;
+            border-radius: 6px;
+            border: 3px solid #ffffff;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #2e78c6;
+        }
+    </style>
+</head>
+
+<body>
+    <?php require_once '../../templates/admin/sidenav_admin.php'; ?>
+
+    <div class="layout-content-container d-flex flex-column mb-5 p-3 px-5 justify-content-end">
+        <!-- Header -->
+        <div class="d-flex flex-wrap justify-content-between gap-3 mb-3">
+            <p class="text-dark fw-bold fs-3 mb-0" style="min-width: 288px;">Schedule</p>
         </div>
-    </div>
-    <div class="card p-4 upcoming-events-card">
-        <h4>Events for <?= date('F d, Y', $selected_timestamp) ?></h4>
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addReminderModal" data-date="<?= $selected_date ?>">
-                <i class="fas fa-plus"></i> Add Reminder
-            </button>
-            <a href="calendar.php?date=<?= $selected_date ?>" class="btn btn-primary btn-sm">
-                <i class="fas fa-calendar-alt"></i> View Weekly Schedule
-            </a>
+
+        <!-- Calendar Section -->
+        <div class="mb-4">
+            <div id="calendar" class="bg-white rounded shadow-sm p-3"></div>
         </div>
-    </div>
-    <div class="card p-4 upcoming-events-card">
+
+        <!-- Upcoming Classes Section -->
+        <h3 class="text-dark fw-bold fs-5 px-0 pb-2 pt-4">Upcoming Classes - <?= date('F d, Y', $selected_timestamp) ?>
+        </h3>
+
         <?php if ($message): ?>
             <div class="alert alert-<?= $message_type ?> alert-dismissible fade show" role="alert">
                 <?= htmlspecialchars($message) ?>
@@ -167,185 +415,211 @@ require_once '../../templates/admin/sidenav_admin.php';
             </div>
         <?php endif; ?>
 
-        <div class="dashboard-header mb-3">
-            <h2><?= $page_title ?></h2>
-            <div class="schedule-actions">
-                <button class="btn btn-secondary" onclick="window.print()"><i class="fas fa-print"></i> Print Schedule</button>
-            </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <button type="button" class="btn btn-primary px-4 py-2" data-bs-toggle="modal"
+                data-bs-target="#addScheduleModal" data-date="<?= $selected_date ?>">
+                <i class="fas fa-plus"></i> Add Schedule
+            </button>
+            <button class="btn btn-primary px-4 py-2" onclick="window.print()">
+                <i class="fas fa-print"></i> Print Schedule
+            </button>
         </div>
-        
+
         <?php if (empty($all_daily_events)): ?>
             <div class="alert alert-info text-center">
-                No events or reminders scheduled for this day.
-                <br><br>
-                <img src="../../assets/img/calendar_placeholders.png" alt="A simple calendar illustration" class="img-fluid" style="max-height: 200px;">
+                No classes or reminders scheduled for this day.
             </div>
         <?php else: ?>
-
-            <div class="event-list">
-                <?php foreach ($all_daily_events as $event): ?>
-                    <div class="event-item d-flex align-items-center mb-3">
-                        <div class="event-icon me-3">
+            <!-- Dynamic Classes from your PHP data -->
+            <?php foreach ($all_daily_events as $event): ?>
+                <div class="class-item d-flex align-items-center gap-3">
+                    <div class="class-icon text-dark">
+                        <?php if ($event['type'] === 'schedule'): ?>
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        <?php elseif ($event['type'] === 'reminder'): ?>
+                            <i class="fas fa-bell"></i>
+                        <?php endif; ?>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="text-dark fw-medium mb-1 text-truncate"><?= htmlspecialchars($event['title']) ?></p>
+                        <p class="text-muted small mb-0 text-truncate-2">
                             <?php if ($event['type'] === 'schedule'): ?>
-                                <i class="fas fa-book-open text-primary fa-2x"></i>
-                            <?php elseif ($event['type'] === 'reminder'): ?>
-                                <i class="fas fa-bell text-warning fa-2x"></i>
-                            <?php endif; ?>
-                        </div>
-                        <div class="event-details flex-grow-1">
-                            <h6 class="mb-0"><?= htmlspecialchars($event['title']) ?></h6>
-                            <p class="mb-0 text-muted">
-                                <?php if ($event['type'] === 'schedule'): ?>
-                                    <small><i class="far fa-clock me-1"></i> <?= htmlspecialchars(date('h:i A', strtotime($event['time']))) ?> - <?= htmlspecialchars(date('h:i A', strtotime($event['end_time']))) ?></small><br>
-                                    <small><i class="fas fa-map-marker-alt me-1"></i> <?= htmlspecialchars($event['location']) ?></small>
-                                <?php elseif ($event['type'] === 'reminder'): ?>
-                                    <small><i class="far fa-clock me-1"></i> Due: <?= htmlspecialchars(date('h:i A', strtotime($event['time']))) ?></small><br>
-                                    <?= !empty($event['description']) ? '<small>' . nl2br(htmlspecialchars($event['description'])) . '</small>' : '' ?>
+                                <?= htmlspecialchars(date('h:i A', strtotime($event['time']))) ?> -
+                                <?= htmlspecialchars(date('h:i A', strtotime($event['end_time']))) ?>
+                                <?php if (!empty($event['location'])): ?>
+                                    · <?= htmlspecialchars($event['location']) ?>
                                 <?php endif; ?>
-                            </p>
-                        </div>
-                        <button class="btn btn-outline-secondary btn-sm ms-3">View</button>
+                            <?php elseif ($event['type'] === 'reminder'): ?>
+                                Due: <?= htmlspecialchars(date('h:i A', strtotime($event['time']))) ?>
+                                <?php if (!empty($event['description'])): ?>
+                                    · <?= nl2br(htmlspecialchars($event['description'])) ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </p>
                     </div>
-                <?php endforeach; ?>
-            </div>
+                </div>
+            <?php endforeach; ?>
         <?php endif; ?>
-    </div>
-</div>
 
-<div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="calendarModalLabel">Calendar View</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="calendarModalBody">
-                <p>Loading...</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+        <!-- Floating Action Button -->
+        <div class="d-flex justify-content-end overflow-hidden p-0 pt-3">
+            <button class="floating-btn fw-bold text-white" data-bs-toggle="modal" data-bs-target="#addScheduleModal"
+                data-date="<?= $selected_date ?>">
+                <i class="fas fa-plus"></i>
+                <span class="d-none d-md-inline">Add Schedule</span>
+            </button>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="addReminderModal" tabindex="-1" aria-labelledby="addReminderModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addReminderModalLabel">Add New Reminder</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="addReminderForm" action="../../includes/add_reminder_handler.php" method="POST">
-                    <div class="mb-3">
-                        <label for="reminderTitle" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="reminderTitle" name="title" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="reminderDescription" class="form-label">Description (Optional)</label>
-                        <textarea class="form-control" id="reminderDescription" name="description" rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="reminderDate" class="form-label">Due Date</label>
-                        <input type="date" class="form-control" id="reminderDate" name="due_date" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="reminderTime" class="form-label">Due Time (Optional)</label>
-                        <input type="time" class="form-control" id="reminderTime" name="due_time">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" form="addReminderForm" class="btn btn-primary">Save Reminder</button>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const calendarDays = document.querySelectorAll('.calendar-day:not(.empty)');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarEl = document.getElementById('calendar');
 
-        calendarDays.forEach(day => {
-            day.addEventListener('click', function() {
-                const selectedDate = this.getAttribute('data-date');
-                window.location.href = `schedule.php?date=${selectedDate}`;
-            });
-        });
+            // Prepare events for FullCalendar from PHP data
+            const calendarEvents = [
+                <?php foreach ($all_daily_events as $event): ?>
+                            {
+                        title: '<?= addslashes($event['title']) ?>',
+                        start: '<?= $selected_date ?>T<?= $event['time'] ?>',
+                        <?php if ($event['type'] === 'schedule' && !empty($event['end_time'])): ?>
+                                            end: '<?= $selected_date ?>T<?= $event['end_time'] ?>',
+                        <?php endif; ?>
+                                description: '<?= addslashes($event['type'] === 'schedule' ? $event['location'] : $event['description']) ?>',
+                        color: '<?= $event['type'] === 'schedule' ? '#2E78C6' : '#ffc107' ?>'
+                    },
+                <?php endforeach; ?>
+            ];
 
-        const addReminderModal = document.getElementById('addReminderModal');
-        addReminderModal.addEventListener('show.bs.modal', function (event) {
-            const button = event.relatedTarget;
-            const selectedDate = button.getAttribute('data-date');
-            const reminderDateInput = document.getElementById('reminderDate');
-            if (selectedDate) {
-                reminderDateInput.value = selectedDate;
-            }
-        });
-
-        // Handle clicks on the new calendar view links
-        const navItems = document.querySelectorAll('.calendar-nav-bar .nav-item');
-        const modal = new bootstrap.Modal(document.getElementById('calendarModal'));
-        const modalBody = document.getElementById('calendarModalBody');
-        const modalTitle = document.getElementById('calendarModalLabel');
-
-        navItems.forEach(item => {
-            item.addEventListener('click', function(event) {
-                event.preventDefault();
-
-                const view = this.getAttribute('data-view');
-                const titleMap = {
-                    'year': 'Year View',
-                    'month': 'Month View',
-                    'week': 'Week View',
-                    'day': 'Day View'
-                };
-                modalTitle.textContent = titleMap[view];
-                // Fetch content for the selected view, now including the user ID
-                fetch(`../../includes/fetch_calendar_view.php?view=${view}&user_id=<?= $user['id'] ?>`)
-                    .then(response => response.text())
-                    .then(data => {
-                        modalBody.innerHTML = data;
-                        modal.show();
-                    })
-                    .catch(error => console.error('Error fetching calendar view:', error));
-            });
-        });
-
-        // New JavaScript for handling navigation within the modal
-        document.getElementById('calendarModal').addEventListener('click', function(event) {
-            const arrow = event.target.closest('.calendar-nav-arrow');
-            if (arrow) {
-                event.preventDefault();
-
-                const view = arrow.getAttribute('data-view');
-                const year = arrow.getAttribute('data-year');
-                const date = arrow.getAttribute('data-date');
-                // Use the user_id from the data attribute or fall back to the main page's user ID
-                const userId = arrow.getAttribute('data-user-id') || '<?= $user['id'] ?>';
-                
-                let url = `../../includes/fetch_calendar_view.php?view=${view}&user_id=${userId}`;
-                if (year) {
-                    url += `&year=${year}`;
-                } else if (date) {
-                    url += `&date=${date}`;
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: calendarEvents,
+                eventClick: function (info) {
+                    alert('Event: ' + info.event.title + '\nDescription: ' + info.event.extendedProps.description);
+                },
+                dateClick: function (info) {
+                    window.location.href = 'schedule.php?date=' + info.dateStr;
                 }
+            });
 
-                // Show a loading message
-                modalBody.innerHTML = '<p class="text-center">Loading...</p>';
+            calendar.render();
 
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => {
-                        modalBody.innerHTML = data;
-                    })
-                    .catch(error => console.error('Error fetching calendar view:', error));
-            }
+            // Handle modal functionality
+            const navItems = document.querySelectorAll('.nav-tabs-custom .nav-link');
+            const modal = new bootstrap.Modal(document.getElementById('calendarModal'));
+            const modalBody = document.getElementById('calendarModalBody');
+            const modalTitle = document.getElementById('calendarModalLabel');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const view = this.getAttribute('data-view');
+                    const titleMap = {
+                        'month': 'Month View',
+                        'week': 'Week View',
+                        'day': 'Day View'
+                    };
+                    modalTitle.textContent = titleMap[view];
+
+                    fetch(`../../includes/fetch_calendar_view.php?view=${view}&user_id=<?= $user['id'] ?>`)
+                        .then(response => response.text())
+                        .then(data => {
+                            modalBody.innerHTML = data;
+                            modal.show();
+                        })
+                        .catch(error => console.error('Error fetching calendar view:', error));
+                });
+            });
+
+            // Handle add schedule modal
+            const addScheduleModal = document.getElementById('addScheduleModal');
+            addScheduleModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const selectedDate = button.getAttribute('data-date');
+                const scheduleDateInput = document.getElementById('scheduleDate');
+                if (selectedDate) {
+                    scheduleDateInput.value = selectedDate;
+                }
+            });
         });
-    });
-</script>
+    </script>
 
-<?php require_once '../../templates/footer.php'; ?>
+    <!-- Your existing modals -->
+    <div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="calendarModalLabel">Calendar View</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="calendarModalBody">
+                    <p>Loading...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addScheduleModal" tabindex="-1" aria-labelledby="addScheduleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addScheduleModalLabel">Add New Schedule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addScheduleForm" action="../../includes/admin_add_schedule_handler.php" method="POST">
+                        <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                        <div class="mb-3">
+                            <label for="scheduleTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="scheduleTitle" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="scheduleDescription" class="form-label">Description (Optional)</label>
+                            <textarea class="form-control" id="scheduleDescription" name="description"
+                                rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="scheduleDate" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="scheduleDate" name="event_date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="scheduleStartTime" class="form-label">Start Time</label>
+                            <input type="time" class="form-control" id="scheduleStartTime" name="start_time" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="scheduleEndTime" class="form-label">End Time</label>
+                            <input type="time" class="form-control" id="scheduleEndTime" name="end_time" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="scheduleRoom" class="form-label">Room</label>
+                            <input type="text" class="form-control" id="scheduleRoom" name="room" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="addScheduleForm" class="btn btn-primary">Save Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php require_once '../../templates/footer.php'; ?>
+</body>
+<?php include('../../includes/semantics/footer.php'); ?>
+
+</html>

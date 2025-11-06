@@ -70,6 +70,16 @@ header {
     width: 100%;
 }
 
+div#mobileNav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: var(--card-shadow);
+    z-index: 1020;
+}
+
 /* Hero Section */
 .hero-section {
     background-size: cover;

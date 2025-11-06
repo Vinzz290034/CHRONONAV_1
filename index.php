@@ -64,7 +64,13 @@
                 </div>
 
                 <!-- Mobile Navigation Menu -->
-                <div class="nav collapse d-md-none" id="mobileNav">
+                <div class="mobile nav collapse d-md-none m-3 mt-0 text-end end-0 top-100 rounded-3 position-absolute p-3"
+                    id="mobileNav">
+                    <style>
+                        .mobile.nav.collapse {
+                            background-color: #ffffff80;
+                        }
+                    </style>
                     <div class="nav d-flex flex-column gap-3" style="margin-left: 10px;">
                         <a class="text-dark text-decoration-none fw-medium nav-link" href="#about_section">About</a>
                         <a class="text-dark text-decoration-none fw-medium nav-link" href="#services">Services</a>
@@ -84,7 +90,7 @@
     </section>
 
     <!-- Main Content -->
-    <main class="px-md-40 d-flex justify-content-center flex-grow-1">
+    <main class="pt-5 px-md-40 d-flex justify-content-center flex-grow-1">
         <div class="layout-content-container d-flex flex-column">
             <!-- Hero Section -->
             <section class="hero px-3 my-5 fade-in-up">
