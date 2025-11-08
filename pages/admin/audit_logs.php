@@ -1,10 +1,10 @@
 <?php
 // CHRONONAV_WEB_DOSS/pages/admin/audit_logs.php
+session_start();
 require_once '../../middleware/auth_check.php';
 require_once '../../config/db_connect.php';
 require_once '../../includes/functions.php';
 
-// Ensure only 'admin' role can access this page.
 requireRole(['admin']);
 
 $user = $_SESSION['user'];
@@ -72,16 +72,261 @@ if ($stmt_logs) {
     error_log("Failed to prepare audit logs query: " . $conn->error);
 }
 
-// --- START HTML STRUCTURE ---
+// Variables for header
+$display_username = htmlspecialchars($user['name'] ?? 'Admin');
+$display_user_role = htmlspecialchars($user['role'] ?? 'Admin');
+$profile_img_src_header = '../../uploads/profiles/default-avatar.png';
+if (!empty($user['profile_img']) && file_exists('../../' . $user['profile_img'])) {
+    $profile_img_src_header = '../../' . $user['profile_img'];
+}
+
 require_once '../../templates/admin/header_admin.php';
-require_once '../../templates/admin/sidenav_admin.php';
 ?>
 
-<link rel="stylesheet" href="../../assets/css/admin_css/audit_log.css">
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="main-content-wrapper">
-    <div class="container-fluid py-4">
-        <h2 class="mb-4"><?= $page_title ?></h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $page_title ?? 'ChronoNav - Audit Logs' ?></title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
+
+    <style>
+        body {
+            font-family: "Space Grotesk", "Noto Sans", sans-serif;
+            background-color: #fff;
+        }
+
+        /* Exact styles from the first code */
+        .layout-content-container {
+            max-width: 80%;
+            flex: 1;
+            margin: 0 auto;
+            margin-left: 20%;
+        }
+
+        .class-item {
+            min-height: 72px;
+            background-color: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .class-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #e7edf4;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .floating-btn {
+            background-color: #565e64;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 1.25rem;
+            right: 1.25rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .floating-btn.fw-bold {
+            background-color: #2E78C6;
+        }
+
+        .text-truncate-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .floating-btn {
+                position: static;
+                width: auto;
+                height: auto;
+                border-radius: 9999px;
+                padding: 0.875rem 1.5rem;
+                gap: 1rem;
+            }
+        }
+
+        /* Additional styles for audit logs */
+        .main-dashboard-content {
+            padding: 2rem 1rem;
+        }
+
+        .alert {
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        [type=button]:not(:disabled),
+        [type=reset]:not(:disabled),
+        [type=submit]:not(:disabled),
+        button:not(:disabled) {
+            cursor: pointer;
+            background-color: #f0f2f5;
+            color: #111418;
+            font-weight: bold;
+            border: none;
+            border-radius: 0.75rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #2E78C6;
+            border-radius: 0.75rem 0.75rem 0 0 !important;
+            border: none;
+            padding: 1rem 1.5rem;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table th {
+            border-top: none;
+            font-weight: 600;
+            color: #0d151c;
+            background-color: #f8fafc;
+            padding: 1rem 0.75rem;
+        }
+
+        .table td {
+            padding: 0.75rem;
+            vertical-align: middle;
+            border-color: #e7edf4;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.5rem;
+        }
+
+        .bg-danger {
+            background-color: #dc3545 !important;
+        }
+
+        .bg-info {
+            background-color: #0dcaf0 !important;
+        }
+
+        .bg-success {
+            background-color: #198754 !important;
+        }
+
+        .bg-secondary {
+            background-color: #6c757d !important;
+        }
+
+        .bg-warning {
+            background-color: #ffc107 !important;
+            color: #000;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #737373;
+            border-radius: 6px;
+            border: 3px solid #ffffff;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #2e78c6;
+        }
+
+        .navbar-toggler-icon {
+            display: none;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 767px) {
+            .layout-content-container {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+            }
+
+            .table-responsive {
+                font-size: 0.875rem;
+            }
+
+            .badge {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .layout-content-container {
+                max-width: 85% !important;
+                margin-left: 15% !important;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .layout-content-container {
+                max-width: 80% !important;
+                margin-left: 20% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <?php require_once '../../templates/admin/sidenav_admin.php'; ?>
+
+    <div class="layout-content-container d-flex flex-column p-3 px-5 justify-content-end">
+        <!-- Header -->
+        <div class="d-flex flex-wrap justify-content-between gap-3 mb-3">
+            <p class="text-dark fw-bold fs-3 mb-0" style="min-width: 288px;">System Audit Logs</p>
+        </div>
 
         <?php if ($message): ?>
             <div class="alert alert-<?= $message_type ?> alert-dismissible fade show" role="alert">
@@ -91,21 +336,23 @@ require_once '../../templates/admin/sidenav_admin.php';
         <?php endif; ?>
 
         <?php if ($error): ?>
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <?= htmlspecialchars($error) ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif; ?>
 
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">Recent Audit Activities</h5>
+        <!-- Audit Logs Card -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header text-white">
+                <h5 class="mb-0 fw-bold">Recent Audit Activities</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body p-0">
                 <?php if (empty($audit_logs)): ?>
-                    <div class="alert alert-info text-center">No audit logs found in the system.</div>
+                    <div class="alert alert-info text-center m-4">No audit logs found in the system.</div>
                 <?php else: ?>
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -119,25 +366,36 @@ require_once '../../templates/admin/sidenav_admin.php';
                             <tbody>
                                 <?php foreach ($audit_logs as $log): ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($log['id']) ?></td>
+                                        <td class="fw-medium"><?= htmlspecialchars($log['id']) ?></td>
                                         <td><?= date('Y-m-d H:i:s', strtotime($log['timestamp'])) ?></td>
                                         <td><?= htmlspecialchars($log['user_name'] ?? 'N/A') ?></td>
                                         <td>
                                             <span class="badge 
-                                                <?php 
-                                                    switch(htmlspecialchars($log['user_role'])) {
-                                                        case 'admin': echo 'bg-danger'; break;
-                                                        case 'faculty': echo 'bg-info'; break;
-                                                        case 'student': echo 'bg-success'; break;
-                                                        default: echo 'bg-secondary'; break;
-                                                    }
+                                                <?php
+                                                switch (htmlspecialchars($log['user_role'])) {
+                                                    case 'admin':
+                                                        echo 'bg-danger';
+                                                        break;
+                                                    case 'faculty':
+                                                        echo 'bg-info';
+                                                        break;
+                                                    case 'user':
+                                                        echo 'bg-success';
+                                                        break;
+                                                    default:
+                                                        echo 'bg-secondary';
+                                                        break;
+                                                }
                                                 ?>">
                                                 <?= htmlspecialchars(ucfirst($log['user_role'] ?? 'Unknown')) ?>
                                             </span>
                                         </td>
-                                        <td><?= htmlspecialchars($log['action']) ?></td>
                                         <td>
-                                            <span class="d-inline-block text-truncate" style="max-width: 250px;" title="<?= htmlspecialchars($log['details']) ?>">
+                                            <span class="fw-medium"><?= htmlspecialchars($log['action']) ?></span>
+                                        </td>
+                                        <td>
+                                            <span class="d-inline-block text-truncate" style="max-width: 250px;"
+                                                title="<?= htmlspecialchars($log['details']) ?>">
                                                 <?= htmlspecialchars($log['details']) ?>
                                             </span>
                                         </td>
@@ -149,11 +407,46 @@ require_once '../../templates/admin/sidenav_admin.php';
                 <?php endif; ?>
             </div>
         </div>
-    </div>
-</div>
 
-<script src="../../assets/js/jquery.min.js"></script>
-<script src="../../assets/js/script.js"></script>
-<?php
-require_once '../../templates/footer.php';
-?>
+        <!-- Floating Action Button -->
+        <div class="d-flex justify-content-end overflow-hidden p-0 pt-3">
+            <button class="floating-btn fw-bold text-white" onclick="window.print()">
+                <i class="fas fa-print"></i>
+                <span class="d-none d-md-inline">Print Logs</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add hover effects to table rows
+            const tableRows = document.querySelectorAll('.table tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+
+                row.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Auto-hide alerts after 5 seconds
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                }, 5000);
+            });
+        });
+    </script>
+
+    <?php require_once '../../templates/footer.php'; ?>
+</body>
+
+</html>

@@ -49,7 +49,7 @@ require_once '../../templates/user/header_user.php';
     /* Consistent design from previous pages */
     body {
         font-family: "Space Grotesk", "Noto Sans", sans-serif;
-        background-color: #fff;
+        background-color: #ffff;
     }
 
     .main-content-wrapper {
