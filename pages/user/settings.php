@@ -55,6 +55,7 @@ require_once '../../templates/user/header_user.php';
     .main-content-wrapper {
         margin-left: 20%;
         transition: margin-left 0.3s ease;
+        background-color: #fff;
     }
 
     .main-dashboard-content {
@@ -248,6 +249,154 @@ require_once '../../templates/user/header_user.php';
         background-color: #2e78c6;
         /* blue on hover */
     }
+
+
+
+
+    /* Add these media queries at the end of your existing CSS */
+
+    /* Mobile: 767px and below */
+    @media (max-width: 767px) {
+        .main-content-wrapper {
+            margin-left: 0 !important;
+            width: 100% !important;
+            overflow-y: hidden;
+        }
+
+        .main-dashboard-content {
+            padding: 0 0.5rem !important;
+        }
+
+        .settings-container {
+            padding: 0.5rem 0 !important;
+        }
+
+        .settings-section .card-header {
+            padding: 1rem !important;
+        }
+
+        .settings-section .card-body {
+            padding: 1rem !important;
+        }
+
+        .settings-item {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0.5rem !important;
+            padding: 0.75rem 0 !important;
+        }
+
+        .settings-item span:first-child {
+            font-size: 0.875rem !important;
+        }
+
+        .settings-item span:last-child {
+            font-size: 0.8rem !important;
+        }
+
+        .btn-custom-outline,
+        .btn-custom-danger {
+            width: 100% !important;
+            min-width: auto !important;
+            margin-top: 0.25rem !important;
+        }
+
+        .modal-dialog {
+            margin: 0.5rem !important;
+            max-width: calc(100% - 1rem) !important;
+        }
+
+        .modal-content {
+            border-radius: 0.5rem !important;
+        }
+
+        .d-flex.flex-wrap.justify-content-between.gap-3.p-3 {
+            padding: 1rem 0.5rem !important;
+        }
+
+        .text-dark.fw-bold.fs-3.mb-0 {
+            font-size: 1.5rem !important;
+            width: 100%;
+        }
+    }
+
+    /* Tablet: 768px to 1023px */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .main-content-wrapper {
+            margin-left: 15% !important;
+            width: 85% !important;
+        }
+
+        .main-dashboard-content {
+            padding: 0 1rem !important;
+            max-width: 100% !important;
+        }
+
+        .settings-container {
+            padding: 1rem 0 !important;
+        }
+
+        .settings-section .card-header {
+            padding: 1.125rem 1.25rem !important;
+        }
+
+        .settings-section .card-body {
+            padding: 1.25rem !important;
+        }
+
+        .settings-item {
+            padding: 0.875rem 0 !important;
+        }
+
+        .modal-dialog {
+            max-width: 500px !important;
+            margin: 1.75rem auto !important;
+        }
+
+        .btn-custom-outline,
+        .btn-custom-danger {
+            min-width: 120px !important;
+        }
+    }
+
+    /* Desktop: 1024px and above */
+    @media (min-width: 1024px) {
+        .main-content-wrapper {
+            margin-left: 20% !important;
+            width: 80% !important;
+        }
+
+        .main-dashboard-content {
+            padding: 0 1rem !important;
+            max-width: 100% !important;
+        }
+
+        .settings-container {
+            padding: 1rem 0 !important;
+        }
+
+        .settings-section .card-header {
+            padding: 1.25rem 1.5rem !important;
+        }
+
+        .settings-section .card-body {
+            padding: 1.5rem !important;
+        }
+
+        .settings-item {
+            padding: 1rem 0 !important;
+        }
+
+        .modal-dialog {
+            max-width: 500px !important;
+            margin: 1.75rem auto !important;
+        }
+
+        .btn-custom-outline,
+        .btn-custom-danger {
+            min-width: 140px !important;
+        }
+    }
 </style>
 
 <?php
@@ -435,4 +584,160 @@ require_once '../../templates/user/sidenav_user.php';
             deactivateButton.disabled = !this.checked;
         });
     }
+
+
+
+
+    // Add this JavaScript for responsive behavior
+    document.addEventListener('DOMContentLoaded', function () {
+        // Create sidebar toggle button
+        const sidebarToggle = document.createElement('button');
+        sidebarToggle.className = 'sidebar-toggle d-none';
+        sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        sidebarToggle.setAttribute('aria-label', 'Toggle sidebar');
+        document.body.appendChild(sidebarToggle);
+
+        // Function to handle responsive layout
+        function handleResponsiveLayout() {
+            const width = window.innerWidth;
+            const mainContentWrapper = document.querySelector('.main-content-wrapper');
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+            if (width <= 1023) {
+                // Mobile and Tablet
+                sidebarToggle.classList.remove('d-none');
+
+                if (width <= 767) {
+                    // Mobile specific adjustments
+                    mainContentWrapper.style.marginLeft = '0';
+                    mainContentWrapper.style.width = '100%';
+                } else {
+                    // Tablet specific adjustments
+                    mainContentWrapper.style.marginLeft = '15%';
+                    mainContentWrapper.style.width = '85%';
+                }
+            } else {
+                // Desktop
+                sidebarToggle.classList.add('d-none');
+                mainContentWrapper.style.marginLeft = '20%';
+                mainContentWrapper.style.width = '80%';
+            }
+        }
+
+        // Toggle sidebar function
+        function toggleSidebar() {
+            const mainContentWrapper = document.querySelector('.main-content-wrapper');
+            const currentMargin = mainContentWrapper.style.marginLeft;
+
+            if (currentMargin === '0px' || !currentMargin) {
+                if (window.innerWidth <= 767) {
+                    mainContentWrapper.style.marginLeft = '0';
+                } else {
+                    mainContentWrapper.style.marginLeft = '15%';
+                }
+            } else {
+                mainContentWrapper.style.marginLeft = '0';
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('resize', handleResponsiveLayout);
+        document.querySelector('.sidebar-toggle').addEventListener('click', toggleSidebar);
+
+        // Initialize
+        handleResponsiveLayout();
+
+        // Enhanced modal handling for mobile
+        function enhanceModals() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('show.bs.modal', function () {
+                    if (window.innerWidth <= 767) {
+                        document.body.style.overflow = 'hidden';
+                        // Add backdrop for better mobile experience
+                        const backdrop = document.createElement('div');
+                        backdrop.className = 'modal-backdrop-mobile';
+                        backdrop.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.5);
+                        z-index: 1040;
+                    `;
+                        document.body.appendChild(backdrop);
+                    }
+                });
+
+                modal.addEventListener('hidden.bs.modal', function () {
+                    document.body.style.overflow = '';
+                    const backdrop = document.querySelector('.modal-backdrop-mobile');
+                    if (backdrop) {
+                        backdrop.remove();
+                    }
+                });
+            });
+        }
+
+        enhanceModals();
+
+        // Improve touch interactions for mobile settings items
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.settings-item').forEach(item => {
+                item.style.cursor = 'pointer';
+                item.addEventListener('touchstart', function () {
+                    this.style.backgroundColor = '#f8f9fa';
+                });
+                item.addEventListener('touchend', function () {
+                    this.style.backgroundColor = '';
+                });
+            });
+        }
+
+        // Handle orientation changes
+        window.addEventListener('orientationchange', function () {
+            setTimeout(handleResponsiveLayout, 100);
+        });
+
+        // Enhanced toggle switch functionality for mobile
+        document.querySelectorAll('.form-check-input').forEach(toggle => {
+            toggle.addEventListener('touchstart', function (e) {
+                e.preventDefault(); // Prevent double-tap zoom
+            });
+
+            toggle.addEventListener('touchend', function (e) {
+                e.preventDefault();
+                this.checked = !this.checked;
+                this.dispatchEvent(new Event('change'));
+            });
+        });
+
+        // Better button handling for mobile
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('touchstart', function () {
+                this.style.transform = 'scale(0.98)';
+            });
+
+            button.addEventListener('touchend', function () {
+                this.style.transform = '';
+            });
+        });
+    });
+
+    // Utility function for responsive form handling
+    function handleFormResponsive() {
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            if (window.innerWidth <= 767) {
+                form.classList.add('mobile-form');
+            } else {
+                form.classList.remove('mobile-form');
+            }
+        });
+    }
+
+    // Call this on load and resize
+    window.addEventListener('load', handleFormResponsive);
+    window.addEventListener('resize', handleFormResponsive);
 </script>

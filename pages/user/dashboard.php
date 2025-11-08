@@ -34,6 +34,10 @@ require_once $header_path;
 <link rel="stylesheet" href="../../assets/css/user_css/dashboards.css">
 
 <style>
+    body {
+        background-color: rgb(255, 255, 255)
+    }
+
     .main-dashboard-content {
         margin-left: 20%;
         padding: 20px 35px;
@@ -203,6 +207,198 @@ require_once $header_path;
     ::-webkit-scrollbar-thumb:hover {
         background-color: #2e78c6;
         /* blue on hover */
+    }
+
+
+
+    /* Mobile: 767px and below */
+    @media (max-width: 767px) {
+        .main-dashboard-content {
+            margin-left: 0;
+            padding: 15px;
+        }
+
+        .welcome-title {
+            font-size: 22px;
+        }
+
+        .section-title {
+            font-size: 18px;
+        }
+
+        .search-bar-custom {
+            height: 42px;
+        }
+
+        .search-bar-custom .form-control {
+            height: 42px;
+            font-size: 0.875rem;
+        }
+
+        input#searchInput {
+            padding-right: 1rem;
+        }
+
+        .study-load-card-custom .row {
+            flex-direction: column;
+        }
+
+        .study-load-image-custom {
+            min-height: 150px;
+        }
+
+        .class-item-custom {
+            /* REVERT: Keep class item horizontal on mobile */
+            display: flex;
+            /* Ensure it's a flex container */
+            align-items: center;
+            /* Vertically align image/text */
+            justify-content: space-between;
+            /* Space out the content and the button */
+            margin-bottom: 12px;
+            /* Add slight separation */
+            padding: 12px 16px;
+            /* Restore padding */
+            gap: 10px;
+            /* Space between elements */
+            min-width: 100%;
+            /* FIX 1: Ensure the container doesn't overflow */
+        }
+
+        .class-image-custom {
+            /* REVERT: Small fixed size for image on mobile */
+            width: 56px;
+            height: 74.67px;
+            flex-shrink: 0;
+            /* Important: prevents image from shrinking */
+        }
+
+        .class-item-custom .d-flex.flex-column.flex-grow-1 {
+            /* FIX 2: Important - allows the child elements (text) to be compressed */
+            min-width: 60%;
+            /* Important for spacing between image and text */
+            gap: 10px;
+        }
+
+        .d-flex.align-items-center.flex-grow-1 {
+            min-width: 60%;
+        }
+
+        /* FIX: Ensure the button doesn't wrap or overlap text on small screens */
+        .class-item-custom button {
+            flex-shrink: 0;
+            /* Ensure button doesn't shrink */
+            min-width: 70px;
+            /* Give the button a minimal width */
+        }
+
+        .onboarding-controls .d-flex {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .onboarding-controls .btn {
+            width: 100%;
+        }
+
+        .dashboard-widgets-grid {
+            margin-bottom: 20px;
+        }
+    }
+
+    /* Tablet: 768px to 1023px */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .main-dashboard-content {
+            margin-left: 80px;
+            padding: 20px 25px;
+        }
+
+        .welcome-title {
+            font-size: 24px;
+        }
+
+        .section-title {
+            font-size: 20px;
+        }
+
+        .study-load-card-custom .row {
+            flex-direction: row;
+        }
+
+        .study-load-image-custom {
+            min-height: 180px;
+        }
+
+        .class-item-custom {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .class-image-custom {
+            width: 56px;
+            height: 74.67px;
+        }
+    }
+
+    /* Desktop: 1024px and above */
+    @media (min-width: 1024px) {
+        .main-dashboard-content {
+            margin-left: 20%;
+            padding: 20px 35px;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+        }
+
+        .section-title {
+            font-size: 22px;
+        }
+
+        .study-load-card-custom .row {
+            flex-direction: row;
+        }
+
+        .study-load-image-custom {
+            min-height: 200px;
+        }
+
+        .class-item-custom {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .class-image-custom {
+            width: 56px;
+            height: 74.67px;
+        }
+    }
+
+    /* Demo content styles */
+    body {
+        font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .demo-content {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .screen-size-indicator {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #333;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 0.9rem;
     }
 </style>
 
@@ -518,6 +714,75 @@ require_once $header_path;
         $("#preview-step").hide();
         $("#upload-step").show();
         $("#ocr-alert").addClass("d-none");
+    });
+
+
+
+    // JavaScript for responsive behavior
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const mainContent = document.querySelector('.main-dashboard-content');
+        const screenSizeText = document.getElementById('screenSizeText');
+
+        // Function to update screen size indicator
+        function updateScreenSizeIndicator() {
+            const width = window.innerWidth;
+            if (width <= 767) {
+                screenSizeText.textContent = 'Mobile';
+            } else if (width >= 768 && width <= 1023) {
+                screenSizeText.textContent = 'Tablet';
+            } else {
+                screenSizeText.textContent = 'Desktop';
+            }
+        }
+
+        // Toggle sidebar on button click
+        sidebarToggle.addEventListener('click', function () {
+            const isCollapsed = mainContent.style.marginLeft === '0px' ||
+                (window.innerWidth <= 1023 && mainContent.style.marginLeft !== '20%');
+
+            if (isCollapsed) {
+                // Expand sidebar
+                if (window.innerWidth <= 767) {
+                    mainContent.style.marginLeft = '0';
+                } else if (window.innerWidth <= 1023) {
+                    mainContent.style.marginLeft = '80px';
+                } else {
+                    mainContent.style.marginLeft = '20%';
+                }
+            } else {
+                // Collapse sidebar
+                mainContent.style.marginLeft = '0';
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+            updateScreenSizeIndicator();
+
+            // Reset content area based on screen size
+            if (window.innerWidth >= 1024) {
+                mainContent.style.marginLeft = '20%';
+            } else if (window.innerWidth >= 768 && window.innerWidth <= 1023) {
+                mainContent.style.marginLeft = '80px';
+            } else {
+                mainContent.style.marginLeft = '0';
+            }
+        });
+
+        // Initialize
+        updateScreenSizeIndicator();
+
+        // Demo AJAX functionality
+        document.getElementById('viewTipsBtn').addEventListener('click', function () {
+            document.getElementById('onboardingContent').innerHTML =
+                '<div class="alert alert-info">Tips loaded successfully! Here are some helpful tips for using ChronoNav.</div>';
+        });
+
+        document.getElementById('restartOnboardingBtn').addEventListener('click', function () {
+            document.getElementById('onboardingContent').innerHTML =
+                '<div class="alert alert-success">Onboarding restarted successfully!</div>';
+        });
     });
 </script>
 
