@@ -144,6 +144,7 @@ require_once '../../templates/faculty/header_faculty.php';
             flex: 1;
             margin: 0 auto;
             margin-left: 20%;
+            background: #ffff;
         }
 
         .nav-tabs-custom {
@@ -368,6 +369,10 @@ require_once '../../templates/faculty/header_faculty.php';
             background-color: transparent;
         }
 
+        .navbar-toggler-icon {
+            display: none;
+        }
+
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 12px;
@@ -376,16 +381,370 @@ require_once '../../templates/faculty/header_faculty.php';
 
         ::-webkit-scrollbar-track {
             background: #ffffff;
+            /* white track */
         }
 
         ::-webkit-scrollbar-thumb {
             background-color: #737373;
+            /* gray thumb */
             border-radius: 6px;
             border: 3px solid #ffffff;
+            /* padding effect with white border */
         }
 
         ::-webkit-scrollbar-thumb:hover {
             background-color: #2e78c6;
+            /* blue on hover */
+        }
+
+        /* Add these media queries at the end of your existing CSS */
+
+        /* Mobile: 767px and below */
+        @media (max-width: 767px) {
+            .layout-content-container {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                padding: 1rem !important;
+            }
+
+            .main-dashboard-content {
+                padding: 1rem 0 !important;
+            }
+
+            .text-dark.fw-bold.fs-3.mb-0 {
+                font-size: 1.5rem !important;
+                text-align: center;
+                width: 100%;
+                min-width: auto !important;
+            }
+
+            .fc-toolbar {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+            }
+
+            .fc-toolbar-title {
+                font-size: 1.1rem !important;
+                text-align: center;
+            }
+
+            .fc-header-toolbar .fc-toolbar-chunk {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .fc .fc-button {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.8rem !important;
+            }
+
+            .class-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 1rem !important;
+                padding: 1rem !important;
+                min-height: auto !important;
+            }
+
+            .class-icon {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .d-flex.justify-content-between.align-items-center.mb-3 {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+
+            .btn {
+                width: 100% !important;
+                justify-content: center;
+            }
+
+            .floating-btn {
+                position: fixed !important;
+                bottom: 1.25rem !important;
+                right: 1.25rem !important;
+                width: 56px !important;
+                height: 56px !important;
+                border-radius: 50% !important;
+            }
+
+            .floating-btn span {
+                display: none !important;
+            }
+
+            .modal-dialog {
+                margin: 0.5rem !important;
+                max-width: calc(100% - 1rem) !important;
+            }
+
+            .fc-daygrid-day-number {
+                font-size: 0.7rem !important;
+                padding: 0.25rem !important;
+            }
+
+            .fc-col-header-cell-cushion {
+                font-size: 0.7rem !important;
+            }
+
+            h3.text-dark.fw-bold.fs-5.px-0.pb-2.pt-4 {
+                font-size: 1.1rem !important;
+                text-align: center;
+            }
+
+            img,
+            svg {
+                vertical-align: unset;
+            }
+        }
+
+        /* Tablet: 768px to 1023px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .layout-content-container {
+                max-width: 85% !important;
+                margin-left: 15% !important;
+                padding: 1.5rem !important;
+            }
+
+            .fc-toolbar {
+                flex-wrap: wrap !important;
+                gap: 0.75rem !important;
+            }
+
+            .fc-toolbar-title {
+                font-size: 1.15rem !important;
+            }
+
+            .fc .fc-button {
+                font-size: 0.85rem !important;
+                padding: 0.45rem 0.9rem !important;
+            }
+
+            .class-item {
+                padding: 0.75rem !important;
+                min-height: 65px !important;
+            }
+
+            .class-icon {
+                width: 44px !important;
+                height: 44px !important;
+            }
+
+            .floating-btn {
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                border-radius: 9999px !important;
+                padding: 0.75rem 1.25rem !important;
+            }
+
+            .floating-btn span {
+                display: inline !important;
+            }
+
+            .modal-dialog {
+                max-width: 600px !important;
+                margin: 1.75rem auto !important;
+            }
+
+            .fc-daygrid-day-number {
+                font-size: 0.75rem !important;
+            }
+
+            .fc-col-header-cell-cushion {
+                font-size: 0.75rem !important;
+            }
+        }
+
+        /* Desktop: 1024px and above */
+        @media (min-width: 1024px) {
+            .layout-content-container {
+                max-width: 80% !important;
+                margin-left: 20% !important;
+                padding: 2rem 2.5rem !important;
+            }
+
+            .fc-toolbar {
+                flex-wrap: nowrap !important;
+            }
+
+            .fc-toolbar-title {
+                font-size: 1.25rem !important;
+            }
+
+            .fc .fc-button {
+                font-size: 0.875rem !important;
+                padding: 0.5rem 1rem !important;
+            }
+
+            .class-item {
+                padding: 0.5rem 1rem !important;
+                min-height: 72px !important;
+            }
+
+            .class-icon {
+                width: 48px !important;
+                height: 48px !important;
+            }
+
+            .floating-btn {
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                border-radius: 9999px !important;
+                padding: 0.875rem 1.5rem !important;
+            }
+
+            .floating-btn span {
+                display: inline !important;
+            }
+
+            .modal-dialog {
+                max-width: 500px !important;
+                margin: 1.75rem auto !important;
+            }
+        }
+
+        /* Responsive sidebar toggle button */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1100;
+            background: #3e99f4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 1023px) {
+            .sidebar-toggle {
+                display: block !important;
+            }
+        }
+
+        /* Enhanced FullCalendar responsiveness */
+        @media (max-width: 767px) {
+            .fc .fc-daygrid-day-frame {
+                min-height: 60px !important;
+            }
+
+            .fc .fc-daygrid-event {
+                font-size: 0.7rem !important;
+                margin: 1px !important;
+            }
+
+            .fc .fc-event-title {
+                padding: 1px 2px !important;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .fc .fc-daygrid-day-frame {
+                min-height: 50px !important;
+            }
+
+            .fc .fc-daygrid-day-number {
+                font-size: 0.65rem !important;
+                padding: 0.15rem !important;
+            }
+
+            .fc-day-today .fc-daygrid-day-number {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+                margin: 0.15rem !important;
+            }
+        }
+
+        /* Improved modal responsiveness */
+        @media (max-width: 767px) {
+            .modal-content {
+                border-radius: 0.5rem !important;
+            }
+
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 1rem !important;
+            }
+
+            .modal-title {
+                font-size: 1.25rem !important;
+            }
+
+            .form-control {
+                font-size: 16px !important;
+                /* Prevents zoom on iOS */
+            }
+        }
+
+        /* Better touch targets for mobile */
+        @media (max-width: 767px) {
+            .class-item {
+                min-height: 80px;
+            }
+
+            .btn {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .fc .fc-button {
+                min-height: 36px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Print styles for schedule */
+        @media print {
+            .layout-content-container {
+                margin-left: 0 !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .floating-btn,
+            .sidebar-toggle,
+            .btn:not(.btn-print) {
+                display: none !important;
+            }
+
+            .class-item {
+                break-inside: avoid;
+            }
+        }
+
+        /* Enhanced calendar event display */
+        @media (max-width: 767px) {
+            .fc-event {
+                font-size: 0.7rem !important;
+                padding: 1px 2px !important;
+            }
+
+            .fc-event-title {
+                font-size: 0.7rem !important;
+            }
+        }
+
+        /* Ensure proper spacing in calendar */
+        @media (max-width: 767px) {
+            .fc .fc-scrollgrid {
+                font-size: 0.8rem;
+            }
+
+            .fc .fc-col-header-cell {
+                padding: 0.5rem 0 !important;
+            }
         }
     </style>
 </head>
@@ -409,10 +768,10 @@ require_once '../../templates/faculty/header_faculty.php';
         </h3>
 
         <?php if ($message): ?>
-                <div class="alert alert-<?= $message_type ?> alert-dismissible fade show" role="alert">
-                    <?= htmlspecialchars($message) ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-<?= $message_type ?> alert-dismissible fade show" role="alert">
+                <?= htmlspecialchars($message) ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         <?php endif; ?>
 
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -426,39 +785,39 @@ require_once '../../templates/faculty/header_faculty.php';
         </div>
 
         <?php if (empty($all_daily_events)): ?>
-                <div class="alert alert-info text-center">
-                    No classes or reminders scheduled for this day.
-                </div>
+            <div class="alert alert-info text-center">
+                No classes or reminders scheduled for this day.
+            </div>
         <?php else: ?>
-                <!-- Dynamic Classes from your PHP data -->
-                <?php foreach ($all_daily_events as $event): ?>
-                        <div class="class-item d-flex align-items-center gap-3">
-                            <div class="class-icon text-dark">
-                                <?php if ($event['type'] === 'schedule'): ?>
-                                        <i class="fas fa-chalkboard-teacher"></i>
-                                <?php elseif ($event['type'] === 'reminder'): ?>
-                                        <i class="fas fa-bell"></i>
+            <!-- Dynamic Classes from your PHP data -->
+            <?php foreach ($all_daily_events as $event): ?>
+                <div class="class-item d-flex align-items-center gap-3">
+                    <div class="class-icon text-dark">
+                        <?php if ($event['type'] === 'schedule'): ?>
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        <?php elseif ($event['type'] === 'reminder'): ?>
+                            <i class="fas fa-bell"></i>
+                        <?php endif; ?>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="text-dark fw-medium mb-1 text-truncate"><?= htmlspecialchars($event['title']) ?></p>
+                        <p class="text-muted small mb-0 text-truncate-2">
+                            <?php if ($event['type'] === 'schedule'): ?>
+                                <?= htmlspecialchars(date('h:i A', strtotime($event['time']))) ?> -
+                                <?= htmlspecialchars(date('h:i A', strtotime($event['end_time']))) ?>
+                                <?php if (!empty($event['location'])): ?>
+                                    · <?= htmlspecialchars($event['location']) ?>
                                 <?php endif; ?>
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                                <p class="text-dark fw-medium mb-1 text-truncate"><?= htmlspecialchars($event['title']) ?></p>
-                                <p class="text-muted small mb-0 text-truncate-2">
-                                    <?php if ($event['type'] === 'schedule'): ?>
-                                            <?= htmlspecialchars(date('h:i A', strtotime($event['time']))) ?> -
-                                            <?= htmlspecialchars(date('h:i A', strtotime($event['end_time']))) ?>
-                                            <?php if (!empty($event['location'])): ?>
-                                                    · <?= htmlspecialchars($event['location']) ?>
-                                            <?php endif; ?>
-                                    <?php elseif ($event['type'] === 'reminder'): ?>
-                                            Due: <?= htmlspecialchars(date('h:i A', strtotime($event['time']))) ?>
-                                            <?php if (!empty($event['description'])): ?>
-                                                    · <?= nl2br(htmlspecialchars($event['description'])) ?>
-                                            <?php endif; ?>
-                                    <?php endif; ?>
-                                </p>
-                            </div>
-                        </div>
-                <?php endforeach; ?>
+                            <?php elseif ($event['type'] === 'reminder'): ?>
+                                Due: <?= htmlspecialchars(date('h:i A', strtotime($event['time']))) ?>
+                                <?php if (!empty($event['description'])): ?>
+                                    · <?= nl2br(htmlspecialchars($event['description'])) ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         <?php endif; ?>
 
         <!-- Floating Action Button -->
@@ -484,15 +843,15 @@ require_once '../../templates/faculty/header_faculty.php';
             // Prepare events for FullCalendar from PHP data
             const calendarEvents = [
                 <?php foreach ($all_daily_events as $event): ?>
-                        {
-                            title: '<?= addslashes($event['title']) ?>',
-                            start: '<?= $selected_date ?>T<?= $event['time'] ?>',
-                            <?php if ($event['type'] === 'schedule' && !empty($event['end_time'])): ?>
-                                    end: '<?= $selected_date ?>T<?= $event['end_time'] ?>',
-                            <?php endif; ?>
-                            description: '<?= addslashes($event['type'] === 'schedule' ? $event['location'] : $event['description']) ?>',
-                            color: '<?= $event['type'] === 'schedule' ? '#2E78C6' : '#ffc107' ?>'
-                        },
+                                {
+                        title: '<?= addslashes($event['title']) ?>',
+                        start: '<?= $selected_date ?>T<?= $event['time'] ?>',
+                        <?php if ($event['type'] === 'schedule' && !empty($event['end_time'])): ?>
+                                                    end: '<?= $selected_date ?>T<?= $event['end_time'] ?>',
+                        <?php endif; ?>
+                                    description: '<?= addslashes($event['type'] === 'schedule' ? $event['location'] : $event['description']) ?>',
+                        color: '<?= $event['type'] === 'schedule' ? '#2E78C6' : '#ffc107' ?>'
+                    },
                 <?php endforeach; ?>
             ];
 
@@ -589,7 +948,8 @@ require_once '../../templates/faculty/header_faculty.php';
                         </div>
                         <div class="mb-3">
                             <label for="scheduleDescription" class="form-label">Description (Optional)</label>
-                            <textarea class="form-control" id="scheduleDescription" name="description" rows="3"></textarea>
+                            <textarea class="form-control" id="scheduleDescription" name="description"
+                                rows="3"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="scheduleDate" class="form-label">Date</label>

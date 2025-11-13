@@ -44,6 +44,10 @@ require_once $header_path;
 <link rel="stylesheet" href="../../assets/css/onboarding.css">
 
 <style>
+    body {
+        background-color: #ffffff;
+    }
+
     .main-dashboard-content {
         margin-left: 20%;
         padding: 0px 35px;
@@ -53,6 +57,7 @@ require_once $header_path;
         font-family: "Space Grotesk", "Noto Sans", sans-serif;
         min-height: 100vh;
         width: 100%;
+        background-color: #ffffff;
     }
 
     /* Custom styles to match the exact design */
@@ -274,6 +279,224 @@ require_once $header_path;
 
     .card-text {
         color: #5c748a;
+    }
+
+
+
+    /* Add these media queries at the end of your existing CSS - EXACT SAME STRUCTURE AS USER DASHBOARD */
+
+    /* Mobile: 767px and below */
+    @media (max-width: 767px) {
+        .main-dashboard-content {
+            margin-left: 0;
+            padding: 15px;
+        }
+
+        .welcome-title {
+            font-size: 22px;
+        }
+
+        .section-title {
+            font-size: 18px;
+        }
+
+        .search-bar-custom {
+            height: 42px;
+        }
+
+        .search-bar-custom .form-control {
+            height: 42px;
+            font-size: 0.875rem;
+        }
+
+        input#searchInput {
+            padding-right: 1rem;
+        }
+
+        .study-load-card-custom .row {
+            flex-direction: column;
+        }
+
+        .study-load-image-custom {
+            min-height: 150px;
+        }
+
+        .class-item-custom {
+            /* REVERT: Keep class item horizontal on mobile */
+            display: flex;
+            /* Ensure it's a flex container */
+            align-items: center;
+            /* Vertically align image/text */
+            justify-content: space-between;
+            /* Space out the content and the button */
+            margin-bottom: 12px;
+            /* Add slight separation */
+            padding: 12px 16px;
+            /* Restore padding */
+            gap: 10px;
+            /* Space between elements */
+            min-width: 100%;
+            /* FIX 1: Ensure the container doesn't overflow */
+        }
+
+        .class-image-custom {
+            /* REVERT: Small fixed size for image on mobile */
+            width: 56px;
+            height: 74.67px;
+            flex-shrink: 0;
+            /* Important: prevents image from shrinking */
+        }
+
+        .class-item-custom .d-flex.flex-column.flex-grow-1 {
+            /* FIX 2: Important - allows the child elements (text) to be compressed */
+            min-width: 60%;
+            /* Important for spacing between image and text */
+            gap: 10px;
+        }
+
+        .d-flex.align-items-center.flex-grow-1 {
+            min-width: 60%;
+        }
+
+        /* FIX: Ensure the button doesn't wrap or overlap text on small screens */
+        .class-item-custom button {
+            flex-shrink: 0;
+            /* Ensure button doesn't shrink */
+            min-width: 70px;
+            /* Give the button a minimal width */
+        }
+
+        .onboarding-controls .d-flex {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .onboarding-controls .btn {
+            width: 100%;
+        }
+
+        .dashboard-widgets-grid {
+            margin-bottom: 20px;
+        }
+
+        /* Faculty-specific mobile adjustments */
+        .faculty-links .list-group-item {
+            padding: 12px 16px;
+            margin-bottom: 8px;
+        }
+
+        .faculty-links .list-group-item a {
+            font-size: 0.875rem;
+            gap: 0.5rem;
+        }
+
+        .faculty-links .list-group-item small {
+            font-size: 0.8rem;
+            padding-left: 1.5rem;
+        }
+
+        .row.mt-4.px-3 {
+            margin-top: 1rem !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .col-md-6.mb-4 {
+            margin-bottom: 1rem !important;
+        }
+
+        .card.shadow-sm.h-100.border-0 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    /* Tablet: 768px to 1023px */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .main-dashboard-content {
+            margin-left: 80px;
+            padding: 20px 25px;
+        }
+
+        .welcome-title {
+            font-size: 24px;
+        }
+
+        .section-title {
+            font-size: 20px;
+        }
+
+        .study-load-card-custom .row {
+            flex-direction: row;
+        }
+
+        .study-load-image-custom {
+            min-height: 180px;
+        }
+
+        .class-item-custom {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .class-image-custom {
+            width: 56px;
+            height: 74.67px;
+        }
+
+        /* Faculty-specific tablet adjustments */
+        .faculty-links .list-group-item {
+            padding: 14px 18px;
+        }
+
+        .row.mt-4.px-3 {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
+    }
+
+    /* Desktop: 1024px and above */
+    @media (min-width: 1024px) {
+        .main-dashboard-content {
+            margin-left: 20%;
+            padding: 20px 35px;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+        }
+
+        .section-title {
+            font-size: 22px;
+        }
+
+        .study-load-card-custom .row {
+            flex-direction: row;
+        }
+
+        .study-load-image-custom {
+            min-height: 200px;
+        }
+
+        .class-item-custom {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .class-image-custom {
+            width: 56px;
+            height: 74.67px;
+        }
+
+        /* Faculty-specific desktop adjustments */
+        .faculty-links .list-group-item {
+            padding: 16px 20px;
+        }
+
+        .row.mt-4.px-3 {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
     }
 </style>
 

@@ -81,6 +81,7 @@ require_once '../../templates/faculty/header_faculty.php';
         .layout-content-container {
             flex: 1;
             margin-left: 20%;
+            transition: margin-left 0.3s ease;
         }
 
         .page-title {
@@ -214,6 +215,14 @@ require_once '../../templates/faculty/header_faculty.php';
             font-size: 0.875rem;
         }
 
+        .btn-group-action {
+            white-space: nowrap;
+        }
+
+        .btn-group-action .btn {
+            margin-right: 0.25rem;
+        }
+
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 12px;
@@ -232,6 +241,316 @@ require_once '../../templates/faculty/header_faculty.php';
 
         ::-webkit-scrollbar-thumb:hover {
             background-color: #2e78c6;
+        }
+
+        /* Mobile: 767px and below */
+        @media (max-width: 767px) {
+            .layout-content-container {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 1rem !important;
+            }
+
+            .page-title {
+                font-size: 1.5rem !important;
+                text-align: center;
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.25rem !important;
+                text-align: center;
+            }
+
+            .card {
+                padding: 1rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .form-control,
+            .form-control:focus {
+                height: 48px !important;
+                padding: 12px !important;
+            }
+
+            textarea.form-control {
+                min-height: 120px !important;
+            }
+
+            .btn-primary,
+            .btn-success {
+                width: 100% !important;
+                margin-bottom: 0.5rem;
+                justify-content: center;
+            }
+
+            .table-responsive {
+                border: 1px solid #d1dce6;
+                border-radius: 8px;
+                margin: 0 -0.5rem;
+            }
+
+            .table th,
+            .table td {
+                padding: 0.75rem 0.5rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            .btn-group-action {
+                white-space: normal !important;
+                text-align: center;
+            }
+
+            .btn-group-action .btn {
+                margin-bottom: 0.5rem !important;
+                display: block !important;
+                width: 100% !important;
+                margin-right: 0 !important;
+            }
+
+            .btn-sm {
+                height: auto !important;
+                min-height: 44px;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Hide less important columns on mobile */
+            .office-requests-table th:nth-child(2),
+            .office-requests-table td:nth-child(2),
+            .office-requests-table th:nth-child(4),
+            .office-requests-table td:nth-child(4),
+            .office-requests-table th:nth-child(6),
+            .office-requests-table td:nth-child(6) {
+                display: none;
+            }
+
+            .consultation-table th:nth-child(3),
+            .consultation-table td:nth-child(3) {
+                display: none;
+            }
+
+            .alert {
+                margin: 1rem 0.5rem !important;
+                text-align: center;
+            }
+
+            .d-flex.flex-wrap.justify-content-between.align-items-center.gap-3.p-2 {
+                padding: 1rem 0.5rem !important;
+            }
+
+            .row.px-3.py-3 {
+                padding: 1rem 0.5rem !important;
+            }
+
+            .px-3.py-3 {
+                padding: 1rem 0.5rem !important;
+            }
+        }
+
+        /* Tablet: 768px to 1023px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .layout-content-container {
+                margin-left: 15% !important;
+                width: 85% !important;
+                padding: 1.5rem !important;
+            }
+
+            .page-title {
+                font-size: 1.75rem !important;
+            }
+
+            .section-title {
+                font-size: 1.375rem !important;
+            }
+
+            .card {
+                padding: 1.5rem !important;
+                margin-bottom: 1.75rem !important;
+            }
+
+            .form-control,
+            .form-control:focus {
+                height: 52px !important;
+                padding: 14px !important;
+            }
+
+            .btn-group-action {
+                white-space: normal;
+            }
+
+            .btn-group-action .btn {
+                margin-bottom: 0.25rem;
+                display: inline-block;
+                width: auto;
+            }
+
+            /* Hide message and requested at columns on tablet */
+            .office-requests-table th:nth-child(2),
+            .office-requests-table td:nth-child(2),
+            .office-requests-table th:nth-child(6),
+            .office-requests-table td:nth-child(6) {
+                display: none;
+            }
+
+            .table th,
+            .table td {
+                padding: 0.875rem !important;
+                font-size: 0.9rem !important;
+            }
+        }
+
+        /* Desktop: 1024px and above */
+        @media (min-width: 1024px) {
+            .layout-content-container {
+                margin-left: 20% !important;
+                width: 80% !important;
+                padding: 2rem !important;
+            }
+
+            .page-title {
+                font-size: 2rem !important;
+            }
+
+            .section-title {
+                font-size: 1.5rem !important;
+            }
+
+            .card {
+                padding: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .form-control,
+            .form-control:focus {
+                height: 56px !important;
+                padding: 15px !important;
+            }
+
+            .btn-group-action {
+                white-space: nowrap;
+            }
+
+            .btn-group-action .btn {
+                margin-bottom: 0;
+                display: inline-block;
+                width: auto;
+            }
+
+            .table th,
+            .table td {
+                padding: 1rem !important;
+                font-size: 0.95rem !important;
+            }
+        }
+
+        /* Enhanced table responsiveness for mobile */
+        @media (max-width: 767px) {
+
+            .office-requests-table thead,
+            .consultation-table thead {
+                display: none;
+            }
+
+            .office-requests-table tbody tr,
+            .consultation-table tbody tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #d1dce6;
+                border-radius: 8px;
+                padding: 1rem;
+            }
+
+            .office-requests-table tbody td,
+            .consultation-table tbody td {
+                display: block;
+                text-align: right;
+                padding: 0.5rem !important;
+                border: none;
+                position: relative;
+            }
+
+            .office-requests-table tbody td::before,
+            .consultation-table tbody td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0.5rem;
+                top: 0.5rem;
+                font-weight: 600;
+                color: #0e151b;
+                font-size: 0.8rem;
+            }
+
+            .btn-group-action td::before {
+                display: none;
+            }
+
+            .btn-group-action {
+                text-align: center !important;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Improved button styling for mobile */
+        @media (max-width: 767px) {
+            .btn {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.9rem;
+            }
+
+            .btn i {
+                margin-right: 0.5rem;
+            }
+        }
+
+        /* Better form spacing */
+        @media (max-width: 767px) {
+            .row.px-3.py-3 .col-12 {
+                margin-bottom: 1rem;
+            }
+
+            .mb-4 {
+                margin-bottom: 1rem !important;
+            }
+        }
+
+        /* Modal responsiveness */
+        @media (max-width: 767px) {
+            .modal-dialog {
+                margin: 0.5rem !important;
+                max-width: calc(100% - 1rem) !important;
+            }
+
+            .modal-content {
+                border-radius: 0.5rem !important;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 1rem !important;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .layout-content-container {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+
+            .btn,
+            .btn-group-action {
+                display: none !important;
+            }
+
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #d1dce6 !important;
+            }
         }
     </style>
 </head>
@@ -349,35 +668,39 @@ require_once '../../templates/faculty/header_faculty.php';
                             <h2 class="section-title px-3 pb-3 pt-0">Your Office Hour Requests</h2>
                             <?php if (!empty($facultyOfficeHoursRequests)): ?>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table office-requests-table">
                                         <thead>
                                             <tr>
-                                                <th>Proposed Schedule</th>
-                                                <th>Message</th>
-                                                <th>Status</th>
-                                                <th>Admin Reply</th>
-                                                <th>Approved Schedule</th>
-                                                <th>Requested At</th>
+                                                <th data-label="Schedule">Proposed Schedule</th>
+                                                <th data-label="Message">Message</th>
+                                                <th data-label="Status">Status</th>
+                                                <th data-label="Admin Reply">Admin Reply</th>
+                                                <th data-label="Approved Schedule">Approved Schedule</th>
+                                                <th data-label="Requested At">Requested At</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($facultyOfficeHoursRequests as $request): ?>
                                                 <tr>
-                                                    <td><?= htmlspecialchars($request['proposed_day']) ?>
+                                                    <td data-label="Schedule"><?= htmlspecialchars($request['proposed_day']) ?>
                                                         <?= htmlspecialchars(date('h:i A', strtotime($request['proposed_start_time']))) ?>
                                                         -
                                                         <?= htmlspecialchars(date('h:i A', strtotime($request['proposed_end_time']))) ?>
                                                     </td>
-                                                    <td><small><?= nl2br(htmlspecialchars($request['request_letter_message'])) ?></small>
+                                                    <td data-label="Message">
+                                                        <small><?= nl2br(htmlspecialchars($request['request_letter_message'])) ?></small>
                                                     </td>
-                                                    <td><span
+                                                    <td data-label="Status"><span
                                                             class="badge bg-<?= strtolower($request['status']) === 'approved' ? 'success' : (strtolower($request['status']) === 'pending' ? 'warning' : 'danger') ?>"><?= ucfirst(htmlspecialchars($request['status'])) ?></span>
                                                     </td>
-                                                    <td><small><?= nl2br(htmlspecialchars($request['admin_reply_message'] ?: 'N/A')) ?></small>
+                                                    <td data-label="Admin Reply">
+                                                        <small><?= nl2br(htmlspecialchars($request['admin_reply_message'] ?: 'N/A')) ?></small>
                                                     </td>
-                                                    <td><?= $request['approved_day'] ? htmlspecialchars($request['approved_day']) . ' ' . htmlspecialchars(date('h:i A', strtotime($request['approved_start_time']))) . ' - ' . htmlspecialchars(date('h:i A', strtotime($request['approved_end_time']))) : 'N/A' ?>
+                                                    <td data-label="Approved Schedule">
+                                                        <?= $request['approved_day'] ? htmlspecialchars($request['approved_day']) . ' ' . htmlspecialchars(date('h:i A', strtotime($request['approved_start_time']))) . ' - ' . htmlspecialchars(date('h:i A', strtotime($request['approved_end_time']))) : 'N/A' ?>
                                                     </td>
-                                                    <td><?= htmlspecialchars(date('M d, Y h:i A', strtotime($request['requested_at']))) ?>
+                                                    <td data-label="Requested At">
+                                                        <?= htmlspecialchars(date('M d, Y h:i A', strtotime($request['requested_at']))) ?>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -465,23 +788,24 @@ require_once '../../templates/faculty/header_faculty.php';
 
                             <?php if (!empty($facultyConsultationHours)): ?>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table consultation-table">
                                         <thead>
                                             <tr>
-                                                <th>Day(s)</th>
-                                                <th>Time</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
+                                                <th data-label="Day(s)">Day(s)</th>
+                                                <th data-label="Time">Time</th>
+                                                <th data-label="Status">Status</th>
+                                                <th data-label="Actions">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($facultyConsultationHours as $slot): ?>
                                                 <tr>
-                                                    <td><?= htmlspecialchars($slot['day_of_week']) ?></td>
-                                                    <td><?= htmlspecialchars(date('h:i A', strtotime($slot['start_time']))) ?> -
+                                                    <td data-label="Day(s)"><?= htmlspecialchars($slot['day_of_week']) ?></td>
+                                                    <td data-label="Time">
+                                                        <?= htmlspecialchars(date('h:i A', strtotime($slot['start_time']))) ?> -
                                                         <?= htmlspecialchars(date('h:i A', strtotime($slot['end_time']))) ?>
                                                     </td>
-                                                    <td>
+                                                    <td data-label="Status">
                                                         <span
                                                             class="badge bg-<?= $slot['is_active'] ? 'success' : 'secondary' ?>">
                                                             <?= $slot['is_active'] ? 'Active' : 'Inactive' ?>

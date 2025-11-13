@@ -261,6 +261,7 @@ require_once '../../templates/user/header_user.php';
             margin-left: 0 !important;
             width: 100% !important;
             overflow-y: hidden;
+            overflow-x: hidden;
         }
 
         .main-dashboard-content {
@@ -325,6 +326,7 @@ require_once '../../templates/user/header_user.php';
         .main-content-wrapper {
             margin-left: 15% !important;
             width: 85% !important;
+            overflow-x: hidden;
         }
 
         .main-dashboard-content {
@@ -364,6 +366,7 @@ require_once '../../templates/user/header_user.php';
         .main-content-wrapper {
             margin-left: 20% !important;
             width: 80% !important;
+            overflow-x: hidden;
         }
 
         .main-dashboard-content {

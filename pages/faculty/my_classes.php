@@ -289,13 +289,39 @@ require_once '../../templates/faculty/header_faculty.php';
             background-color: #2e78c6;
         }
 
-        @media (max-width: 768px) {
-            .main-content-wrapper {
-                margin-left: 0;
+        /* Mobile: 767px and below */
+        @media (max-width: 767px) {
+            .sched.main-content-wrapper {
+                margin-left: 0 !important;
+                width: 100% !important;
             }
 
             .main-dashboard-content {
-                padding: 1rem;
+                padding: 1rem !important;
+                height: auto !important;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.5rem !important;
+                text-align: center;
+                margin-bottom: 1rem !important;
+            }
+
+            .card {
+                margin-bottom: 1rem !important;
+            }
+
+            .card-header {
+                padding: 1rem !important;
+            }
+
+            .card-header h5 {
+                font-size: 1.25rem !important;
+                text-align: center;
+            }
+
+            .card-body {
+                padding: 1rem !important;
             }
 
             .table-responsive {
@@ -303,14 +329,218 @@ require_once '../../templates/faculty/header_faculty.php';
                 border-radius: 8px;
             }
 
+            .table th,
+            .table td {
+                padding: 0.75rem 0.5rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            .action-buttons {
+                white-space: normal !important;
+                text-align: center;
+            }
+
+            .action-buttons .btn {
+                margin-bottom: 0.5rem !important;
+                display: block !important;
+                width: 100% !important;
+                margin-right: 0 !important;
+            }
+
+            .btn-sm {
+                height: auto !important;
+                min-height: 44px;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Hide less important columns on mobile */
+            .table th:nth-child(3),
+            .table td:nth-child(3),
+            .table th:nth-child(4),
+            .table td:nth-child(4) {
+                display: none;
+            }
+
+            .alert {
+                margin: 1rem 0.5rem !important;
+                text-align: center;
+            }
+        }
+
+        /* Tablet: 768px to 1023px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .sched.main-content-wrapper {
+                margin-left: 15% !important;
+                width: 85% !important;
+            }
+
+            .main-dashboard-content {
+                padding: 1.5rem !important;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.75rem !important;
+            }
+
+            .card-header {
+                padding: 1.25rem !important;
+            }
+
+            .card-header h5 {
+                font-size: 1.375rem !important;
+            }
+
+            .card-body {
+                padding: 1.25rem !important;
+            }
+
+            .table th,
+            .table td {
+                padding: 0.875rem !important;
+                font-size: 0.9rem !important;
+            }
+
             .action-buttons {
                 white-space: normal;
             }
 
             .action-buttons .btn {
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.25rem;
+                display: inline-block;
+                width: auto;
+            }
+
+            /* Hide semester column on tablet to save space */
+            .table th:nth-child(3),
+            .table td:nth-child(3) {
+                display: none;
+            }
+        }
+
+        /* Desktop: 1024px and above */
+        @media (min-width: 1024px) {
+            .sched.main-content-wrapper {
+                margin-left: 20% !important;
+                width: 80% !important;
+            }
+
+            .main-dashboard-content {
+                padding: 2rem !important;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.75rem !important;
+            }
+
+            .card-header {
+                padding: 1.5rem !important;
+            }
+
+            .card-header h5 {
+                font-size: 1.5rem !important;
+            }
+
+            .card-body {
+                padding: 1.5rem !important;
+            }
+
+            .table th,
+            .table td {
+                padding: 1rem !important;
+                font-size: 0.95rem !important;
+            }
+
+            .action-buttons {
+                white-space: nowrap;
+            }
+
+            .action-buttons .btn {
+                margin-bottom: 0;
+                display: inline-block;
+                width: auto;
+            }
+        }
+
+        /* Enhanced table responsiveness */
+        @media (max-width: 767px) {
+            .table thead {
+                display: none;
+            }
+
+            .table tbody tr {
                 display: block;
-                width: 100%;
+                margin-bottom: 1rem;
+                border: 1px solid #d1dce6;
+                border-radius: 8px;
+                padding: 1rem;
+            }
+
+            .table tbody td {
+                display: block;
+                text-align: right;
+                padding: 0.5rem !important;
+                border: none;
+                position: relative;
+            }
+
+            .table tbody td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0.5rem;
+                top: 0.5rem;
+                font-weight: 600;
+                color: #0e151b;
+            }
+
+            .action-buttons td::before {
+                display: none;
+            }
+
+            .action-buttons {
+                text-align: center !important;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Improved button styling for mobile */
+        @media (max-width: 767px) {
+            .btn {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.9rem;
+            }
+
+            .btn i {
+                margin-right: 0.5rem;
+            }
+        }
+
+        /* Better card spacing */
+        @media (max-width: 767px) {
+            .card {
+                margin: 0.5rem !important;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .sched.main-content-wrapper {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+
+            .btn,
+            .action-buttons {
+                display: none !important;
+            }
+
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #d1dce6 !important;
             }
         }
     </style>
@@ -346,29 +576,29 @@ require_once '../../templates/faculty/header_faculty.php';
                             <table class="table table-hover table-bordered mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Class Code</th>
-                                        <th>Class Name</th>
-                                        <th>Semester (Year)</th>
-                                        <th>Room</th>
-                                        <th>Day(s)</th>
-                                        <th>Time</th>
-                                        <th>Actions</th>
+                                        <th data-label="Class Code">Class Code</th>
+                                        <th data-label="Class Name">Class Name</th>
+                                        <th data-label="Semester">Semester (Year)</th>
+                                        <th data-label="Room">Room</th>
+                                        <th data-label="Day">Day(s)</th>
+                                        <th data-label="Time">Time</th>
+                                        <th data-label="Actions">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($assigned_classes as $class): ?>
                                         <tr>
-                                            <td><?= htmlspecialchars($class['class_code']) ?></td>
-                                            <td><?= htmlspecialchars($class['class_name']) ?></td>
-                                            <td>
+                                            <td data-label="Class Code"><?= htmlspecialchars($class['class_code']) ?></td>
+                                            <td data-label="Class Name"><?= htmlspecialchars($class['class_name']) ?></td>
+                                            <td data-label="Semester">
                                                 <?= htmlspecialchars($class['semester']) ?>
                                                 <?php if (isset($class['academic_year'])): ?>
                                                     (<?= htmlspecialchars($class['academic_year']) ?>)
                                                 <?php endif; ?>
                                             </td>
-                                            <td><?= htmlspecialchars($class['room_name'] ?? 'N/A') ?></td>
-                                            <td><?= htmlspecialchars($class['day_of_week'] ?? 'N/A') ?></td>
-                                            <td>
+                                            <td data-label="Room"><?= htmlspecialchars($class['room_name'] ?? 'N/A') ?></td>
+                                            <td data-label="Day"><?= htmlspecialchars($class['day_of_week'] ?? 'N/A') ?></td>
+                                            <td data-label="Time">
                                                 <?php
                                                 $start = $class['start_time'] ? date('h:i A', strtotime($class['start_time'])) : 'N/A';
                                                 $end = $class['end_time'] ? date('h:i A', strtotime($class['end_time'])) : 'N/A';

@@ -172,16 +172,30 @@ if (!isset($current_page)) {
         color: #ffffff;
     }
 
-    /* Media Queries for Responsiveness */
-    @media (max-width: 768px) {
+    /* Mobile and Tablet: 1023px and below (New Logic) */
+    @media (max-width: 1023px) {
+
+        /* Default state: Collapsed (Icons only, pushed slightly off-screen) */
         .app-sidebar {
-            width: 100%;
-            min-height: auto;
-            padding-top: 10px;
+            width: 60px;
+            /* Collapsed width */
+            /* Use transform to move it off-screen, but visible enough for a toggle */
+            transform: translateX(-100%);
+            padding: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* State when sidebar is active/open */
+        .app-sidebar.active {
+            width: 200px;
+            /* Expanded width on mobile/tablet */
+            transform: translateX(0);
+            /* Slide into view */
+        }
+
+        /* Default collapsed appearance (Icons only) */
         .sidebar-header {
-            padding: 10px;
+            padding: 10px 5px;
             justify-content: center;
         }
 
@@ -194,34 +208,268 @@ if (!isset($current_page)) {
         }
 
         .app-sidebar-menu .nav-link {
-            padding: 12px 0;
+            padding: 0.75rem;
             justify-content: center;
-            margin: 0 5px;
-        }
-
-        .app-sidebar-menu .nav-link svg {
-            margin-right: 0;
+            margin: 0;
         }
 
         .app-sidebar-menu .nav-link .nav-link-text {
             display: none;
         }
 
-        .app-sidebar-menu .nav-item.active .nav-link {
-            transform: translateX(0);
+        .app-version {
+            display: none;
+        }
+
+        /* Expanded State inside the media query, applied via JS */
+        .app-sidebar.active .sidebar-header {
+            justify-content: flex-start;
+            padding: 15px 20px;
+        }
+
+        .app-sidebar.active .app-name {
+            display: block;
+        }
+
+        .app-sidebar.active .app-logo {
+            margin-right: 12px;
+        }
+
+        .app-sidebar.active .app-sidebar-menu .nav-link {
+            padding: 0.5rem 0.75rem;
+            justify-content: flex-start;
+        }
+
+        .app-sidebar.active .app-sidebar-menu .nav-link .nav-link-text {
+            display: block;
+        }
+
+        .app-sidebar.active .app-version {
+            display: block;
+        }
+    }
+
+    /* Desktop: 1024px and above (Default Desktop View) */
+    @media (min-width: 1024px) {
+        .app-sidebar {
+            width: 20%;
+            padding: 1rem;
+            transform: none;
+            /* Ensure no transformation on desktop */
+        }
+
+        .sidebar-header {
+            padding: 15px 20px;
+            justify-content: flex-start;
+        }
+
+        .app-name {
+            display: block;
+        }
+
+        .app-logo {
+            margin-right: 12px;
+        }
+
+        .app-sidebar-menu .nav-link {
+            padding: 0.5rem 0.75rem;
+            justify-content: flex-start;
+        }
+
+        .app-sidebar-menu .nav-link .nav-link-text {
+            display: block;
+        }
+
+        .app-version {
+            display: block;
         }
     }
 
     /* Basic styling for the main content area to make space for the sidebar */
     .main-content-wrapper {
-        margin-left: 320px;
+        margin-left: 20%;
         transition: margin-left 0.3s ease;
+        padding: 2rem;
+        min-height: 100vh;
     }
 
-    @media (max-width: 768px) {
+    /* Adjust main content for smaller screens: It should have NO margin-left */
+    @media (max-width: 1023px) {
         .main-content-wrapper {
+            /* Remove margin-left on smaller screens so the sidebar overlays it */
             margin-left: 0;
         }
+    }
+
+    /* Toggle button for mobile/tablet */
+    .sidebar-toggle {
+        display: none;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+        background: #3e99f4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 1023px) {
+        .sidebar-toggle {
+            display: block;
+        }
+    }
+
+
+    /* button for the collapsed sidebar on mobile/tablet */
+    .sidebar-toggle {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Positioned for mobile/tablet */
+        left: 0;
+        top: 15px;
+        /* Vertical position near the top */
+        z-index: 1100;
+        /* Ensure it is above the sidebar */
+
+        /* Arrow Shape Styling */
+        width: 30px;
+        height: 30px;
+        background: #f0f2f5;
+        color: #111418;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        /* Circular shape */
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, background-color 0.3s ease, left 0.3s ease;
+
+        /* Align icon perfectly */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar-toggle:hover {
+        background-color: #e0e2e5;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar-toggle svg {
+        color: #111418;
+        transition: transform 0.3s ease;
+    }
+
+    /* Rotate icon when sidebar is expanded (it should point left, representing 'collapse') */
+    .sidebar-toggle.rotated svg {
+        transform: rotate(180deg);
+    }
+
+    /* -------------------- Mobile/Tablet: 1023px and below -------------------- */
+    @media (max-width: 1023px) {
+        .app-sidebar {
+            width: 200px;
+            /* Expanded width on mobile/tablet */
+            /* Default state: Collapsed (hidden off-screen) */
+            transform: translateX(-100%);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            /* Shadow when open */
+            padding: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Active state: Slides into view */
+        .app-sidebar.active {
+            transform: translateX(0);
+        }
+
+        /* Show the toggle button */
+        .sidebar-toggle {
+            display: flex;
+            position: fixed;
+            /* CHANGE: Set 'right: 5px' to position the button on the right edge */
+            right: 1rem;
+            /* CHANGE: Set 'left: unset' to remove the default left positioning */
+            left: unset;
+            top: 5rem;
+            z-index: 1100;
+
+            /* Arrow Shape Styling (UNCHANGED) */
+            width: 30px;
+            height: 30px;
+            background: #f0f2f5;
+            color: #111418;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease, right 0.3s ease;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Sidebar Text and Elements are visible in the expanded state */
+        .sidebar-header {
+            justify-content: flex-start;
+            padding: 15px 20px;
+        }
+
+        .app-name,
+        .app-version {
+            display: block !important;
+        }
+
+        .app-logo {
+            margin-right: 12px;
+        }
+
+        .app-sidebar-menu .nav-link {
+            padding: 0.5rem 0.75rem;
+            justify-content: flex-start;
+        }
+
+        .app-sidebar-menu .nav-link .nav-link-text {
+            display: block;
+        }
+
+        /* Main content must have NO margin-left on small screens (overlay behavior) */
+        .main-content-wrapper {
+            margin-left: 0 !important;
+        }
+    }
+
+
+    /* -------------------- Desktop: 1024px and above (Static view) -------------------- */
+    @media (min-width: 1024px) {
+        .app-sidebar {
+            width: 20%;
+            padding: 1rem;
+            transform: none;
+            /* Ensure no transformation */
+        }
+
+        .main-content-wrapper {
+            margin-left: 20%;
+            /* Push content on desktop */
+        }
+
+        .sidebar-toggle {
+            display: none;
+            /* Hide the button */
+        }
+
+        /* Ensure all text elements are visible on desktop */
+        .app-name,
+        .app-version,
+        .nav-link-text {
+            display: block;
+        }
+
     }
 
     /* ====================================================================== */
@@ -270,7 +518,42 @@ if (!isset($current_page)) {
     body.dark-mode .app-sidebar .nav-item.mt-auto {
         border-top: 1px solid #444;
     }
+
+    /* Demo content styles */
+    body {
+        font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .demo-content {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .screen-size-indicator {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #333;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+    }
 </style>
+
+<button id="sidebarToggle"
+    class="sidebar-toggle d-md-none top-7 start-5 z-5 bg-body text-dark border-0 rounded-3 p-1 fs-5">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+        <path
+            d="M40,128a8,8,0,0,1,8-8H208a8,8,0,0,1,0,16H48A8,8,0,0,1,40,128ZM48,64H208a8,8,0,0,1,0,16H48A8,8,0,0,1,48,64ZM208,184H48a8,8,0,0,0,0,16H208a8,8,0,0,0,0-16Z">
+        </path>
+    </svg>
+</button>
 
 <div class="app-sidebar" id="sidebar">
     <div class="app-sidebar-menu">
@@ -329,4 +612,93 @@ if (!isset($current_page)) {
     <div class="app-version text-left py-3 m-3 fw-bold">
         <p class="text-muted mb-0">ChronoNav v1.0</p>
     </div>
+
+
+    <script>
+        // JavaScript for sidebar functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.getElementById('sidebar');
+            // You need to ensure the sidebarToggle button exists in your HTML structure 
+            // if it's not present in the provided snippet (it's only in the CSS/JS).
+            // Assuming it's in the main layout or wrapper.
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const toggleIcon = document.getElementById('toggleIcon');
+            const mainContent = document.querySelector('.main-content-wrapper');
+            const screenSizeText = document.getElementById('screenSizeText');
+
+            // Function to update screen size indicator (UNCHANGED)
+            function updateScreenSizeIndicator() {
+                const width = window.innerWidth;
+                if (width <= 767) {
+                    screenSizeText.textContent = 'Mobile';
+                } else if (width >= 768 && width <= 1023) {
+                    screenSizeText.textContent = 'Tablet';
+                } else {
+                    screenSizeText.textContent = 'Desktop';
+                }
+            }
+
+            // Function to check if we are on a mobile/tablet view
+            function isSmallScreen() {
+                return window.innerWidth < 1024;
+            }
+
+            // Toggle sidebar on button click
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function () {
+                    // Only toggle the active class on small screens
+                    if (isSmallScreen()) {
+                        sidebar.classList.toggle('active');
+                        // Toggle the rotated class on the button itself (CSS handles the rotation)
+                        sidebarToggle.classList.toggle('rotated');
+                    }
+                });
+            }
+
+
+            // Handle window resize: Reset sidebar style for desktop view
+            window.addEventListener('resize', function () {
+                updateScreenSizeIndicator();
+
+                if (!isSmallScreen()) {
+                    // Desktop view: Ensure it is fully open, remove 'active' if present
+                    sidebar.style.width = '20%';
+                    mainContent.style.marginLeft = '20%';
+                    sidebar.classList.remove('active');
+
+                    // Clear any inline styles that might conflict with media query (especially transform)
+                    sidebar.style.transform = '';
+
+                } else {
+                    // Mobile/Tablet view: Ensure main content is not pushed, and sidebar is collapsed by default
+                    mainContent.style.marginLeft = '0';
+                    // Reset to collapsed width (60px) if not active
+                    if (!sidebar.classList.contains('active')) {
+                        sidebar.style.width = ''; // Let CSS media query handle the default 60px/transform
+                    } else {
+                        // If it was already active, keep the expanded width
+                        sidebar.style.width = '200px';
+                    }
+                }
+            });
+
+            // Initial setup for small screens
+            function initializeSidebar() {
+                updateScreenSizeIndicator();
+                if (isSmallScreen()) {
+                    // Ensure main content is NOT pushed on small screens on load
+                    mainContent.style.marginLeft = '0';
+                    // Remove the 'active' class on load for mobile/tablet to ensure it's collapsed
+                    sidebar.classList.remove('active');
+                } else {
+                    // Ensure correct desktop state on load
+                    sidebar.style.width = '20%';
+                    mainContent.style.marginLeft = '20%';
+                }
+            }
+
+            // Initialize
+            initializeSidebar();
+        });
+    </script>
 </div>

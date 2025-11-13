@@ -134,11 +134,16 @@ if (isset($_SESSION['message'])) {
         href="https://res.cloudinary.com/deua2yipj/image/upload/v1758917007/ChronoNav_logo_muon27.png">
 
     <style>
+        body {
+            background-color: #ffffff;
+        }
+
         /* Custom styles to match the original design */
         .layout-container {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background-color: #ffffff;
         }
 
         .main-content {
@@ -226,15 +231,6 @@ if (isset($_SESSION['message'])) {
 
         .account-item:hover {
             background-color: #f8f9fa;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .main-content {
-                width: 100%;
-                max-width: 100%;
-                margin-left: 0;
-            }
         }
 
         /* Alert styles */
@@ -333,6 +329,178 @@ if (isset($_SESSION['message'])) {
 
         ::-webkit-scrollbar-thumb:hover {
             background-color: #2e78c6;
+        }
+
+        /* Add these media queries at the end of your existing CSS */
+
+        /* Mobile: 767px and below */
+        @media (max-width: 767px) {
+            .main-content {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+            }
+
+            .layout-container .d-flex {
+                padding: 15px !important;
+                overflow-x: hidden !important;
+            }
+
+            .profile-image {
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            .welcome-title {
+                font-size: 24px !important;
+                text-align: center;
+                width: 100%;
+            }
+
+            .profile-detail-row .col-md-3,
+            .profile-detail-row .col-md-9 {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            .preference-item,
+            .account-item {
+                padding: 1rem !important;
+                min-height: 60px !important;
+            }
+
+            .modal-dialog {
+                margin: 1rem;
+                max-width: calc(100% - 2rem);
+                height: auto;
+                overflow-y: auto;
+            }
+
+            .modal-content {
+                max-height: 100vh;
+                overflow-y: auto;
+            }
+
+            .btn-custom-secondary {
+                width: 100% !important;
+                max-width: none !important;
+            }
+
+            .btn-primary {
+                width: 100% !important;
+                max-width: none !important;
+            }
+        }
+
+        /* Tablet: 768px to 1023px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .main-content {
+                max-width: 85% !important;
+                margin-left: 15% !important;
+            }
+
+            .layout-container .d-flex {
+                padding: 20px !important;
+            }
+
+            .profile-image {
+                width: 115px !important;
+                height: 115px !important;
+            }
+
+            .welcome-title {
+                font-size: 26px !important;
+            }
+
+            .profile-detail-row .col-md-3 {
+                width: 35%;
+            }
+
+            .profile-detail-row .col-md-9 {
+                width: 65%;
+            }
+
+            .modal-dialog {
+                max-width: 600px;
+                margin: 1.75rem auto;
+            }
+        }
+
+        /* Desktop: 1024px and above */
+        @media (min-width: 1024px) {
+            .main-content {
+                max-width: 80% !important;
+                margin-left: 20% !important;
+            }
+
+            .layout-container .d-flex {
+                padding: 20px 35px !important;
+            }
+
+            .profile-image {
+                width: 128px !important;
+                height: 128px !important;
+            }
+
+            .welcome-title {
+                font-size: 28px !important;
+            }
+
+            .profile-detail-row .col-md-3 {
+                width: 25%;
+            }
+
+            .profile-detail-row .col-md-9 {
+                width: 75%;
+            }
+
+            .modal-dialog {
+                max-width: 500px;
+                margin: 1.75rem auto;
+            }
+        }
+
+        /* Responsive sidebar adjustments */
+        @media (max-width: 1023px) {
+            .sidebar-toggle {
+                border-radius: 1px;
+            }
+        }
+
+        /* Ensure proper spacing on all devices */
+        @media (max-width: 767px) {
+            .p-3 {
+                padding: 1rem !important;
+            }
+
+            .px-3 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            .py-4 {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+
+            .gap-4 {
+                gap: 1.5rem !important;
+            }
+        }
+
+        /* Improve modal responsiveness */
+        @media (max-width: 575px) {
+            .modal-content {
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+
+            .modal-dialog {
+                margin: 0;
+                max-width: 100%;
+                height: 100vh;
+            }
         }
     </style>
 </head>
@@ -742,6 +910,124 @@ if (isset($_SESSION['message'])) {
                 // You could add a small indicator showing the file was selected
             }
         });
+
+        // Add this JavaScript for responsive behavior
+        document.addEventListener('DOMContentLoaded', function () {
+            // Create sidebar toggle button for mobile/tablet
+            const sidebarToggle = document.createElement('button');
+            sidebarToggle.className = 'sidebar-toggle d-none';
+            sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            sidebarToggle.setAttribute('aria-label', 'Toggle sidebar');
+            document.body.appendChild(sidebarToggle);
+
+            // Function to handle responsive layout
+            function handleResponsiveLayout() {
+                const width = window.innerWidth;
+                const mainContent = document.querySelector('.main-content');
+                const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+                if (width <= 1023) {
+                    // Mobile and Tablet
+                    sidebarToggle.classList.remove('d-none');
+
+                    if (width <= 767) {
+                        // Mobile specific adjustments
+                        mainContent.style.maxWidth = '100%';
+                        mainContent.style.marginLeft = '0';
+                    } else {
+                        // Tablet specific adjustments
+                        mainContent.style.maxWidth = '85%';
+                        mainContent.style.marginLeft = '15%';
+                    }
+                } else {
+                    // Desktop
+                    sidebarToggle.classList.add('d-none');
+                    mainContent.style.maxWidth = '80%';
+                    mainContent.style.marginLeft = '20%';
+                }
+            }
+
+            // Toggle sidebar function
+            function toggleSidebar() {
+                const mainContent = document.querySelector('.main-content');
+                const currentMargin = mainContent.style.marginLeft;
+
+                if (currentMargin === '0px' || !currentMargin) {
+                    if (window.innerWidth <= 767) {
+                        mainContent.style.marginLeft = '0';
+                    } else {
+                        mainContent.style.marginLeft = '15%';
+                    }
+                } else {
+                    mainContent.style.marginLeft = '0';
+                }
+            }
+
+            // Event listeners
+            window.addEventListener('resize', handleResponsiveLayout);
+            document.querySelector('.sidebar-toggle').addEventListener('click', toggleSidebar);
+
+            // Initialize
+            handleResponsiveLayout();
+
+            // Enhanced modal handling for mobile
+            function enhanceModals() {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    modal.addEventListener('show.bs.modal', function () {
+                        if (window.innerWidth <= 575) {
+                            document.body.style.overflow = 'hidden';
+                        }
+                    });
+
+                    modal.addEventListener('hidden.bs.modal', function () {
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+
+            enhanceModals();
+
+            // Improve touch interactions for mobile
+            if ('ontouchstart' in window) {
+                document.querySelectorAll('.preference-item, .account-item').forEach(item => {
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('touchstart', function () {
+                        this.style.backgroundColor = '#f8f9fa';
+                    });
+                    item.addEventListener('touchend', function () {
+                        this.style.backgroundColor = '';
+                    });
+                });
+            }
+
+            // Handle orientation changes
+            window.addEventListener('orientationchange', function () {
+                setTimeout(handleResponsiveLayout, 100);
+            });
+        });
+
+        // Additional utility function for responsive images
+        function handleProfileImageResponsive() {
+            const profileImage = document.querySelector('.profile-image');
+            if (profileImage) {
+                const width = window.innerWidth;
+                if (width <= 767) {
+                    profileImage.style.width = '100px';
+                    profileImage.style.height = '100px';
+                } else if (width <= 1023) {
+                    profileImage.style.width = '115px';
+                    profileImage.style.height = '115px';
+                } else {
+                    profileImage.style.width = '128px';
+                    profileImage.style.height = '128px';
+                }
+            }
+        }
+
+        // Call this on load and resize
+        window.addEventListener('load', handleProfileImageResponsive);
+        window.addEventListener('resize', handleProfileImageResponsive);
     </script>
 
     <?php require_once '../../templates/footer.php'; ?>
