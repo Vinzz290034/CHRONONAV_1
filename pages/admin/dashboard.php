@@ -101,9 +101,14 @@ require_once '../../templates/admin/header_admin.php';
 <link rel="stylesheet" href="../../assets/css/onboarding.css">
 
 <style>
+    body {
+        background-color: #ffffff;
+    }
+
     .main-dashboard-content {
         margin-left: 20%;
         padding: 0px 35px;
+        background-color: #ffffff;
     }
 
     .main-dashboard-content-wrapper {
@@ -507,7 +512,7 @@ require_once '../../templates/admin/header_admin.php';
 
         .card-box {
             width: calc(50% - 10px);
-            min-width: 140px;
+            min-width: 120px;
         }
 
         .dashboard-overview-cards .card {
