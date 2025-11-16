@@ -466,6 +466,200 @@ require_once '../../templates/admin/header_admin.php';
             font-size: 14px;
         }
     }
+
+
+
+    /* Add these media queries at the end of your existing CSS - EXACT SAME STRUCTURE AS FACULTY DASHBOARD */
+
+    /* Mobile: 767px and below */
+    @media (max-width: 767px) {
+        .main-dashboard-content {
+            margin-left: 0;
+            padding: 15px;
+        }
+
+        .welcome-title {
+            font-size: 22px;
+        }
+
+        .section-title {
+            font-size: 18px;
+        }
+
+        .search-bar-custom {
+            height: 42px;
+        }
+
+        .search-bar-custom .form-control {
+            height: 42px;
+            font-size: 0.875rem;
+        }
+
+        input#searchInput {
+            padding-right: 1rem;
+        }
+
+        .dashboard-overview-cards {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .card-box {
+            width: calc(50% - 10px);
+            min-width: 140px;
+        }
+
+        .dashboard-overview-cards .card {
+            padding: 15px;
+        }
+
+        .dashboard-overview-cards .card h5 {
+            font-size: 0.875rem;
+        }
+
+        .dashboard-overview-cards .card p {
+            font-size: 1.5rem;
+        }
+
+        .onboarding-controls .d-flex {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .onboarding-controls .btn {
+            width: 100%;
+        }
+
+        /* Chart adjustments for mobile */
+        .chart-container {
+            height: 250px;
+            padding: 10px;
+        }
+
+        .chart-card .card-body {
+            padding: 15px;
+        }
+
+        .chart-title {
+            font-size: 14px;
+        }
+
+        /* Admin-specific mobile adjustments */
+        .admin-links .list-group-item {
+            padding: 12px 16px;
+            margin-bottom: 8px;
+        }
+
+        .admin-links .list-group-item a {
+            font-size: 0.875rem;
+            gap: 0.5rem;
+        }
+
+        .admin-links .list-group-item small {
+            font-size: 0.8rem;
+            padding-left: 1.5rem;
+        }
+
+        .row.mt-4.px-3 {
+            margin-top: 1rem !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .col-md-6.mb-4 {
+            margin-bottom: 1rem !important;
+        }
+
+        .card.shadow-sm.h-100.border-0 {
+            margin-bottom: 1rem;
+        }
+
+        /* Analytics section grid adjustment */
+        .row.mb-4.px-3 .col-md-6 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    /* Tablet: 768px to 1023px */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .main-dashboard-content {
+            margin-left: 80px;
+            padding: 20px 25px;
+        }
+
+        .welcome-title {
+            font-size: 24px;
+        }
+
+        .section-title {
+            font-size: 20px;
+        }
+
+        .dashboard-overview-cards {
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .card-box {
+            width: calc(33.333% - 15px);
+        }
+
+        /* Admin-specific tablet adjustments */
+        .admin-links .list-group-item {
+            padding: 14px 18px;
+        }
+
+        .row.mt-4.px-3 {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
+
+        /* Chart adjustments for tablet */
+        .chart-container {
+            height: 280px;
+        }
+    }
+
+    /* Desktop: 1024px and above */
+    @media (min-width: 1024px) {
+        .main-dashboard-content {
+            margin-left: 20%;
+            padding: 20px 35px;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+        }
+
+        .section-title {
+            font-size: 22px;
+        }
+
+        .dashboard-overview-cards {
+            flex-wrap: nowrap;
+            gap: 20px;
+        }
+
+        .card-box {
+            width: 200px;
+        }
+
+        /* Admin-specific desktop adjustments */
+        .admin-links .list-group-item {
+            padding: 16px 20px;
+        }
+
+        .row.mt-4.px-3 {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
+
+        /* Chart adjustments for desktop */
+        .chart-container {
+            height: 320px;
+        }
+    }
 </style>
 
 <!-- Favicon -->
