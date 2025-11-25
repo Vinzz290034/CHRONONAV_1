@@ -314,17 +314,33 @@ require_once '../../templates/admin/sidenav_admin.php';
             background-color: #2e78c6;
         }
 
-        @media (max-width: 768px) {
+        /* Add these media queries at the end of your existing CSS - EXACT SAME STRUCTURE AS PREVIOUS PAGES */
+
+        /* Mobile: 767px and below */
+        @media (max-width: 767px) {
             .main-content-wrapper {
-                margin-left: 0;
+                margin-left: 0 !important;
+                padding: 2rem 0.5rem !important;
             }
 
             .container-fluid {
-                padding: 1rem;
+                padding: 0rem !important;
+            }
+
+            h2.fs-3 {
+                font-size: 1.5rem !important;
+                text-align: center;
+                width: 100%;
+            }
+
+            h3 {
+                font-size: 1.1rem !important;
+                text-align: center;
             }
 
             .user-table-container {
-                padding: 1rem;
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
             }
 
             .table-responsive {
@@ -332,14 +348,361 @@ require_once '../../templates/admin/sidenav_admin.php';
                 border-radius: 8px;
             }
 
+            .table th,
+            .table td {
+                padding: 0.75rem 0.5rem !important;
+                font-size: 0.875rem;
+            }
+
             .table-actions {
-                white-space: normal;
+                white-space: normal !important;
+                text-align: center;
             }
 
             .table-actions .btn {
                 margin-bottom: 0.5rem;
                 display: block;
                 width: 100%;
+                margin-right: 0 !important;
+            }
+
+            .table-actions form {
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+
+            .badge {
+                padding: 0.375rem 0.75rem !important;
+                font-size: 0.75rem;
+            }
+
+            .btn-sm {
+                height: auto !important;
+                padding: 0.5rem 0.75rem !important;
+            }
+
+            .modal-dialog {
+                margin: 1rem !important;
+                max-width: calc(100% - 2rem) !important;
+            }
+
+            .modal-content {
+                max-height: 100vh;
+                overflow-y: auto;
+            }
+
+            .alert {
+                padding: 0.75rem 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+        }
+
+        /* Tablet: 768px to 1023px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .main-content-wrapper {
+                margin-left: 15% !important;
+                padding: 2rem 0.5rem !important;
+            }
+
+            .container-fluid {
+                padding: 1.5rem !important;
+            }
+
+            h2.fs-3 {
+                font-size: 1.75rem !important;
+            }
+
+            h3 {
+                font-size: 1.25rem !important;
+            }
+
+            .user-table-container {
+                padding: 1.5rem !important;
+            }
+
+            .table th,
+            .table td {
+                padding: 0.875rem !important;
+            }
+
+            .table-actions .btn {
+                margin-right: 0.25rem !important;
+                margin-bottom: 0.25rem;
+            }
+
+            .modal-dialog {
+                max-width: 600px !important;
+                margin: 1.75rem auto !important;
+            }
+        }
+
+        /* Desktop: 1024px and above */
+        @media (min-width: 1024px) {
+            .main-content-wrapper {
+                margin-left: 20% !important;
+            }
+
+            .container-fluid {
+                padding: 2rem !important;
+            }
+
+            h2.fs-3 {
+                font-size: 2rem !important;
+            }
+
+            h3 {
+                font-size: 1.375rem !important;
+            }
+
+            .user-table-container {
+                padding: 2rem !important;
+            }
+
+            .table th,
+            .table td {
+                padding: 1rem !important;
+            }
+
+            .table-actions .btn {
+                margin-right: 0.5rem !important;
+                margin-bottom: 0;
+            }
+
+            .modal-dialog {
+                max-width: 500px !important;
+                margin: 1.75rem auto !important;
+            }
+        }
+
+        /* Responsive sidebar adjustments */
+        @media (max-width: 1023px) {
+            .sidebar-toggle {
+                display: flex;
+                position: fixed;
+                right: 1rem;
+                left: unset;
+                top: 5rem;
+                z-index: 1100;
+                width: 30px;
+                height: 30px;
+                background: #f0f2f5;
+                color: #111418;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, background-color 0.3s ease, right 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Ensure proper spacing on all devices */
+        @media (max-width: 767px) {
+            .py-4 {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+
+            .p-3 {
+                padding: 1rem !important;
+            }
+
+            .border-1 {
+                border-width: 1px !important;
+            }
+
+            .rounded-3 {
+                border-radius: 0.5rem !important;
+            }
+        }
+
+        /* Improve modal responsiveness */
+        @media (max-width: 767px) {
+            .modal-content {
+                border-radius: 0.5rem !important;
+            }
+
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 1rem !important;
+            }
+
+            .modal-title {
+                font-size: 1.25rem !important;
+            }
+
+            .form-control,
+            .form-select {
+                font-size: 16px !important;
+                /* Prevents zoom on iOS */
+            }
+        }
+
+        @media (max-width: 575px) {
+            .modal-content {
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+
+            .modal-dialog {
+                margin: 0 !important;
+                max-width: 100% !important;
+                height: 100vh;
+            }
+        }
+
+        /* Better touch targets for mobile */
+        @media (max-width: 767px) {
+            .btn {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .table tbody tr {
+                min-height: 60px;
+            }
+
+            .table-actions .btn {
+                min-height: 40px;
+            }
+        }
+
+        /* Enhanced table layout for mobile */
+        @media (max-width: 767px) {
+            .table thead {
+                display: none;
+            }
+
+            .table tbody tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #d1dce6;
+                border-radius: 0.5rem;
+                padding: 1rem;
+            }
+
+            .table tbody td {
+                display: block;
+                text-align: right;
+                padding: 0.5rem 0.75rem !important;
+                border: none;
+                position: relative;
+            }
+
+            .table tbody td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #0e151b;
+                position: absolute;
+                left: 0.75rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .table-actions td::before {
+                display: none;
+            }
+
+            .table-actions {
+                text-align: center !important;
+                padding-top: 1rem !important;
+                border-top: 1px solid #f1f1f1;
+            }
+        }
+
+        /* Print styles for user management */
+        @media print {
+            .main-content-wrapper {
+                margin-left: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .btn,
+            .table-actions,
+            .sidebar-toggle {
+                display: none !important;
+            }
+
+            .table tbody tr {
+                break-inside: avoid;
+            }
+        }
+
+        /* Responsive sidebar toggle button */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1100;
+            background: #3e99f4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 1023px) {
+            .sidebar-toggle {
+                display: flex;
+                position: fixed;
+                right: 1rem;
+                left: unset;
+                top: 5rem;
+                z-index: 1100;
+                width: 30px;
+                height: 30px;
+                background: #f0f2f5;
+                color: #111418;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, background-color 0.3s ease, right 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Enhanced JavaScript functionality for responsive behavior */
+        @media (max-width: 767px) {
+            /* Add data-labels to table cells for mobile view */
+            .table td:nth-child(1)::before { content: "ID: "; }
+            .table td:nth-child(2)::before { content: "Name: "; }
+            .table td:nth-child(3)::before { content: "Email: "; }
+            .table td:nth-child(4)::before { content: "Role: "; }
+            .table td:nth-child(5)::before { content: "Status: "; }
+        }
+
+        /* Ensure proper text sizing on mobile */
+        @media (max-width: 767px) {
+            .table td,
+            .table th {
+                font-size: 0.875rem;
+            }
+
+            .btn-sm {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Improved grid layout for user management */
+        @media (max-width: 767px) {
+            .user-table-container .row {
+                flex-direction: column;
+            }
+
+            .text-center.text-muted.mt-4 {
+                font-size: 0.875rem;
+                padding: 0 1rem;
             }
         }
     </style>

@@ -574,41 +574,524 @@ if (isset($_SESSION['message'])) {
         background-color: #2e78c6;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
+    /* Add these media queries at the end of your existing CSS - ENHANCED MOBILE & TABLET RESPONSIVENESS */
+
+    /* Mobile: 767px and below - ENHANCED */
+    @media (max-width: 767px) {
         .main-dashboard-content {
-            padding: 1.5rem 1rem;
+            padding: 0.75rem !important;
+            margin-left: 0 !important;
+            max-width: 100% !important;
         }
 
         .announcement-board-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 1rem !important;
+            margin-bottom: 1rem !important;
+            padding: 1rem 0 !important;
+            text-align: center;
         }
 
-        .announcement-board-header h1 {
-            font-size: 1.75rem;
-        }
-
-        .announcement-section {
-            padding: 1.5rem;
-        }
-
-        .announcement-item {
-            padding: 1.5rem;
-        }
-
-        .announcement-actions {
-            flex-direction: column;
-        }
-
-        .announcement-actions .btn {
+        .announcement-board-header h1.fs-3 {
+            font-size: 1.4rem !important;
             width: 100%;
+            min-width: auto !important;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-back {
+            width: 100% !important;
+            max-width: 280px;
             justify-content: center;
         }
 
-        .announcement-meta {
+        .announcement-section {
+            padding: 1rem !important;
+            margin-bottom: 1.25rem !important;
+            border-radius: 0.5rem !important;
+        }
+
+        .announcement-section h2 {
+            font-size: 1.1rem !important;
+            text-align: center;
             flex-direction: column;
+            gap: 0.5rem;
+            padding-bottom: 0.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .announcement-section h2 i {
+            font-size: 1.1rem !important;
+            margin-right: 0 !important;
+        }
+
+        /* Form enhancements for mobile */
+        .form-group {
+            margin-bottom: 1.25rem !important;
+        }
+
+        .form-group label {
+            font-size: 0.9rem !important;
+            text-align: left;
+            margin-bottom: 0.5rem !important;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100% !important;
+            height: auto !important;
+            padding: 0.875rem !important;
+            font-size: 16px !important;
+            /* Prevent zoom on iOS */
+            border-radius: 0.375rem !important;
+        }
+
+        textarea.form-control {
+            min-height: 150px !important;
+            line-height: 1.5;
+        }
+
+        .form-control-file {
+            padding: 0.875rem !important;
+            font-size: 14px;
+        }
+
+        /* Button enhancements */
+        .d-flex.gap-3.flex-wrap {
+            flex-direction: column !important;
+            gap: 0.75rem !important;
+            width: 100%;
+        }
+
+        .btn {
+            width: 100% !important;
+            justify-content: center;
+            margin-bottom: 0 !important;
+            padding: 0.875rem 1rem !important;
+            font-size: 0.9rem !important;
+        }
+
+        /* Announcement items mobile optimization */
+        .announcement-item {
+            padding: 1.25rem 1rem !important;
+            margin-bottom: 1rem !important;
+            border-radius: 0.5rem !important;
+        }
+
+        .announcement-item::before {
+            width: 3px !important;
+        }
+
+        .announcement-item h3 {
+            font-size: 1.1rem !important;
+            text-align: left;
+            line-height: 1.4;
+            margin-bottom: 0.875rem !important;
+        }
+
+        .announcement-meta {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+            text-align: left;
+            margin-bottom: 0.875rem !important;
+        }
+
+        .badge {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.75rem !important;
+            justify-content: flex-start;
+            width: fit-content;
+        }
+
+        .announcement-content {
+            font-size: 0.9rem !important;
+            line-height: 1.6;
+        }
+
+        .announcement-content img {
+            max-width: 100% !important;
+            height: auto !important;
+            margin-bottom: 1rem !important;
+            border-radius: 0.375rem !important;
+        }
+
+        .announcement-actions {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+            padding-top: 1rem !important;
+            margin-top: 1rem !important;
+        }
+
+        .announcement-actions .btn {
+            width: 100% !important;
+            justify-content: center;
+        }
+
+        /* Alert mobile optimization */
+        .alert {
+            padding: 0.875rem !important;
+            margin-bottom: 1rem !important;
+            border-radius: 0.375rem !important;
+            font-size: 0.9rem;
+        }
+
+        .alert .d-flex {
+            align-items: flex-start;
+        }
+
+        /* Image preview mobile */
+        .mt-2 img,
+        .img-thumbnail {
+            max-width: 100% !important;
+            height: auto !important;
+            display: block;
+            margin: 0.5rem auto !important;
+        }
+
+        /* Empty state mobile */
+        .text-center.py-5 {
+            padding: 1.5rem 1rem !important;
+        }
+
+        .text-center.py-5 .fas.fa-bullhorn {
+            font-size: 2.5rem !important;
+            margin-bottom: 1rem;
+        }
+
+        .text-muted.fs-5 {
+            font-size: 1rem !important;
+            line-height: 1.4;
+        }
+    }
+
+    /* Tablet: 768px to 1023px - ENHANCED */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .main-dashboard-content {
+            padding: 1.25rem !important;
+            margin-left: 15% !important;
+            max-width: 85% !important;
+        }
+
+        .announcement-board-header {
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+            padding-bottom: 1.25rem !important;
+        }
+
+        .announcement-board-header h1.fs-3 {
+            font-size: 1.6rem !important;
+            flex: 1;
+        }
+
+        .btn-back {
+            flex-shrink: 0;
+            min-width: 160px;
+        }
+
+        .announcement-section {
+            padding: 1.5rem !important;
+            margin-bottom: 1.75rem !important;
+            border-radius: 0.625rem !important;
+        }
+
+        .announcement-section h2 {
+            font-size: 1.3rem !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        /* Form tablet optimization */
+        .form-group {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .form-control {
+            width: 80% !important;
+            padding: 0.875rem 1rem !important;
+        }
+
+        textarea.form-control {
+            min-height: 180px !important;
+        }
+
+        /* Button tablet optimization */
+        .d-flex.gap-3.flex-wrap {
+            flex-direction: row !important;
+            gap: 1rem !important;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
+        }
+
+        /* Announcement items tablet optimization */
+        .announcement-item {
+            padding: 1.5rem !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        .announcement-item h3 {
+            font-size: 1.2rem !important;
+        }
+
+        .announcement-meta {
+            flex-direction: row !important;
+            gap: 0.75rem !important;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 0.8rem !important;
+        }
+
+        .announcement-content {
+            font-size: 0.95rem !important;
+        }
+
+        .announcement-actions {
+            flex-direction: row !important;
+            gap: 0.75rem !important;
+            flex-wrap: wrap;
+        }
+
+        .announcement-actions .btn {
+            flex: 1;
+            min-width: 120px;
+            max-width: 150px;
+        }
+
+        /* Image tablet optimization */
+        .announcement-content img {
+            max-width: 80% !important;
+            margin: 0 auto 1rem !important;
+            display: block;
+        }
+
+        .img-thumbnail {
+            max-width: 180px !important;
+        }
+    }
+
+    /* Desktop: 1024px and above - Refined */
+    @media (min-width: 1024px) {
+        .main-dashboard-content {
+            padding: 2rem 1.5rem !important;
+            margin-left: 20% !important;
+            max-width: 1200px !important;
+        }
+
+        .announcement-board-header h1.fs-3 {
+            font-size: 1.8rem !important;
+        }
+
+        .announcement-section {
+            padding: 2rem !important;
+            margin-bottom: 2.5rem !important;
+        }
+
+        .announcement-section h2 {
+            font-size: 1.5rem !important;
+        }
+
+        .form-control {
+            width: 60% !important;
+        }
+
+        .announcement-item {
+            padding: 2rem !important;
+        }
+
+        .announcement-item h3 {
+            font-size: 1.375rem !important;
+        }
+
+        .announcement-actions {
+            flex-direction: row !important;
+            gap: 0.75rem !important;
+        }
+
+        .announcement-actions .btn {
+            width: auto !important;
+            flex: none;
+        }
+    }
+
+    /* Enhanced responsive sidebar adjustments */
+    @media (max-width: 1023px) {
+        .sidebar-toggle {
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 1.1rem;
+        }
+    }
+
+    /* Improved touch targets for mobile */
+    @media (max-width: 767px) {
+        .btn {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-control {
+            min-height: 48px;
+        }
+
+        textarea.form-control {
+            min-height: 160px;
+        }
+
+        .announcement-item {
+            min-height: auto;
+            cursor: pointer;
+        }
+
+        /* Better touch feedback */
+        .btn:active,
+        .announcement-item:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+        }
+    }
+
+    /* Enhanced form responsiveness */
+    @media (max-width: 767px) {
+        .form-control-file {
+            font-size: 14px;
+        }
+
+        .form-control::placeholder {
+            font-size: 14px;
+        }
+
+        textarea.form-control::placeholder {
+            font-size: 14px;
+        }
+    }
+
+    /* Print styles for announcements */
+    @media print {
+        .main-dashboard-content {
+            margin-left: 0 !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+        }
+
+        .btn-secondary,
+        .btn-primary,
+        .btn-warning,
+        .btn-danger,
+        .sidebar-toggle,
+        .form-control-file {
+            display: none !important;
+        }
+
+        .announcement-item {
+            break-inside: avoid;
+            border: 1px solid #000 !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .announcement-item::before {
+            display: none !important;
+        }
+
+        .announcement-actions {
+            display: none !important;
+        }
+    }
+
+    /* Responsive sidebar toggle button */
+    .sidebar-toggle {
+        display: none;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+        background: #3e99f4;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-size: 1.1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 1023px) {
+        .sidebar-toggle {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    /* Enhanced mobile typography */
+    @media (max-width: 767px) {
+        body {
+            font-size: 14px;
+        }
+
+        .form-label {
+            font-size: 0.9rem !important;
+        }
+
+        .text-muted {
+            font-size: 0.85rem;
+        }
+
+        .badge {
+            font-size: 0.75rem !important;
+        }
+    }
+
+    /* Improved image handling */
+    @media (max-width: 767px) {
+        .announcement-content img {
+            border-radius: 0.375rem !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-thumbnail {
+            border-radius: 0.375rem !important;
+            border: 1px solid #e8edf3;
+        }
+    }
+
+    /* Enhanced loading states */
+    @media (max-width: 767px) {
+        .announcement-item {
+            transition: all 0.3s ease;
+        }
+
+        .announcement-item:active {
+            background-color: #f8f9fa;
+        }
+    }
+
+    /* Better spacing for mobile forms */
+    @media (max-width: 767px) {
+        .announcement-form {
+            gap: 1rem;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    /* Tablet-specific form improvements */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .announcement-form {
+            max-width: 100%;
+        }
+
+        .form-control {
+            max-width: 500px;
         }
     }
 </style>

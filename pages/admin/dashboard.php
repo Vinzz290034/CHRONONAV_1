@@ -102,7 +102,7 @@ require_once '../../templates/admin/header_admin.php';
 
 <style>
     body {
-        background-color: #ffffff;
+        background-color: white
     }
 
     .main-dashboard-content {
@@ -463,6 +463,10 @@ require_once '../../templates/admin/header_admin.php';
             padding: 10px;
         }
 
+        .card-body {
+            height: 30vh;
+        }
+
         .chart-card .card-body {
             padding: 15px;
         }
@@ -544,46 +548,48 @@ require_once '../../templates/admin/header_admin.php';
 
         .chart-card .card-body {
             padding: 15px;
+            height: 30vh;
         }
+    }
 
-        .chart-title {
-            font-size: 14px;
-        }
+    .chart-title {
+        font-size: 14px;
+    }
 
-        /* Admin-specific mobile adjustments */
-        .admin-links .list-group-item {
-            padding: 12px 16px;
-            margin-bottom: 8px;
-        }
+    /* Admin-specific mobile adjustments */
+    .admin-links .list-group-item {
+        padding: 12px 16px;
+        margin-bottom: 8px;
+    }
 
-        .admin-links .list-group-item a {
-            font-size: 0.875rem;
-            gap: 0.5rem;
-        }
+    .admin-links .list-group-item a {
+        font-size: 0.875rem;
+        gap: 0.5rem;
+    }
 
-        .admin-links .list-group-item small {
-            font-size: 0.8rem;
-            padding-left: 1.5rem;
-        }
+    .admin-links .list-group-item small {
+        font-size: 0.8rem;
+        padding-left: 1.5rem;
+    }
 
-        .row.mt-4.px-3 {
-            margin-top: 1rem !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-        }
+    .row.mt-4.px-3 {
+        margin-top: 1rem !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
 
-        .col-md-6.mb-4 {
-            margin-bottom: 1rem !important;
-        }
+    .col-md-6.mb-4 {
+        margin-bottom: 1rem !important;
+    }
 
-        .card.shadow-sm.h-100.border-0 {
-            margin-bottom: 1rem;
-        }
+    .card.shadow-sm.h-100.border-0 {
+        margin-bottom: 1rem;
+    }
 
-        /* Analytics section grid adjustment */
-        .row.mb-4.px-3 .col-md-6 {
-            margin-bottom: 1rem;
-        }
+    /* Analytics section grid adjustment */
+    .row.mb-4.px-3 .col-md-6 {
+        margin-bottom: 1rem;
+    }
     }
 
     /* Tablet: 768px to 1023px */

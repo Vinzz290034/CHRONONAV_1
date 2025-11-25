@@ -377,23 +377,385 @@ require_once '../../templates/admin/sidenav_admin.php'; // Correct sidenav for a
         background-color: #2e78c6;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .main-dashboard-content-support {
-            margin-left: 0;
-            padding: 0px 15px;
+    /* Add these media queries at the end of your existing CSS - EXACT SAME STRUCTURE AS PREVIOUS PAGES */
+
+    /* Mobile: 767px and below */
+    @media (max-width: 767px) {
+        .main-dashboard-content-support.support-center-page {
+            margin-left: 0 !important;
+            padding: 0px 15px !important;
         }
 
-        .support-content-grid {
-            gap: 1rem;
+        .main-dashboard-content-support-wrapper {
+            width: 100% !important;
         }
 
-        .page-title {
-            font-size: 1.75rem;
+        .support-center-page.px-5 {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+
+        .page-title.fs-3 {
+            font-size: 1.5rem !important;
+            text-align: center;
+            width: 100%;
+            min-width: auto !important;
         }
 
         .section-title {
-            font-size: 1.25rem;
+            font-size: 1.1rem !important;
+            text-align: center;
+        }
+
+        .support-content-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .support-section {
+            padding: 1rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .card-title {
+            font-size: 1rem !important;
+            text-align: center;
+        }
+
+        .accordion-button {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.8rem !important;
+        }
+
+        .accordion-body {
+            padding: 0 0.75rem 0.75rem !important;
+            font-size: 0.8rem !important;
+        }
+
+        .btn-light-sm {
+            width: 100% !important;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .admin-reply-form {
+            padding: 0.75rem !important;
+        }
+
+        .form-control,
+        .form-select {
+            font-size: 16px !important;
+            /* Prevents zoom on iOS */
+        }
+
+        .alert {
+            padding: 0.75rem 1rem !important;
+            margin: 0.75rem 0 !important;
+        }
+
+        .d-flex.flex-wrap.justify-content-between.gap-3.align-items-center {
+            flex-direction: column !important;
+            text-align: center;
+        }
+    }
+
+    /* Tablet: 768px to 1023px */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .main-dashboard-content-support.support-center-page {
+            margin-left: 15% !important;
+            padding: 0px 25px !important;
+        }
+
+        .main-dashboard-content-support-wrapper {
+            width: 85% !important;
+        }
+
+        .support-center-page.px-5 {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+        }
+
+        .page-title.fs-3 {
+            font-size: 1.75rem !important;
+        }
+
+        .section-title {
+            font-size: 1.25rem !important;
+        }
+
+        .support-content-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+        }
+
+        .support-section {
+            padding: 1.25rem !important;
+        }
+
+        .accordion-button {
+            padding: 0.625rem 0.875rem !important;
+            font-size: 0.85rem !important;
+        }
+
+        .accordion-body {
+            padding: 0 0.875rem 0.875rem !important;
+        }
+    }
+
+    /* Desktop: 1024px and above */
+    @media (min-width: 1024px) {
+        .main-dashboard-content-support.support-center-page {
+            margin-left: 20% !important;
+            padding: 0px 35px !important;
+        }
+
+        .main-dashboard-content-support-wrapper {
+            width: 80% !important;
+        }
+
+        .support-center-page.px-5 {
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
+
+        .page-title.fs-3 {
+            font-size: 2rem !important;
+        }
+
+        .section-title {
+            font-size: 1.375rem !important;
+        }
+
+        .support-content-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+        }
+
+        .support-section {
+            padding: 1.5rem !important;
+        }
+
+        .accordion-button {
+            padding: 0.75rem 1rem !important;
+            font-size: 0.875rem !important;
+        }
+
+        .accordion-body {
+            padding: 0 1rem 1rem !important;
+        }
+    }
+
+    /* Responsive sidebar adjustments */
+    @media (max-width: 1023px) {
+        .sidebar-toggle {
+            border-radius: 1px;
+        }
+    }
+
+    /* Ensure proper spacing on all devices */
+    @media (max-width: 767px) {
+        .support-center-header.my-3 {
+            margin-top: 1rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .ms-3 {
+            margin-left: 0.5rem !important;
+        }
+
+        .gap-3 {
+            gap: 1rem !important;
+        }
+    }
+
+    /* Improve modal-like accordion responsiveness */
+    @media (max-width: 767px) {
+        .accordion-item {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .status-badge {
+            font-size: 0.7rem !important;
+            padding: 0.25em 0.5em !important;
+        }
+
+        .admin-reply {
+            padding: 0.75rem !important;
+            margin: 0.75rem 0 !important;
+        }
+
+        .admin-reply h6 {
+            font-size: 0.9rem !important;
+        }
+
+        .btn-primary {
+            width: 100% !important;
+            justify-content: center;
+        }
+    }
+
+    /* Better touch targets for mobile */
+    @media (max-width: 767px) {
+        .accordion-button {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-control,
+        .form-select {
+            min-height: 44px;
+        }
+    }
+
+    /* Enhanced accordion layout for mobile */
+    @media (max-width: 767px) {
+        .accordion-button {
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .ticket-item .accordion-button {
+            padding-right: 2.5rem !important;
+        }
+
+        .status-badge {
+            margin-top: 0.25rem;
+            align-self: flex-start;
+        }
+    }
+
+    /* Print styles for support center */
+    @media print {
+        .main-dashboard-content-support.support-center-page {
+            margin-left: 0 !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+        }
+
+        .btn-light-sm,
+        .sidebar-toggle,
+        .btn-primary {
+            display: none !important;
+        }
+
+        .accordion-button::after {
+            display: none !important;
+        }
+
+        .accordion-collapse {
+            display: block !important;
+        }
+
+        .accordion-item {
+            border: 1px solid #000 !important;
+            margin-bottom: 1rem !important;
+        }
+    }
+
+    /* Responsive sidebar toggle button */
+    .sidebar-toggle {
+        display: none;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+        background: #3e99f4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 1023px) {
+        .sidebar-toggle {
+            display: flex;
+            position: fixed;
+            right: 1rem;
+            left: unset;
+            top: 5rem;
+            z-index: 1100;
+            width: 30px;
+            height: 30px;
+            background: #f0f2f5;
+            color: #111418;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease, right 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    /* Enhanced JavaScript functionality for responsive behavior */
+    @media (max-width: 767px) {
+
+        .accordion-item,
+        .admin-reply-form {
+            transition: background-color 0.2s ease;
+        }
+
+        .accordion-item:active,
+        .admin-reply-form:active {
+            background-color: #e9ecef !important;
+        }
+    }
+
+    /* Ensure proper text sizing on mobile */
+    @media (max-width: 767px) {
+        .form-label {
+            font-size: 0.8rem !important;
+        }
+
+        .admin-reply small {
+            font-size: 0.75rem;
+        }
+
+        .text-muted {
+            font-size: 0.875rem;
+            text-align: center;
+        }
+    }
+
+    /* Improved grid layout for support sections */
+    @media (max-width: 767px) {
+        .support-content-grid .row {
+            flex-direction: column;
+        }
+
+        .faqs-section,
+        .admin-tickets-section {
+            width: 100% !important;
+        }
+    }
+
+    /* Ticket status badge responsive adjustments */
+    @media (max-width: 767px) {
+        .ticket-item .accordion-button {
+            font-size: 0.75rem !important;
+            line-height: 1.3;
+        }
+
+        .badge.ms-3.status-badge {
+            margin-left: 0.25rem !important;
+            margin-top: 0.25rem;
         }
     }
 </style>

@@ -432,38 +432,544 @@ require_once '../../templates/admin/sidenav_admin.php'; // Sidenav is included h
         background-color: #2e78c6;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
+    /* Add these media queries at the end of your existing CSS - ENHANCED MOBILE & TABLET RESPONSIVENESS */
+
+    /* Mobile: 767px and below - ENHANCED */
+    @media (max-width: 767px) {
         .main-dashboard-content {
-            margin-left: 0;
-            padding: 0px 15px;
+            margin-left: 0 !important;
+            padding: 0.75rem !important;
         }
 
-        .page-title {
-            font-size: 1.75rem;
+        .p-4 {
+            padding: 1rem !important;
+        }
+
+        .page-title.fs-3 {
+            font-size: 1.4rem !important;
+            text-align: center;
+            width: 100%;
+            min-width: auto !important;
+            margin-bottom: 0.5rem !important;
         }
 
         .section-title {
-            font-size: 1.25rem;
+            font-size: 1.1rem !important;
+            text-align: center;
+            margin-bottom: 0.75rem !important;
         }
 
+        /* Form mobile optimization */
+        .row.mb-2 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .col-12.col-md-6 {
+            width: 100% !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .form-control-custom {
+            height: 48px !important;
+            padding: 0.875rem !important;
+            font-size: 16px !important;
+            /* Prevent zoom on iOS */
+            border-radius: 0.375rem !important;
+        }
+
+        textarea.form-control-custom {
+            min-height: 120px !important;
+            height: auto !important;
+        }
+
+        .form-label-custom {
+            font-size: 0.9rem !important;
+            margin-bottom: 0.375rem !important;
+            text-align: left;
+        }
+
+        /* Button mobile optimization */
+        .d-flex.flex-wrap.gap-3 {
+            flex-direction: column !important;
+            gap: 0.75rem !important;
+            width: 100%;
+        }
+
+        .btn-primary-custom,
+        .btn-light {
+            width: 100% !important;
+            justify-content: center;
+            height: 48px !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Table mobile optimization */
         .table-responsive-custom {
+            border-radius: 0.375rem !important;
             overflow-x: auto;
         }
 
-        .d-flex.gap-2 {
-            flex-direction: column;
+        .table-custom {
+            min-width: 600px;
+            /* Allow horizontal scrolling */
+        }
+
+        .table-custom thead th {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.8rem !important;
+        }
+
+        .table-custom tbody td {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.8rem !important;
+            height: auto !important;
+            min-height: 60px;
+        }
+
+        .table-custom tbody .fw-bold {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+            align-items: stretch !important;
+        }
+
+        .table-custom .d-flex.gap-2 {
+            flex-direction: column !important;
             gap: 0.5rem !important;
         }
 
-        .d-flex.align-items-center {
-            flex-direction: column;
-            align-items: stretch !important;
-            gap: 0.5rem;
+        .table-custom .btn-light-sm {
+            width: 100% !important;
+            justify-content: center;
+            height: 40px !important;
         }
 
-        .me-2 {
+        /* Schedule linking form mobile optimization */
+        .table-custom .d-flex.align-items-center {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.5rem !important;
+        }
+
+        .table-custom .form-select {
+            width: 100% !important;
             margin-right: 0 !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .table-custom .me-2 {
+            margin-right: 0 !important;
+        }
+
+        /* Alert mobile optimization */
+        .alert {
+            padding: 0.875rem !important;
+            margin: 0.75rem 0 !important;
+            border-radius: 0.375rem !important;
+            font-size: 0.9rem;
+        }
+
+        /* Specific column adjustments for mobile tables */
+        .table-custom th.w-10,
+        .table-custom td:first-child {
+            min-width: 60px;
+        }
+
+        .table-custom th.w-25,
+        .table-custom td:nth-child(2) {
+            min-width: 120px;
+        }
+
+        .table-custom th.w-50,
+        .table-custom td:nth-child(6) {
+            min-width: 150px;
+        }
+    }
+
+    /* Tablet: 768px to 1023px - ENHANCED */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .main-dashboard-content {
+            margin-left: 15% !important;
+            padding: 1.25rem !important;
+        }
+
+        .p-4 {
+            padding: 1.5rem !important;
+        }
+
+        .page-title.fs-3 {
+            font-size: 1.6rem !important;
+        }
+
+        .section-title {
+            font-size: 1.3rem !important;
+        }
+
+        /* Form tablet optimization */
+        .col-12.col-md-6 {
+            width: 100% !important;
+        }
+
+        .form-control-custom {
+            height: 52px !important;
+            padding: 1rem !important;
+        }
+
+        textarea.form-control-custom {
+            min-height: 140px !important;
+        }
+
+        /* Button tablet optimization */
+        .d-flex.flex-wrap.gap-3 {
+            flex-direction: row !important;
+            gap: 1rem !important;
+        }
+
+        .btn-primary-custom,
+        .btn-light {
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
+        }
+
+        /* Table tablet optimization */
+        .table-responsive-custom {
+            border-radius: 0.5rem !important;
+        }
+
+        .table-custom {
+            width: 100%;
+        }
+
+        .table-custom thead th {
+            padding: 0.625rem 0.875rem !important;
+            font-size: 0.85rem !important;
+        }
+
+        .table-custom tbody td {
+            padding: 0.625rem 0.875rem !important;
+            font-size: 0.85rem !important;
+        }
+
+        .table-custom .d-flex.gap-2 {
+            flex-direction: row !important;
+            gap: 0.5rem !important;
+            flex-wrap: wrap;
+        }
+
+        .table-custom .btn-light-sm {
+            flex: 1;
+            min-width: 80px;
+        }
+
+        /* Schedule linking form tablet optimization */
+        .table-custom .d-flex.align-items-center {
+            flex-direction: row !important;
+            gap: 0.5rem !important;
+        }
+
+        .table-custom .form-select {
+            flex: 2;
+            min-width: 150px;
+        }
+
+        .table-custom .btn-light-sm.btn-success {
+            flex: 1;
+            min-width: 80px;
+        }
+    }
+
+    /* Desktop: 1024px and above - Refined */
+    @media (min-width: 1024px) {
+        .main-dashboard-content {
+            margin-left: 20% !important;
+            padding: 0px 35px !important;
+        }
+
+        .p-4 {
+            padding: 2rem !important;
+        }
+
+        .page-title.fs-3 {
+            font-size: 2rem !important;
+        }
+
+        .section-title {
+            font-size: 1.5rem !important;
+        }
+
+        .col-12.col-md-6 {
+            width: 50% !important;
+        }
+
+        .form-control-custom {
+            height: 56px !important;
+            padding: 15px !important;
+        }
+
+        textarea.form-control-custom {
+            min-height: 144px !important;
+        }
+
+        .d-flex.flex-wrap.gap-3 {
+            flex-direction: row !important;
+            gap: 1rem !important;
+        }
+
+        .btn-primary-custom,
+        .btn-light {
+            width: auto !important;
+        }
+
+        .table-custom .d-flex.gap-2 {
+            flex-direction: row !important;
+            gap: 0.5rem !important;
+        }
+
+        .table-custom .d-flex.align-items-center {
+            flex-direction: row !important;
+            gap: 0.5rem !important;
+        }
+    }
+
+    /* Enhanced responsive sidebar adjustments */
+    @media (max-width: 1023px) {
+        .sidebar-toggle {
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 1.1rem;
+        }
+    }
+
+    /* Ensure proper spacing on all devices */
+    @media (max-width: 767px) {
+        .mb-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .mb-5 {
+            margin-bottom: 2rem !important;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.375rem !important;
+        }
+
+        .gap-2 {
+            gap: 0.5rem !important;
+        }
+
+        .gap-3 {
+            gap: 1rem !important;
+        }
+    }
+
+    /* Improved touch targets for mobile */
+    @media (max-width: 767px) {
+        .btn {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-light-sm {
+            min-height: 40px;
+        }
+
+        .form-control-custom {
+            min-height: 48px;
+        }
+
+        textarea.form-control-custom {
+            min-height: 120px;
+        }
+
+        /* Better touch feedback */
+        .btn:active,
+        .table-custom tbody tr:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+        }
+    }
+
+    /* Enhanced form responsiveness */
+    @media (max-width: 767px) {
+        .form-control-custom::placeholder {
+            font-size: 14px;
+        }
+
+        textarea.form-control-custom::placeholder {
+            font-size: 14px;
+        }
+
+        .form-select {
+            font-size: 14px;
+            padding: 0.625rem !important;
+        }
+    }
+
+    /* Print styles for room manager */
+    @media print {
+        .main-dashboard-content {
+            margin-left: 0 !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+        }
+
+        .btn-primary-custom,
+        .btn-light,
+        .btn-light-sm,
+        .sidebar-toggle,
+        form {
+            display: none !important;
+        }
+
+        .table-custom {
+            width: 100%;
+        }
+
+        .table-custom tbody tr {
+            break-inside: avoid;
+        }
+    }
+
+    /* Responsive sidebar toggle button */
+    .sidebar-toggle {
+        display: none;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+        background: #3e99f4;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-size: 1.1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 1023px) {
+        .sidebar-toggle {
+            display: flex;
+            position: fixed;
+            right: 1rem;
+            left: unset;
+            top: 5rem;
+            z-index: 1100;
+            width: 30px;
+            height: 30px;
+            background: #f0f2f5;
+            color: #111418;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease, right 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    /* Enhanced mobile typography */
+    @media (max-width: 767px) {
+        body {
+            font-size: 14px;
+        }
+
+        .form-label-custom {
+            font-size: 0.9rem !important;
+        }
+
+        .room-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .badge {
+            font-size: 0.7rem !important;
+        }
+    }
+
+    /* Improved table scrolling for mobile */
+    @media (max-width: 767px) {
+        .table-responsive-custom {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+
+        .table-responsive-custom::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .table-responsive-custom::-webkit-scrollbar-thumb {
+            background-color: #d1dce6;
+            border-radius: 3px;
+        }
+    }
+
+    /* Enhanced loading states */
+    @media (max-width: 767px) {
+        .table-custom tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .table-custom tbody tr:active {
+            background-color: #f8f9fa;
+        }
+    }
+
+    /* Better spacing for mobile forms */
+    @media (max-width: 767px) {
+        form.mb-5 {
+            margin-bottom: 2rem !important;
+        }
+
+        .row:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    /* Tablet-specific form improvements */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .form-control-custom {
+            max-width: 100%;
+        }
+
+        .table-custom {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Enhanced action buttons in tables */
+    @media (max-width: 767px) {
+        .table-custom .btn-light-sm {
+            font-size: 0.8rem !important;
+            padding: 0.5rem 0.75rem !important;
+        }
+
+        .table-custom .form-select.form-select-sm {
+            font-size: 0.8rem !important;
+        }
+    }
+
+    /* Improved table header alignment */
+    @media (max-width: 767px) {
+        .table-custom thead th {
+            text-align: center;
+        }
+
+        .table-custom tbody td {
+            text-align: left;
+        }
+
+        .table-custom .d-flex.justify-content-center {
+            justify-content: flex-start !important;
         }
     }
 </style>
