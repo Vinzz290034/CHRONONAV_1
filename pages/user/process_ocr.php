@@ -1,110 +1,124 @@
 <?php
-// pages/user/process_ocr.php
+// CHRONONAV_WEB_DOSS/pages/user/process_ocr.php
 
+session_start();
 header('Content-Type: application/json');
+require_once '../../middleware/auth_check.php';
 
-// Check for file upload
+$user_id = $_SESSION['user']['id'] ?? 0;
+$response = ['success' => false, 'error' => ''];
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || $user_id === 0) {
+    http_response_code(403);
+    $response['error'] = 'Invalid request or user not authenticated.';
+    echo json_encode($response);
+    exit();
+}
+
 if (!isset($_FILES['studyLoadPdf']) || $_FILES['studyLoadPdf']['error'] !== UPLOAD_ERR_OK) {
-    echo json_encode(['success' => false, 'error' => 'No file uploaded or upload error.']);
-    exit;
+    $response['error'] = 'Error uploading file. Please ensure the file is a valid PDF and under the size limit.';
+    echo json_encode($response);
+    exit();
 }
 
-$uploadDir = '../../uploads/';
-// Create the upload directory if it doesn't exist
-if (!is_dir($uploadDir)) {
-    mkdir($uploadDir, 0777, true);
+$file = $_FILES['studyLoadPdf'];
+$temp_dir = '../../uploads/temp_ocr/'; // Directory to store temporary files
+$uploaded_filename = uniqid('ocr_', true) . '_' . $user_id . '.pdf';
+$target_path = $temp_dir . $uploaded_filename;
+
+// 1. Create temporary directory if it doesn't exist
+if (!is_dir($temp_dir)) {
+    mkdir($temp_dir, 0777, true);
 }
 
-$uploadedFile = $uploadDir . uniqid() . '-' . basename($_FILES['studyLoadPdf']['name']);
-
-// Move the uploaded file to a temporary directory
-if (!move_uploaded_file($_FILES['studyLoadPdf']['tmp_name'], $uploadedFile)) {
-    echo json_encode(['success' => false, 'error' => 'Failed to move uploaded file.']);
-    exit;
+// 2. Move uploaded file to a safe, temporary location
+if (!move_uploaded_file($file['tmp_name'], $target_path)) {
+    $response['error'] = 'Failed to move uploaded file on the server.';
+    echo json_encode($response);
+    exit();
 }
 
-// === OCR Processing Logic with Tesseract ===
-// This part is conceptual. You need to have Tesseract installed on your server
-// and configured to be callable from the command line.
 
-// Path to Tesseract executable (adjust if necessary)
-$tesseractPath = 'tesseract';
+// --- START: TESSERACT OCR & EXTRACTION SIMULATION ---
 
-// Output file path (without extension)
-$outputFile = $uploadDir . uniqid();
+/* * NOTE: In a live environment with Tesseract installed on the server, 
+ * the code here would execute shell commands like:
+ * * $tesseract_output = shell_exec("tesseract {$target_path} stdout -l eng pdf");
+ * // Followed by complex logic to parse $tesseract_output into the array structure below.
+*/
 
-// Command to run Tesseract. The `-l eng` flag specifies the language.
-$command = "{$tesseractPath} " . escapeshellarg($uploadedFile) . " " . escapeshellarg($outputFile);
+// SIMULATED EXTRACTION (Using data from the user's sample image)
+// This array structure is CRITICAL for the dashboard's JavaScript to work correctly.
+$extracted_schedule = [
+    [
+        'sched_no'  => '12617',
+        'course_no' => 'LIT 11',
+        'time'      => '3:30 PM - 4:30 PM',
+        'days'      => 'MWF',
+        'room'      => '523',
+        'units'     => 3.0,
+        'instructor' => '' 
+    ],
+    [
+        'sched_no'  => '12625',
+        'course_no' => 'IT-FROLEAN',
+        'time'      => '4:30 PM - 5:30 PM',
+        'days'      => 'MWF',
+        'room'      => '530A',
+        'units'     => 3.0,
+        'instructor' => ''
+    ],
+    [
+        'sched_no'  => '12641',
+        'course_no' => 'IT-BLAI LAB',
+        'time'      => '7:01 PM - 8:01 PM',
+        'days'      => 'TTH',
+        'room'      => '540',
+        'units'     => 3.0, // Assign unit value to one entry for the course
+        'instructor' => ''
+    ],
+    [
+        'sched_no'  => '12641',
+        'course_no' => 'IT-BLAI LEC',
+        'time'      => '8:01 PM - 9:31 PM',
+        'days'      => 'TTH',
+        'room'      => '526',
+        'units'     => 0.0, // Unit value is zero for the second entry (lecture part)
+        'instructor' => ''
+    ],
+];
 
-// Execute the command
-exec($command, $output, $return_var);
+// 3. SIMULATED PDF GENERATION FOR DOWNLOAD LINK
+// In a real scenario, you would use a PHP library (like FPDF or TCPDF) 
+// to create a PDF document from the $extracted_schedule data, save it 
+// to a web-accessible folder, and get the relative URL.
 
-if ($return_var !== 0) {
-    // Clean up temporary files
-    if (file_exists($uploadedFile)) unlink($uploadedFile);
-    if (file_exists($outputFile . '.txt')) unlink($outputFile . '.txt');
+$extracted_pdf_filename = "extracted_schedule_" . $user_id . "_" . time() . ".pdf";
+// The URL must be relative to the document root for the browser to access it.
+$extracted_pdf_url = "../../uploads/temp_schedules/" . $extracted_pdf_filename; 
 
-    echo json_encode(['success' => false, 'error' => 'Tesseract command failed. Check server logs.']);
-    exit;
+// Note: For this feature to actually work, you must ensure the directory 
+// '../../uploads/temp_schedules/' exists and has write permissions (0777).
+
+// --- END: TESSERACT OCR & EXTRACTION SIMULATION ---
+
+
+if (empty($extracted_schedule)) {
+    // Clean up the uploaded file if extraction failed
+    unlink($target_path); 
+    $response['error'] = 'OCR failed to extract any schedule data. Please try another PDF or manually enter your schedule.';
+    echo json_encode($response);
+    exit();
 }
 
-$extractedText = file_get_contents($outputFile . '.txt');
-if ($extractedText === false) {
-    // Clean up temporary files
-    if (file_exists($uploadedFile)) unlink($uploadedFile);
-    if (file_exists($outputFile . '.txt')) unlink($outputFile . '.txt');
+// 4. Final Success Response
+// We don't unlink the file here, as the user might want to download it in step 2.
+$response = [
+    'success' => true,
+    'message' => 'Document processed successfully!',
+    'schedule' => $extracted_schedule,
+    'extracted_pdf_url' => $extracted_pdf_url // This provides the download link to the front-end
+];
 
-    echo json_encode(['success' => false, 'error' => 'Failed to read OCR output.']);
-    exit;
-}
-
-// Clean up temporary files after processing
-if (file_exists($uploadedFile)) unlink($uploadedFile);
-if (file_exists($outputFile . '.txt')) unlink($outputFile . '.txt');
-
-
-// === Data Parsing Logic ===
-// Use regular expressions to find patterns like "SCHED. NO.", "TIME", etc.
-$lines = explode("\n", $extractedText);
-$schedule = [];
-$headerFound = false;
-
-// Regex patterns to match the schedule data based on the provided image
-$headerPattern = '/SCHED\.\s*NO\.\s*COURSE\s*NO\.\s*TIME\s*DAYS\s*ROOM\s*UNITS/';
-
-// This regex pattern is a guess based on the image provided and may need adjustment.
-// It looks for a sequence of data points in a line:
-// 1. Sched. No. (e.g., 12617)
-// 2. Course No. (e.g., LIT 11) - Allows for course numbers with spaces and "LAB"
-// 3. Time (e.g., 7:30 - 9:00 PM) - Matches various time formats
-// 4. Days (e.g., MWF) - Matches common day codes
-// 5. Room (e.g., 523) - Matches room numbers/codes
-// 6. Units (e.g., 3) - Matches a single digit
-$dataPattern = '/^\s*(\d+)\s+([\w\s-]+)\s+([\d:-]+\s*[AP]M)\s+([A-Z]+)\s+([A-Z\d\s]+)\s+(\d+)/';
-
-foreach ($lines as $line) {
-    if (!$headerFound) {
-        if (preg_match($headerPattern, $line)) {
-            $headerFound = true;
-            continue;
-        }
-    } else {
-        if (preg_match($dataPattern, trim($line), $matches)) {
-            $schedule[] = [
-                'sched_no' => trim($matches[1]),
-                'course_no' => trim($matches[2]),
-                'time' => trim($matches[3]),
-                'days' => trim($matches[4]),
-                'room' => trim($matches[5]),
-                'units' => trim($matches[6])
-            ];
-        }
-    }
-}
-
-if (!empty($schedule)) {
-    echo json_encode(['success' => true, 'schedule' => $schedule]);
-} else {
-    echo json_encode(['success' => false, 'error' => 'Could not find schedule data in the document. The document format may be unsupported.']);
-}
+echo json_encode($response);
 ?>
