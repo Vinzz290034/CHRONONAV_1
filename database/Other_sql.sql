@@ -349,4 +349,25 @@ CREATE TABLE `user_calendar_events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-
+CREATE TABLE IF NOT EXISTS add_pdf (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    schedule_code VARCHAR(100) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NULL DEFAULT NULL,
+    schedule_type ENUM('class', 'meeting', 'event', 'holiday') NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NULL DEFAULT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NULL DEFAULT NULL,
+    day_of_week VARCHAR(50) NULL DEFAULT NULL,
+    repeat_frequency ENUM('none', 'daily', 'weekly', 'monthly') NOT NULL DEFAULT 'none',
+    room VARCHAR(255) NULL DEFAULT NULL,
+    user_id INT(11) NOT NULL,
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    PRIMARY KEY (id),
+    -- Assuming a foreign key constraint to link schedules to users:
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
