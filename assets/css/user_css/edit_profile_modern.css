@@ -1,0 +1,310 @@
+/* File: assets/css/user_css/edit_profile_modern.css */
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --border-color: #e9ecef;
+    --shadow-heavy: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Inter', sans-serif;
+}
+
+.main-content-wrapper {
+    margin-left: 250px;
+    padding: 2rem;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+/* Profile Card Styling */
+.profile-card {
+    border: none;
+    border-radius: 12px;
+    background-color: var(--card-background);
+    box-shadow: var(--shadow-heavy);
+    padding: 2rem;
+}
+
+.profile-header-edit {
+    padding-bottom: 1.5rem;
+}
+
+.profile-edit-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--border-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.profile-edit-avatar:hover {
+    border-color: var(--primary-color);
+}
+
+/* Form and Input Styling */
+h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button Group Styling */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-outline-secondary {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    background-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Hide file input and style the label as a button */
+.d-none {
+    display: none !important;
+}
+
+/* General Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Ensure the main content area has a dark background */
+body.dark-mode .main-dashboard-content {
+    background-color: #1e1e1e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Card and Section Styles */
+body.dark-mode .card,
+body.dark-mode .settings-section {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode .list-group-item {
+    background-color: #2c2c2c;
+    border-color: #444;
+}
+
+/* Ensure all text, including default paragraphs, is white */
+body.dark-mode,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode strong,
+body.dark-mode small,
+body.dark-mode label,
+body.dark-mode td,
+body.dark-mode th,
+body.dark-mode .form-label {
+    color: #ffffff !important;
+}
+
+/* Headings and links */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode a:not(.btn) {
+    color: #ffffff;
+}
+
+body.dark-mode .text-muted {
+    color: #b0b0b0 !important;
+}
+
+/* Form controls */
+body.dark-mode .form-control,
+body.dark-mode .form-select,
+body.dark-mode .form-control:read-only {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #444;
+    border-color: #666;
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-check-input:checked {
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+}
+
+/* Buttons */
+body.dark-mode .btn-outline-primary {
+    color: #1abc9c;
+    border-color: #1abc9c;
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+
+body.dark-mode .btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+body.dark-mode .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+/* Modal styles (as per previous fix) */
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .modal-header {
+    background-color: #1e1e1e;
+    border-bottom-color: #333;
+}
+
+body.dark-mode .modal-body {
+    color: #ffffff;
+}
+
+body.dark-mode .modal-footer {
+    background-color: #1e1e1e;
+    border-top-color: #333;
+}
+
+body.dark-mode .modal-header .modal-title {
+    color: #ffffff;
+}
+
+body.dark-mode .modal .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* ====================================================================== */
+/* Dark Mode Overrides for Header (Navbar) */
+/* ====================================================================== */
+body.dark-mode .navbar {
+    background-color: #212529 !important; /* Forces dark color on the top bar */
+}
+body.dark-mode .navbar-brand,
+body.dark-mode .navbar-nav .nav-link,
+body.dark-mode .dropdown-item {
+    color: #ffffff !important;
+}
+body.dark-mode .navbar-nav .nav-link:hover,
+body.dark-mode .navbar-nav .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .navbar-icon-circle {
+    background-color: #343a40;
+}
+body.dark-mode .navbar-profile-img {
+    border-color: #495057;
+}
+
+/* --- Overrides for the Sidenav --- */
+body.dark-mode .app-sidebar {
+    background-color: #1e1e1e;
+    border-right: 1px solid #333;
+}
+body.dark-mode .app-sidebar-menu .nav-link {
+    color: #e0e0e0;
+}
+body.dark-mode .app-sidebar-menu .nav-link:hover {
+    background-color: #2c2c2c;
+}
+body.dark-mode .app-sidebar-menu .nav-link.active {
+    background-color: #1abc9c;
+}
+
+/* --- Profile Page Specific Overrides --- */
+/* Ensure the main profile container card is dark */
+body.dark-mode .profile-card,
+body.dark-mode .profile-container.card {
+    background-color: #2c2c2c !important;
+    border-color: #444 !important;
+}
+
+/* Specific profile text colors */
+body.dark-mode .profile-header h4,
+body.dark-mode h3 {
+    color: #ffffff !important; /* Fixes "Welcome, [User]!" text */
+}
+
+body.dark-mode .form-group label {
+    color: #ffffff !important;
+}
+
+/* Fix for light background on the form groups */
+body.dark-mode .form-control {
+    background-color: #333;
+    color: #e0e0e0;
+}
